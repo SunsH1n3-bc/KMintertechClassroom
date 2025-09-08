@@ -10,7 +10,7 @@
     <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.js"></script>
     
     <!-- CSS -->
-    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href=".style.css">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -60,14 +60,14 @@
         <div class="nav-container">
             <ul class="nav-menu">
                 <li class="nav-item" data-tooltip="หน้าแรก">
-                    <a href="/HTML/index.html" class="nav-link active" aria-label="หน้าแรก">
+                    <a href=".index.html" class="nav-link active" aria-label="หน้าแรก">
                         <ion-icon name="home" class="nav-icon"></ion-icon>
                         <span class="nav-ripple"></span>
                     </a>
                 </li>
                 
                 <li class="nav-item" data-tooltip="สแกน QR Code">
-                    <a href="/HTML/member.html" class="nav-link" aria-label="สแกน">
+                    <a href=".member.html" class="nav-link" aria-label="สแกน">
                         <ion-icon name="qr-code" class="nav-icon"></ion-icon>
                         <span class="nav-ripple"></span>
                     </a>
@@ -75,28 +75,28 @@
                 
                 <!-- เช็คอิน - จะซ่อนสำหรับนักเรียน -->
                 <li class="nav-item checkin-feature" data-tooltip="เช็คอิน">
-                    <a href="/HTML/studens.html" class="nav-link" aria-label="เช็คอิน">
+                    <a href=".studens.html" class="nav-link" aria-label="เช็คอิน">
                         <ion-icon name="checkmark-circle" class="nav-icon"></ion-icon>
                         <span class="nav-ripple"></span>
                     </a>
                 </li>
                 
                 <li class="nav-item" data-tooltip="ตารางเรียน">
-                    <a href="/HTML/ClassRoom.html" class="nav-link" aria-label="ตารางเรียน">
+                    <a href=".ClassRoom.html" class="nav-link" aria-label="ตารางเรียน">
                         <ion-icon name="calendar" class="nav-icon"></ion-icon>
                         <span class="nav-ripple"></span>
                     </a>
                 </li>
                 
                 <li class="nav-item" data-tooltip="สถิติการเข้าเรียน">
-                    <a href="/HTML/Scan.html" class="nav-link" aria-label="รายงาน">
+                    <a href=".Scan.html" class="nav-link" aria-label="รายงาน">
                         <ion-icon name="bar-chart" class="nav-icon"></ion-icon>
                         <span class="nav-ripple"></span>
                     </a>
                 </li>
                 
                 <li class="nav-item" data-tooltip="โปรไฟล์">
-                    <a href="/HTML/Nav.html" class="nav-link" aria-label="โปรไฟล์">
+                    <a href=".Nav.html" class="nav-link" aria-label="โปรไฟล์">
                         <ion-icon name="person" class="nav-icon"></ion-icon>
                         <span class="nav-ripple"></span>
                     </a>
@@ -175,7 +175,7 @@
                 </div>
             </div>
             
-            <div class="status-card info" onclick="window.location.href='/HTML/new.html'">
+            <div class="status-card info" onclick="window.location.href='.new.html'">
                 <div class="status-icon">
                     <ion-icon name="information-circle"></ion-icon>
                 </div>
@@ -200,7 +200,7 @@
                     </div>
                     <h4>สแกน QR Code</h4>
                     <p>เช็คอินเข้าเรียนด้วย QR Code</p>
-                    <button class="action-btn primary" data-page="/HTML/member.html">
+                    <button class="action-btn primary" data-page=".member.html">
                         <ion-icon name="camera"></ion-icon>
                         <span>เริ่มสแกน</span>
                         <div class="btn-ripple"></div>
@@ -213,7 +213,7 @@
                     </div>
                     <h4>ตารางเรียนวันนี้</h4>
                     <p>ดูตารางเรียนและกิจกรรมวันนี้</p>
-                    <button class="action-btn secondary" data-page="/HTML/ClassRoom.html">
+                    <button class="action-btn secondary" data-page=".ClassRoom.html">
                         <ion-icon name="time"></ion-icon>
                         <span>ดูตาราง</span>
                         <div class="btn-ripple"></div>
@@ -227,7 +227,7 @@
                     </div>
                     <h4>การเช็คอิน</h4>
                     <p>ดูสถิติและการเข้าเรียน</p>
-                    <button class="action-btn tertiary" data-page="/HTML/studens.html">
+                    <button class="action-btn tertiary" data-page=".studens.html">
                         <ion-icon name="checkmark-circle"></ion-icon>
                         <span>เช็คอิน</span>
                         <div class="btn-ripple"></div>
@@ -240,7 +240,7 @@
         <section class="today-schedule">
             <div class="section-header">
                 <h3>ตารางเรียนวันนี้</h3>
-                <button class="view-all-btn" onclick="window.location.href='/HTML/ClassRoom.html'">
+                <button class="view-all-btn" onclick="window.location.href='.ClassRoom.html'">
                     <span>ดูทั้งหมด</span>
                     <ion-icon name="arrow-forward"></ion-icon>
                 </button>
@@ -479,8 +479,8 @@
     </div>
 
     <!-- JavaScript Files -->
-    <script src="/JS/statistics-sync.js"></script>
-    <script src="/JS/enhanced-script.js"></script>
+    <script src=".statistics-sync.js"></script>
+    <script src=".enhanced-script.js"></script>
     
 <script>
     // ระบบควบคุมการแจ้งเตือน - ป้องกันการซ้ำอย่างเข้มงวด
@@ -1048,4 +1048,5 @@
     console.log('Fixed notification system loaded - แจ้งเตือนครั้งเดียวต่อการอัพเดท');
 </script>
 </body>
+
 </html>
