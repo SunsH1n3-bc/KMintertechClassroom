@@ -1,0 +1,334 @@
+/* รีเซ็ตพื้นฐาน */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ฟอนต์และพื้นหลังหลัก */
+body {
+    font-family: 'Sarabun', 'Noto Sans Thai', Arial, sans-serif;
+    background: #f5f6fa;
+    min-height: 100vh;
+    padding: 20px;
+    color: #2c3e50;
+}
+
+/* คอนเทนเนอร์หลัก */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* ส่วนหัว */
+.header {
+    background: #34495e;
+    padding: 24px 20px;
+    text-align: center;
+    color: white;
+    border-bottom: 3px solid #2c3e50;
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+/* คอนเทนเนอร์ตาราง */
+.table-container {
+    overflow-x: auto;
+    padding: 20px;
+    background: white;
+}
+
+/* ตารางหลัก */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #d5dbdb;
+    background: white;
+}
+
+/* หัวตาราง */
+.schedule-table th {
+    background: #34495e;
+    color: white;
+    padding: 16px 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid #2c3e50;
+}
+
+/* เซลล์ตาราง */
+.schedule-table td {
+    border: 1px solid #d5dbdb;
+    padding: 0;
+    text-align: center;
+    background: white;
+}
+
+/* เซลล์เวลา */
+.time-cell {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #2c3e50;
+    vertical-align: middle;
+    width: 130px;
+    padding: 12px 8px;
+    font-size: 0.9rem;
+    border-right: 2px solid #d5dbdb;
+}
+
+/* เซลล์พัก */
+.break-cell {
+    background: #ecf0f1;
+    color: #7f8c8d;
+    font-weight: 600;
+    vertical-align: middle;
+    padding: 12px;
+    font-size: 1rem;
+    border-top: 2px solid #d5dbdb;
+    border-bottom: 2px solid #d5dbdb;
+}
+
+/* เซลล์วิชา */
+.subject-cell {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    padding: 10px;
+    height: 80px;
+    vertical-align: top;
+}
+
+.subject-cell:hover {
+    background: #f8f9fa !important;
+}
+
+/* เนื้อหาในเซลล์ */
+.cell-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.subject-name {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #2c3e50;
+    font-size: 0.95rem;
+}
+
+.teacher-name {
+    color: #5d6d7e;
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+    font-weight: 400;
+}
+
+.room-name {
+    color: #85929e;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+/* สีไฮไลท์ - โทนสีที่เรียบง่าย */
+.color-none {
+    background: #ffffff;
+}
+
+.color-blue {
+    background: #eaf4fd;
+}
+
+.color-green {
+    background: #eafaf1;
+}
+
+.color-yellow {
+    background: #fef9e7;
+}
+
+.color-pink {
+    background: #fdf2f8;
+}
+
+.color-purple {
+    background: #f4f3ff;
+}
+
+.color-orange {
+    background: #fff7ed;
+}
+
+.color-red {
+    background: #fef2f2;
+}
+
+.color-gray {
+    background: #f8f9fa;
+}
+
+/* โต้ตอบ (Responsive) */
+@media (max-width: 1024px) {
+    .container {
+        margin: 10px;
+        border-radius: 6px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .schedule-table th,
+    .schedule-table td {
+        font-size: 0.9rem;
+        padding: 12px 8px;
+    }
+    
+    .time-cell {
+        width: 120px;
+    }
+    
+    .subject-cell {
+        height: 75px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .header {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header p {
+        font-size: 1rem;
+    }
+    
+    .table-container {
+        padding: 15px;
+    }
+    
+    .schedule-table th,
+    .schedule-table td {
+        font-size: 0.85rem;
+        padding: 10px 6px;
+    }
+    
+    .time-cell {
+        width: 100px;
+        font-size: 0.8rem;
+    }
+    
+    .subject-cell {
+        height: 70px;
+    }
+    
+    .subject-name {
+        font-size: 0.9rem;
+    }
+    
+    .teacher-name {
+        font-size: 0.8rem;
+    }
+    
+    .room-name {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .schedule-table th,
+    .schedule-table td {
+        font-size: 0.8rem;
+        padding: 8px 4px;
+    }
+    
+    .time-cell {
+        width: 90px;
+        font-size: 0.75rem;
+    }
+    
+    .subject-cell {
+        height: 65px;
+    }
+    
+    .subject-name {
+        font-size: 0.85rem;
+    }
+    
+    .teacher-name {
+        font-size: 0.75rem;
+    }
+    
+    .room-name {
+        font-size: 0.7rem;
+    }
+}
+
+/* เอฟเฟกต์เรียบง่าย */
+.schedule-table tbody tr:hover {
+    background: rgba(52, 73, 94, 0.02);
+}
+
+.schedule-table tbody tr:nth-child(even) {
+    background: rgba(248, 249, 250, 0.3);
+}
+
+/* สไตล์สำหรับการพิมพ์ */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .container {
+        box-shadow: none;
+        border-radius: 0;
+    }
+    
+    .header {
+        background: #34495e !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+    }
+    
+    .subject-cell:hover {
+        background: inherit !important;
+    }
+    
+    .schedule-table {
+        border: 2px solid #2c3e50;
+    }
+    
+    .schedule-table th {
+        background: #34495e !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+    }
+}
