@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Check In - ระบบเช็คอินทันสมัย</title>
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/CSS/style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg">
+        <div class="floating-element element-1"></div>
+        <div class="floating-element element-2"></div>
+        <div class="floating-element element-3"></div>
+        <div class="floating-element element-4"></div>
+        <div class="floating-element element-5"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <div class="logo-icon-wrapper">
+                        <ion-icon name="school" class="logo-icon"></ion-icon>
+                    </div>
+                    <h1>Scan Check In</h1>
+                </div>
+            </div>
+            <div class="user-section">
+                <div class="user-info">
+                    <div class="profile-img">
+                        <ion-icon name="person"></ion-icon>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name" id="displayUserName">สมชาย ใจดี</span>
+                        <span class="user-status" id="displayUserRole">นักเรียน</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <ion-icon name="notifications" class="notification-icon"></ion-icon>
+                    <span class="notification-badge">3</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Vertical Navigation Sidebar -->
+    <nav class="vertical-nav">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li class="nav-item" data-tooltip="หน้าแรก">
+                    <a href="/HTML/index.html" class="nav-link active" aria-label="หน้าแรก">
+                        <ion-icon name="home" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="สแกน QR Code">
+                    <a href="/HTML/member.html" class="nav-link" aria-label="สแกน">
+                        <ion-icon name="qr-code" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <!-- เช็คอิน - จะซ่อนสำหรับนักเรียน -->
+                <li class="nav-item checkin-feature" data-tooltip="เช็คอิน">
+                    <a href="/HTML/studens.html" class="nav-link" aria-label="เช็คอิน">
+                        <ion-icon name="checkmark-circle" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="ตารางเรียน">
+                    <a href="/HTML/ClassRoom.html" class="nav-link" aria-label="ตารางเรียน">
+                        <ion-icon name="calendar" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="สถิติการเข้าเรียน">
+                    <a href="/HTML/Scan.html" class="nav-link" aria-label="รายงาน">
+                        <ion-icon name="bar-chart" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="โปรไฟล์">
+                    <a href="/HTML/Nav.html" class="nav-link" aria-label="โปรไฟล์">
+                        <ion-icon name="person" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="ติดต่อ">
+                    <a href="https://www.facebook.com/profile.php?id=100087243115176" class="nav-link" aria-label="ติดต่อ">
+                        <ion-icon name="help-circle" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-card">
+                <div class="welcome-content">
+                    <div class="welcome-badge">
+                        <ion-icon name="sparkles"></ion-icon>
+                        <span>ยินดีต้อนรับ</span>
+                    </div>
+                    <h2>ระบบเช็คอินเรียนออนไลน์</h2>
+                    <p>จัดการการเข้าเรียนของคุณได้อย่างง่ายดายและมีประสิทธิภาพ</p>
+                    <div class="date-time">
+                        <div class="date-info">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            <span id="current-date"></span>
+                        </div>
+                        <div class="time-info">
+                            <ion-icon name="time-outline"></ion-icon>
+                            <span id="current-time"></span>
+                        </div>
+                    </div>
+                    <div class="weather-info">
+                        <ion-icon name="sunny"></ion-icon>
+                        <span>25°C - สดใส</span>
+                    </div>
+                </div>
+                <div class="welcome-illustration">
+                    <div class="floating-icons">
+                        <ion-icon name="school-outline" class="illustration-icon main-icon"></ion-icon>
+                        <ion-icon name="book-outline" class="floating-icon icon-1"></ion-icon>
+                        <ion-icon name="trophy-outline" class="floating-icon icon-2"></ion-icon>
+                        <ion-icon name="star-outline" class="floating-icon icon-3"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Status Cards -->
+        <section class="status-cards">
+            <div class="status-card urgent">
+                <div class="status-icon">
+                    <ion-icon name="alert-circle"></ion-icon>
+                </div>
+                <div class="status-content">
+                    <h4>กำลังจะเริ่มเรียน</h4>
+                    <p>ภาษาอังกฤษ - ห้อง B-205</p>
+                    <span class="status-time">อีก 15 นาที</span>
+                </div>
+            </div>
+            
+            <!-- เช็คอินสำเร็จ - จะซ่อนสำหรับนักเรียน -->
+            <div class="status-card success checkin-feature">
+                <div class="status-icon">
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                </div>
+                <div class="status-content">
+                    <h4>เข้าเรียนสำเร็จ</h4>
+                    <p>คณิตศาสตร์ - ห้อง A-101</p>
+                    <span class="status-time">08:00 น.</span>
+                </div>
+            </div>
+            
+            <div class="status-card info" onclick="window.location.href='/HTML/new.html'">
+                <div class="status-icon">
+                    <ion-icon name="information-circle"></ion-icon>
+                </div>
+                <div class="status-content">
+                    <h4>ประกาศใหม่</h4>
+                    <p>ตารางสอบกลางภาค</p>
+                    <span class="status-time">เมื่อวาน</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <div class="section-header">
+                <h3>การดำเนินการด่วน</h3>
+                <div class="section-divider"></div>
+            </div>
+            <div class="action-grid">
+                <div class="action-card scan-card">
+                    <div class="action-icon">
+                        <ion-icon name="qr-code"></ion-icon>
+                    </div>
+                    <h4>สแกน QR Code</h4>
+                    <p>เช็คอินเข้าเรียนด้วย QR Code</p>
+                    <button class="action-btn primary" data-page="/HTML/member.html">
+                        <ion-icon name="camera"></ion-icon>
+                        <span>เริ่มสแกน</span>
+                        <div class="btn-ripple"></div>
+                    </button>
+                </div>
+                
+                <div class="action-card schedule-card">
+                    <div class="action-icon">
+                        <ion-icon name="calendar"></ion-icon>
+                    </div>
+                    <h4>ตารางเรียนวันนี้</h4>
+                    <p>ดูตารางเรียนและกิจกรรมวันนี้</p>
+                    <button class="action-btn secondary" data-page="/HTML/ClassRoom.html">
+                        <ion-icon name="time"></ion-icon>
+                        <span>ดูตาราง</span>
+                        <div class="btn-ripple"></div>
+                    </button>
+                </div>
+                
+                <!-- การเช็คอิน - จะซ่อนสำหรับนักเรียน -->
+                <div class="action-card report-card checkin-feature">
+                    <div class="action-icon">
+                        <ion-icon name="bar-chart"></ion-icon>
+                    </div>
+                    <h4>การเช็คอิน</h4>
+                    <p>ดูสถิติและการเข้าเรียน</p>
+                    <button class="action-btn tertiary" data-page="/HTML/studens.html">
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                        <span>เช็คอิน</span>
+                        <div class="btn-ripple"></div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Today's Schedule -->
+        <section class="today-schedule">
+            <div class="section-header">
+                <h3>ตารางเรียนวันนี้</h3>
+                <button class="view-all-btn" onclick="window.location.href='/HTML/ClassRoom.html'">
+                    <span>ดูทั้งหมด</span>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+            </div>
+            <div class="schedule-container">
+                <div class="schedule-item completed">
+                    <div class="schedule-time">
+                        <span class="time">08:00</span>
+                        <span class="duration">90 นาที</span>
+                    </div>
+                    <div class="schedule-info">
+                        <h4>คณิตศาสตร์</h4>
+                        <div class="schedule-details">
+                            <span class="room">ห้อง A-101</span>
+                            <span class="teacher">อ.สมศรี จันทร์เพ็ญ</span>
+                        </div>
+                        <div class="schedule-progress">
+                            <div class="progress-bar completed"></div>
+                        </div>
+                    </div>
+                    <div class="schedule-status">
+                        <span class="status-badge completed">เช็คอินแล้ว</span>
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                    </div>
+                </div>
+                
+                <div class="schedule-item current">
+                    <div class="schedule-time">
+                        <span class="time">09:45</span>
+                        <span class="duration">90 นาที</span>
+                    </div>
+                    <div class="schedule-info">
+                        <h4>ภาษาอังกฤษ</h4>
+                        <div class="schedule-details">
+                            <span class="room">ห้อง B-205</span>
+                            <span class="teacher">อ.วิภาวี สีใส</span>
+                        </div>
+                        <div class="schedule-progress">
+                            <div class="progress-bar current"></div>
+                        </div>
+                    </div>
+                    <div class="schedule-status">
+                        <span class="status-badge current">กำลังเรียน</span>
+                        <ion-icon name="play-circle"></ion-icon>
+                    </div>
+                </div>
+                
+                <div class="schedule-item upcoming">
+                    <div class="schedule-time">
+                        <span class="time">13:00</span>
+                        <span class="duration">90 นาที</span>
+                    </div>
+                    <div class="schedule-info">
+                        <h4>วิทยาการคอมพิวเตอร์</h4>
+                        <div class="schedule-details">
+                            <span class="room">ห้อง C-301</span>
+                            <span class="teacher">อ.ธนกฤต โค้ดดี</span>
+                        </div>
+                        <div class="schedule-progress">
+                            <div class="progress-bar upcoming"></div>
+                        </div>
+                    </div>
+                    <div class="schedule-status">
+                        <span class="status-badge upcoming">รอเช็คอิน</span>
+                        <ion-icon name="time"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics - อัพเดทจาก Scan.html -->
+        <section class="statistics">
+            <div class="section-header">
+                <h3>สถิติการเข้าเรียน</h3>
+                <select class="period-selector">
+                    <option value="week">สัปดาห์นี้</option>
+                    <option value="month">เดือนนี้</option>
+                    <option value="semester">ภาคเรียนนี้</option>
+                </select>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card attendance">
+                    <div class="stat-icon">
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                    </div>
+                    <div class="stat-info">
+                        <h4 id="totalPresentDisplay">18</h4>
+                        <p>วันที่เข้าเรียน</p>
+                        <div class="stat-progress">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-trend up">
+                        <ion-icon name="trending-up"></ion-icon>
+                        <span>+5%</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card absence">
+                    <div class="stat-icon">
+                        <ion-icon name="close-circle"></ion-icon>
+                    </div>
+                    <div class="stat-info">
+                        <h4 id="totalAbsentDisplay">2</h4>
+                        <p>วันที่ขาดเรียน</p>
+                        <div class="stat-progress">
+                            <div class="progress-fill" style="width: 10%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-trend down">
+                        <ion-icon name="trending-down"></ion-icon>
+                        <span>-2%</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card late">
+                    <div class="stat-icon">
+                        <ion-icon name="time"></ion-icon>
+                    </div>
+                    <div class="stat-info">
+                        <h4 id="totalLateDisplay">1</h4>
+                        <p>วันที่มาสาย</p>
+                        <div class="stat-progress">
+                            <div class="progress-fill" style="width: 5%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-trend neutral">
+                        <ion-icon name="remove"></ion-icon>
+                        <span>0%</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card percentage">
+                    <div class="stat-icon">
+                        <ion-icon name="trophy"></ion-icon>
+                    </div>
+                    <div class="stat-info">
+                        <h4 id="attendanceRateDisplay">90%</h4>
+                        <p>เปอร์เซ็นต์การเข้าเรียน</p>
+                        <div class="stat-progress">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-trend up">
+                        <ion-icon name="trending-up"></ion-icon>
+                        <span>+3%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Activities -->
+        <section class="recent-activities">
+            <div class="section-header">
+                <h3>กิจกรรมล่าสุด</h3>
+                <button class="view-all-btn">
+                    <span>ดูทั้งหมด</span>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+            </div>
+            <div class="activities-timeline">
+                <!-- เช็คอินสำเร็จ - จะซ่อนสำหรับนักเรียน -->
+                <div class="activity-item checkin-feature">
+                    <div class="activity-icon success">
+                        <ion-icon name="checkmark"></ion-icon>
+                    </div>
+                    <div class="activity-content">
+                        <h4>เช็คอินเข้าเรียนสำเร็จ</h4>
+                        <p>คณิตศาสตร์ - ห้อง A-101</p>
+                        <span class="activity-time">10 นาทีที่แล้ว</span>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon info">
+                        <ion-icon name="document"></ion-icon>
+                    </div>
+                    <div class="activity-content">
+                        <h4>ได้รับใบงานใหม่</h4>
+                        <p>แบบฝึกหัดวิทยาการคอมพิวเตอร์</p>
+                        <span class="activity-time">1 ชั่วโมงที่แล้ว</span>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon warning">
+                        <ion-icon name="alert-circle"></ion-icon>
+                    </div>
+                    <div class="activity-content">
+                        <h4>แจ้งเตือนตารางเรียน</h4>
+                        <p>มีการเปลี่ยนแปลงตารางเรียนวันพรุ่งนี้</p>
+                        <span class="activity-time">3 ชั่วโมงที่แล้ว</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>เกี่ยวกับเรา</h4>
+                    <p>ระบบเช็คอินเรียนออนไลน์ที่ทันสมัยและใช้งานง่าย</p>
+                </div>
+                <div class="footer-section">
+                    <h4>ติดต่อเรา</h4>
+                    <p>โทร: 061-060-7931</p>
+                    <p>อีเมล: Siributwicha015@Gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>ลิงก์ด่วน</h4>
+                    <div class="footer-links">
+                        <a href="/HTML/about.html">เกี่ยวกับเรา</a>
+                        <a href="/HTML/N.html">เงื่อนไขการใช้งาน</a>
+                        <a href="/HTML/help.html">ช่วยเหลือ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ระบบเช็คอินเรียนออนไลน์. สงวนลิขสิทธิ์.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Statistics Update Notification -->
+    <div class="statistics-notification" id="statisticsNotification" style="display: none;">
+        <div class="notification-content">
+            <ion-icon name="bar-chart-outline"></ion-icon>
+            <span>สถิติการเข้าเรียนได้รับการอัพเดท</span>
+            <button class="close-notification" onclick="hideStatisticsNotification()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="/JS/statistics-sync.js"></script>
+    <script src="/JS/enhanced-script.js"></script>
+    
+<script>
+    // ระบบควบคุมการแจ้งเตือน - ป้องกันการซ้ำอย่างเข้มงวด
+    const NotificationManager = {
+        // ตัวแปรสำหรับควบคุม
+        isNotificationShowing: false,
+        lastNotificationTime: 0,
+        lastDataHash: null,
+        notificationTimeout: null,
+        shownMessages: new Set(), // เก็บข้อความที่แสดงแล้ว
+        lastUserAction: null, // เก็บการกระทำล่าสุดของผู้ใช้
+        isInitialLoad: true, // ป้องกันการแจ้งเตือนตอนโหลดครั้งแรก
+        
+        // คำนวณ hash ของข้อมูลสถิติ
+        calculateDataHash: function() {
+            try {
+                const attendanceData = JSON.parse(localStorage.getItem('attendanceData') || '[]');
+                const dataString = JSON.stringify(attendanceData);
+                let hash = 0;
+                for (let i = 0; i < dataString.length; i++) {
+                    const char = dataString.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash;
+                }
+                return hash.toString();
+            } catch (error) {
+                console.error('Error calculating data hash:', error);
+                return Math.random().toString();
+            }
+        },
+        
+        // สร้าง unique key สำหรับข้อความ
+        createMessageKey: function(message, source) {
+            const timestamp = Math.floor(Date.now() / 30000); // Group ทุก 30 วินาที
+            return `${source}-${message}-${timestamp}`;
+        },
+        
+        // ตรวจสอบว่าข้อมูลเปลี่ยนแปลงจริงหรือไม่
+        hasDataChanged: function() {
+            const currentHash = this.calculateDataHash();
+            const changed = this.lastDataHash !== null && currentHash !== this.lastDataHash;
+            
+            if (changed) {
+                console.log('Data hash changed:', this.lastDataHash, '->', currentHash);
+            }
+            
+            this.lastDataHash = currentHash;
+            return changed;
+        },
+        
+        // แสดงการแจ้งเตือน (เข้มงวดมาก)
+        show: function(message, source = 'system') {
+            const now = Date.now();
+            const timeSinceLastNotification = now - this.lastNotificationTime;
+            const messageKey = this.createMessageKey(message, source);
+            
+            console.log('Notification request:', {
+                message,
+                source,
+                messageKey,
+                isShowing: this.isNotificationShowing,
+                timeSince: timeSinceLastNotification,
+                isInitialLoad: this.isInitialLoad,
+                shownBefore: this.shownMessages.has(messageKey)
+            });
+            
+            // ป้องกันการโหลดครั้งแรก
+            if (this.isInitialLoad && source !== 'period_change') {
+                console.log('Notification blocked - initial load');
+                return false;
+            }
+            
+            // ป้องกันการแสดงซ้ำ
+            if (this.isNotificationShowing) {
+                console.log('Notification blocked - already showing');
+                return false;
+            }
+            
+            // ป้องกันการแสดงเร็วเกินไป (น้อยกว่า 10 วินาที)
+            if (timeSinceLastNotification < 10000) {
+                console.log('Notification blocked - too soon since last notification');
+                return false;
+            }
+            
+            // ป้องกันข้อความที่แสดงแล้วใน 30 วินาทีที่ผ่านมา
+            if (this.shownMessages.has(messageKey)) {
+                console.log('Notification blocked - message shown recently');
+                return false;
+            }
+            
+            // สำหรับการแจ้งเตือนจากการเปลี่ยนแปลงข้อมูล
+            if (source === 'data_change') {
+                if (!this.hasDataChanged()) {
+                    console.log('Notification blocked - no actual data change');
+                    return false;
+                }
+            }
+            
+            // สำหรับการเปลี่ยน period selector (อนุญาตเฉพาะเมื่อผู้ใช้คลิกจริง)
+            if (source === 'period_change') {
+                const timeSinceLastAction = now - (this.lastUserAction || 0);
+                if (timeSinceLastAction > 1000) { // ต้องมีการคลิกใน 1 วินาที
+                    console.log('Notification blocked - no recent user action for period change');
+                    return false;
+                }
+            }
+            
+            // บันทึกข้อความที่แสดงแล้ว
+            this.shownMessages.add(messageKey);
+            
+            // ล้างข้อความเก่าออกทุก 60 วินาที
+            setTimeout(() => {
+                this.shownMessages.delete(messageKey);
+            }, 60000);
+            
+            return this.displayNotification(message);
+        },
+        
+        // แสดงการแจ้งเตือนจริง
+        displayNotification: function(message) {
+            this.isNotificationShowing = true;
+            this.lastNotificationTime = Date.now();
+            
+            console.log('Displaying notification:', message);
+            
+            const notification = document.getElementById('statisticsNotification');
+            const messageSpan = notification.querySelector('span');
+            
+            if (messageSpan) {
+                messageSpan.textContent = message;
+            }
+            
+            // Clear existing timeout
+            if (this.notificationTimeout) {
+                clearTimeout(this.notificationTimeout);
+            }
+            
+            notification.style.display = 'flex';
+            notification.style.transform = 'translateY(-100%)';
+            notification.style.transition = 'transform 0.3s ease';
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateY(0)';
+            }, 100);
+            
+            // Hide after 4 seconds
+            this.notificationTimeout = setTimeout(() => {
+                this.hide();
+            }, 4000);
+            
+            return true;
+        },
+        
+        // ซ่อนการแจ้งเตือน
+        hide: function() {
+            console.log('Hiding notification');
+            
+            const notification = document.getElementById('statisticsNotification');
+            notification.style.transform = 'translateY(-100%)';
+            
+            if (this.notificationTimeout) {
+                clearTimeout(this.notificationTimeout);
+                this.notificationTimeout = null;
+            }
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+                this.isNotificationShowing = false;
+            }, 300);
+        },
+        
+        // บันทึกการกระทำของผู้ใช้
+        recordUserAction: function() {
+            this.lastUserAction = Date.now();
+            console.log('User action recorded:', this.lastUserAction);
+        },
+        
+        // เริ่มต้นระบบ
+        initialize: function() {
+            // คำนวณ hash เริ่มต้น
+            this.lastDataHash = this.calculateDataHash();
+            
+            // ตั้งค่าให้พร้อมใช้งานหลังจาก 3 วินาที
+            setTimeout(() => {
+                this.isInitialLoad = false;
+                console.log('NotificationManager ready for notifications');
+            }, 3000);
+            
+            console.log('NotificationManager initialized with hash:', this.lastDataHash);
+        },
+        
+        // Reset การตั้งค่า (สำหรับการดีบัก)
+        reset: function() {
+            this.shownMessages.clear();
+            this.isNotificationShowing = false;
+            this.lastNotificationTime = 0;
+            this.lastUserAction = null;
+            if (this.notificationTimeout) {
+                clearTimeout(this.notificationTimeout);
+                this.notificationTimeout = null;
+            }
+            console.log('NotificationManager reset');
+        }
+    };
+    
+    // Global function สำหรับซ่อนแจ้งเตือน
+    function hideStatisticsNotification() {
+        NotificationManager.hide();
+    }
+    
+    // Function สำหรับแสดงแจ้งเตือน (ใช้แทน showStatisticsNotification เดิม)
+    function showStatisticsNotification(message, source = 'system') {
+        return NotificationManager.show(message, source);
+    }
+    
+    // Handle period change - เข้มงวดมากขึ้น
+    function handlePeriodChange(event) {
+        // บันทึกการกระทำของผู้ใช้
+        NotificationManager.recordUserAction();
+        
+        const periodSelector = document.querySelector('.period-selector');
+        if (periodSelector) {
+            const period = periodSelector.value;
+            console.log('Period changed to:', period);
+            
+            // อัพเดทสถิติตามช่วงเวลาที่เลือก
+            if (typeof window.StatisticsSync !== 'undefined') {
+                window.StatisticsSync.load();
+            }
+            
+            // แจ้งเตือนสำหรับการเปลี่ยน period (หน่วงเวลาเล็กน้อย)
+            setTimeout(() => {
+                const periodName = getThaiPeriodName(period);
+                showStatisticsNotification(`เปลี่ยนการแสดงสถิติเป็น${periodName}`, 'period_change');
+            }, 200);
+        }
+    }
+    
+    // Function to get Thai period name
+    function getThaiPeriodName(period) {
+        const periodNames = {
+            'week': 'สัปดาห์นี้',
+            'month': 'เดือนนี้',
+            'semester': 'ภาคเรียนนี้'
+        };
+        return periodNames[period] || 'ช่วงเวลาที่เลือก';
+    }
+    
+    // Load user data and statistics - ไม่แจ้งเตือน
+    function loadUserDataWithStatistics() {
+        const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        
+        if (isLoggedIn === 'true' && userData.username) {
+            // อัพเดทข้อมูลผู้ใช้
+            if (userData.firstName && userData.lastName) {
+                const userNameElement = document.getElementById('displayUserName');
+                if (userNameElement) {
+                    userNameElement.textContent = `${userData.firstName} ${userData.lastName}`;
+                }
+                
+                const userRoleElement = document.getElementById('displayUserRole');
+                if (userRoleElement) {
+                    userRoleElement.textContent = userData.roleDisplay || userData.role || 'ผู้ใช้งาน';
+                }
+            }
+            
+            // ตั้งค่า user role
+            if (typeof setUserRole === 'function') {
+                setUserRole(userData.role || localStorage.getItem('userRole') || 'student');
+            }
+            
+            // โหลดสถิติแบบเงียบๆ (ไม่แจ้งเตือน)
+            if (typeof window.StatisticsSync !== 'undefined') {
+                window.StatisticsSync.initialize();
+            }
+        } else {
+            window.location.href = '/HTML/Profile.html';
+        }
+    }
+    
+    // Enhanced event listeners - ป้องกันการซ้ำ
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM Content Loaded - Initializing STRICT notification system');
+        
+        // เริ่มต้น NotificationManager
+        NotificationManager.initialize();
+        
+        // Setup period selector with strict controls
+        const periodSelector = document.querySelector('.period-selector');
+        if (periodSelector) {
+            // ลบ event listener เก่าออกทั้งหมด
+            const newPeriodSelector = periodSelector.cloneNode(true);
+            periodSelector.parentNode.replaceChild(newPeriodSelector, periodSelector);
+            
+            // เพิ่ม event listener เดียว
+            newPeriodSelector.addEventListener('change', handlePeriodChange);
+            console.log('Period selector event listener added (single instance)');
+        }
+        
+        // Load user data and statistics
+        loadUserDataWithStatistics();
+        
+        // อัพเดท current date และ time
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+        
+        console.log('STRICT notification system initialized - NO DUPLICATE NOTIFICATIONS!');
+    });
+    
+    // Storage event listener - เข้มงวดมากขึ้น
+    let storageEventCount = 0;
+    const maxStorageEventsPerMinute = 2; // จำกัดแจ้งเตือนสูงสุด 2 ครั้งต่อนาที
+    
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'attendanceData' || e.key === 'statisticsUpdated') {
+            storageEventCount++;
+            console.log('Storage event detected:', e.key, 'Count:', storageEventCount);
+            
+            // จำกัดจำนวนการแจ้งเตือนจาก storage events
+            if (storageEventCount > maxStorageEventsPerMinute) {
+                console.log('Storage event limit reached - notification blocked');
+                return;
+            }
+            
+            // Reset counter ทุกนาที
+            setTimeout(() => {
+                storageEventCount = Math.max(0, storageEventCount - 1);
+            }, 60000);
+            
+            // โหลดข้อมูลใหม่
+            if (typeof window.StatisticsSync !== 'undefined') {
+                window.StatisticsSync.load();
+            }
+            
+            // แจ้งเตือนเฉพาะเมื่อข้อมูลเปลี่ยนแปลงจริง (หน่วงเวลา)
+            setTimeout(() => {
+                showStatisticsNotification('ข้อมูลสถิติได้รับการอัพเดทจากหน้าอื่น', 'data_change');
+            }, 500);
+        }
+    });
+    
+    // Page visibility change handler - ลดการแจ้งเตือน
+    let visibilityChangeCount = 0;
+    
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            console.log('Page hidden - pausing notifications');
+        } else {
+            visibilityChangeCount++;
+            console.log('Page visible - checking for data changes. Count:', visibilityChangeCount);
+            
+            // จำกัดการแจ้งเตือนจาก visibility change
+            if (visibilityChangeCount <= 2) { // แจ้งเตือนได้สูงสุด 2 ครั้ง
+                if (typeof window.StatisticsSync !== 'undefined') {
+                    window.StatisticsSync.load();
+                    
+                    // แจ้งเตือนเฉพาะเมื่อข้อมูลเปลี่ยนแปลงจริง
+                    setTimeout(() => {
+                        if (NotificationManager.hasDataChanged()) {
+                            showStatisticsNotification('ข้อมูลสถิติได้รับการอัพเดท', 'data_change');
+                        }
+                    }, 1000);
+                }
+            } else {
+                console.log('Visibility change limit reached - notification blocked');
+            }
+            
+            // Reset counter ทุก 5 นาที
+            setTimeout(() => {
+                visibilityChangeCount = 0;
+            }, 300000);
+        }
+    });
+    
+    // Update date and time function
+    function updateDateTime() {
+        const now = new Date();
+        const dateOptions = { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            weekday: 'long'
+        };
+        const timeOptions = { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            second: '2-digit' 
+        };
+        
+        const dateElement = document.getElementById('current-date');
+        const timeElement = document.getElementById('current-time');
+        
+        if (dateElement) {
+            dateElement.textContent = now.toLocaleDateString('th-TH', dateOptions);
+        }
+        
+        if (timeElement) {
+            timeElement.textContent = now.toLocaleTimeString('th-TH', timeOptions);
+        }
+    }
+    
+    // Quick action buttons handler
+    document.querySelectorAll('[data-page]').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const page = this.getAttribute('data-page');
+            if (page) {
+                window.location.href = page;
+            }
+        });
+    });
+    
+    // Ripple effect for buttons
+    document.querySelectorAll('.action-btn, .nav-link').forEach(element => {
+        element.addEventListener('click', function(e) {
+            const ripple = this.querySelector('.btn-ripple, .nav-ripple');
+            if (ripple) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.classList.add('active');
+                
+                setTimeout(() => {
+                    ripple.classList.remove('active');
+                }, 600);
+            }
+        });
+    });
+    
+    // Statistics notification styles
+    const statisticsNotificationStyles = document.createElement('style');
+    statisticsNotificationStyles.textContent = `
+        .statistics-notification {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            max-width: 320px;
+            font-size: 14px;
+            font-weight: 500;
+            transform: translateY(-100%);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .statistics-notification::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        .statistics-notification ion-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        
+        .statistics-notification span {
+            flex: 1;
+            line-height: 1.4;
+        }
+        
+        .close-notification {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .close-notification:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .close-notification ion-icon {
+            font-size: 16px;
+        }
+        
+        .statistics-notification.show {
+            transform: translateY(0);
+            animation: notificationSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        @keyframes notificationSlideIn {
+            0% {
+                transform: translateY(-100%) scale(0.8);
+                opacity: 0;
+            }
+            60% {
+                transform: translateY(10px) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .statistics-notification {
+                right: 10px;
+                left: 10px;
+                max-width: none;
+                top: 70px;
+            }
+        }
+        
+        /* Ripple effect styles */
+        .btn-ripple, .nav-ripple {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .btn-ripple.active, .nav-ripple.active {
+            animation: rippleEffect 0.6s linear;
+        }
+        
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        .action-btn, .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+    `;
+    document.head.appendChild(statisticsNotificationStyles);
+    
+    console.log('Fixed notification system loaded - แจ้งเตือนครั้งเดียวต่อการอัพเดท');
+</script>
+</body>
+</html>

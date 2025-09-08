@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAHN JAEB - ร้านอาหารกลางคืน</title>
+    <meta name="description" content="WAHN JAEB ร้านอาหารกลางคืนที่มอบประสบการณ์การรับประทานอาหารที่ดีที่สุด">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <link rel="stylesheet" href="/CSS/shop.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <!-- Navigation -->
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="/img/487040832_1202643561867554_4220306532272459921_n.jpg" alt="WAHN JAEB Logo">
+                    <span class="brand-name">WAHN JAEB</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">หน้าแรก</a></li>
+                    <li><a href="#about">เกี่ยวกับเรา</a></li>
+                    <li><a href="#menu">เมนูอาหาร</a></li>
+                    <li><a href="#gallery">แกลเลอรี่</a></li>
+                    <li><a href="#reservation">จองโต๊ะ</a></li>
+                    <li><a href="#contact">ติดต่อ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">WAHN JAEB</h1>
+                    <h2 class="hero-subtitle">ร้านอาหารกลางคืน</h2>
+                    <p class="hero-description">
+                        สัมผัสประสบการณ์การรับประทานอาหารยามค่ำคืนที่ไม่เหมือนใคร
+                        พร้อมบรรยากาศอบอุ่นและรสชาติที่จะทำให้คุณประทับใจ
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#menu" class="btn btn-primary">ดูเมนูอาหาร</a>
+                        <a href="#reservation" class="btn btn-secondary">จองโต๊ะ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">เกี่ยวกับ WAHN JAEB</h2>
+                <p class="section-subtitle">ความเป็นมาและปรัชญาของเรา</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-story">
+                        <h3>เรื่องราวของเรา</h3>
+                        <p>
+                            WAHN JAEB เกิดขึ้นจากความรักในการปรุงอาหารและความต้องการที่จะสร้างประสบการณ์
+                            การรับประทานอาหารที่พิเศษสำหรับลูกค้าทุกท่าน ด้วยบรรยากาศยามค่ำคืนที่อบอุ่น
+                            และเมนูอาหารที่คัดสรรมาอย่างดี
+                        </p>
+                    </div>
+                    <div class="about-mission">
+                        <h3>พันธกิจของเรา</h3>
+                        <p>
+                            เราให้ความสำคัญกับคุณภาพของอาหาร การบริการที่เป็นเลิศ 
+                            และการสร้างบรรยากาศที่ทำให้ลูกค้าทุกท่านรู้สึกเหมือนอยู่บ้าน
+                        </p>
+                    </div>
+                </div>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <ion-icon name="restaurant-outline"></ion-icon>
+                        </div>
+                        <h4>อาหารคุณภาพ</h4>
+                        <p>วัตถุดิบสดใหม่และสูตรเฉพาะ</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <ion-icon name="moon-outline"></ion-icon>
+                        </div>
+                        <h4>บรรยากาศยามค่ำ</h4>
+                        <p>แสงไฟอบอุ่นและดนตรีเบาๆ</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </div>
+                        <h4>เชฟมืออาชีพ</h4>
+                        <p>ทีมงานที่มีประสบการณ์และความเชี่ยวชาญ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">เมนูอาหาร</h2>
+                <p class="section-subtitle">รสชาติที่จะทำให้คุณประทับใจ</p>
+            </div>
+            <div class="menu-categories">
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="appetizers">อาหารเรียกน้ำย่อย</button>
+                    <button class="tab-btn" data-category="mains">อาหารจานหลัก</button>
+                    <button class="tab-btn" data-category="desserts">ของหวาน</button>
+                    <button class="tab-btn" data-category="beverages">เครื่องดื่ม</button>
+                </div>
+                
+                <!-- Appetizers -->
+                <div class="menu-category active" id="appetizers">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="/img/appetizer1.jpg" alt="อาหารเรียกน้ำย่อย 1">
+                            </div>
+                            <div class="menu-details">
+                                <h4 class="menu-name">ยำวุ้นเส้นทะเล</h4>
+                                <p class="menu-description">วุ้นเส้นผสมกุ้ง หมึก และผักสดหลากหลาย</p>
+                                <span class="menu-price">฿220</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="/img/appetizer2.jpg" alt="อาหารเรียกน้ำย่อย 2">
+                            </div>
+                            <div class="menu-details">
+                                <h4 class="menu-name">ลาบปลาดุกฟู</h4>
+                                <p class="menu-description">ปลาดุกฟูคลุกเคล้าด้วยเครื่องเทศหอมๆ</p>
+                                <span class="menu-price">฿180</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Dishes -->
+                <div class="menu-category" id="mains">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="/img/main1.jpg" alt="อาหารจานหลัก 1">
+                            </div>
+                            <div class="menu-details">
+                                <h4 class="menu-name">ปลากะพงนึ่งมะนาว</h4>
+                                <p class="menu-description">ปลากะพงสดนึ่งมะนาวกับซอสรสเด็ด</p>
+                                <span class="menu-price">฿450</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="/img/main2.jpg" alt="อาหารจานหลัก 2">
+                            </div>
+                            <div class="menu-details">
+                                <h4 class="menu-name">แกงเขียวหวานไก่</h4>
+                                <p class="menu-description">แกงเขียวหวานไก่สูตรโบราณรสชาติเข้มข้น</p>
+                                <span class="menu-price">฿280</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="menu-category" id="desserts">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="/img/dessert1.jpg" alt="ของหวาน 1">
+                            </div>
+                            <div class="menu-details">
+                                <h4 class="menu-name">มะม่วงข้าวเหนียว</h4>
+                                <p class="menu-description">มะม่วงสุกหวานกับข้าวเหนียวหอมๆ</p>
+                                <span class="menu-price">฿120</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="/img/dessert2.jpg" alt="ของหวาน 2">
+                            </div>
+                            <div class="menu-details">
+                                <h4 class="menu-name">ทับทิมกรอบ</h4>
+                                <p class="menu-description">ทับทิมกรอบเสิร์ฟพร้อมน้ำกะทิหอมหวาน</p>
+                                <span class="menu-price">฿80</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beverages -->
+                <div class="menu-category" id="beverages">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="/img/drink1.jpg" alt="เครื่องดื่ม 1">
+                            </div>
+                            <div class="menu-details">
+                                <h4 class="menu-name">น้ำมะนาวโซดา</h4>
+                                <p class="menu-description">น้ำมะนาวสดชื่นผสมโซดา</p>
+                                <span class="menu-price">฿60</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="/img/drink2.jpg" alt="เครื่องดื่ม 2">
+                            </div>
+                            <div class="menu-details">
+                                <h4 class="menu-name">ชาไทยปั่น</h4>
+                                <p class="menu-description">ชาไทยเข้มข้นปั่นเย็นหวานหอม</p>
+                                <span class="menu-price">฿45</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">แกลเลอรี่</h2>
+                <p class="section-subtitle">บรรยากาศและอาหารของเรา</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/img/494694329_1237214298410480_3390917789486696384_n.jpg" alt="บรรยากาศร้าน 1">
+                    <div class="gallery-overlay">
+                        <span class="gallery-text">บรรยากาศภายในร้าน</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/img/495179976_1239621081503135_3303452975006470970_n.jpg" alt="อาหาร 1">
+                    <div class="gallery-overlay">
+                        <span class="gallery-text">อาหารสดใหม่</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/img/gallery3.jpg" alt="บรรยากาศร้าน 2">
+                    <div class="gallery-overlay">
+                        <span class="gallery-text">โซนนั่งกลางแจ้ง</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/img/gallery4.jpg" alt="อาหาร 2">
+                    <div class="gallery-overlay">
+                        <span class="gallery-text">เครื่องดื่มพิเศษ</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/img/gallery5.jpg" alt="ทีมงาน">
+                    <div class="gallery-overlay">
+                        <span class="gallery-text">ทีมงานมืออาชีพ</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/img/gallery6.jpg" alt="อาหาร 3">
+                    <div class="gallery-overlay">
+                        <span class="gallery-text">ของหวานแสนอร่อย</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">จองโต๊ะ</h2>
+                <p class="section-subtitle">สำรองที่นั่งล่วงหน้าเพื่อประสบการณ์ที่ดีที่สุด</p>
+            </div>
+            <div class="reservation-content">
+                <div class="reservation-info">
+                    <h3>ข้อมูลการจอง</h3>
+                    <ul class="info-list">
+                        <li><strong>เวลาเปิด-ปิด:</strong> 18:00 - 24:00 น.</li>
+                        <li><strong>วันหยุด:</strong> วันจันทร์</li>
+                        <li><strong>จำนวนที่นั่ง:</strong> 80 ที่นั่ง</li>
+                        <li><strong>การยกเลิก:</strong> แจ้งล่วงหน้า 2 ชั่วโมง</li>
+                    </ul>
+                    <div class="contact-info">
+                        <h4>ติดต่อจองโต๊ะ</h4>
+                        <p><strong>โทร:</strong> 02-xxx-xxxx</p>
+                        <p><strong>Line:</strong> @wahnjaeb</p>
+                        <p><strong>Facebook:</strong> WAHN JAEB Restaurant</p>
+                    </div>
+                </div>
+                <div class="reservation-form">
+                    <form class="booking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">ชื่อ-นามสกุล</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">เบอร์โทรศัพท์</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">วันที่</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">เวลา</label>
+                                <select id="time" name="time" required>
+                                    <option value="">เลือกเวลา</option>
+                                    <option value="18:00">18:30</option>
+                                    <option value="18:30">19:00</option>
+                                    <option value="19:00">19:30</option>
+                                    <option value="19:30">20:00</option>
+                                    <option value="20:00">20:30</option>
+                                    <option value="20:30">21:00</option>
+                                    <option value="21:00">21:30</option>
+                                    <option value="18:00">22:00</option>
+                                    <option value="18:30">22:30</option>
+                                    <option value="19:00">23:00</option>
+                                    <option value="19:30">23:30</option>
+                                    <option value="20:00">24:00</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guests">จำนวนผู้เข้าใช้บริการ</label>
+                                <select id="guests" name="guests" required>
+                                    <option value="">เลือกจำนวน</option>
+                                    <option value="1">1 ท่าน</option>
+                                    <option value="2">2 ท่าน</option>
+                                    <option value="3">3 ท่าน</option>
+                                    <option value="4">4 ท่าน</option>
+                                    <option value="5">5 ท่าน</option>
+                                    <option value="6+">6+ ท่าน</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">หมายเหตุเพิ่มเติม</label>
+                            <textarea id="notes" name="notes" placeholder="ความต้องการพิเศษ อาหารแพ้ หรือข้อมูลเพิ่มเติม"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">ยืนยันการจอง</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ติดต่อเรา</h2>
+                <p class="section-subtitle">พบกับเราได้ที่นี่</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <ion-icon name="location-outline"></ion-icon>
+                        </div>
+                        <div class="info-details">
+                            <h4>ที่อยู่</h4>
+                            <p>96 Sukumvit 97-1 Bangkok, Thailand, Bangkok 10260</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </div>
+                        <div class="info-details">
+                            <h4>โทรศัพท์</h4>
+                            <p>095 589 5959</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <ion-icon name="time-outline"></ion-icon>
+                        </div>
+                        <div class="info-details">
+                            <h4>เวลาเปิด-ปิด</h4>
+                            <p>วันจันทร์ - วันอาทิตย์: 18:30 - 3:00 น.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d1974917.3711383385!2d101.34823823441916!3d14.810631357303496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d15.9973376!2d104.73236349999999!4m3!3m2!1d13.6992195!2d100.61377999999999!5e0!3m2!1sth!2sth!4v1753801309548!5m2!1sth!2sth" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="social-media">
+                <h3>ติดตามเราได้ที่</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/worksukhumvit" class="social-link facebook">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="#" class="social-link line">
+                        <ion-icon name="chatbubble-outline"></ion-icon>
+                        <span>Line</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@wahn_jaeb97.1?lang=th-TH" class="social-link tiktok">
+                        <ion-icon name="logo-tiktok"></ion-icon>
+                        <span>TikTok</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="/img/487040832_1202643561867554_4220306532272459921_n" alt="WAHN JAEB Logo">
+                        <span class="brand-name">WAHN JAEB</span>
+                    </div>
+                    <p class="footer-description">
+                        ร้านอาหารกลางคืนที่มอบประสบการณ์การรับประทานอาหารที่ไม่เหมือนใคร
+                        ด้วยบรรยากาศอบอุ่นและรสชาติที่จะทำให้คุณประทับใจ
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>เมนูหลัก</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">หน้าแรก</a></li>
+                        <li><a href="#about">เกี่ยวกับเรา</a></li>
+                        <li><a href="#menu">เมนูอาหาร</a></li>
+                        <li><a href="#gallery">แกลเลอรี่</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>บริการ</h4>
+                    <ul class="footer-links">
+                        <li><a href="#reservation">จองโต๊ะ</a></li>
+                        <li><a href="#contact">ติดต่อเรา</a></li>
+                        <li><a href="#">นโยบายความเป็นส่วนตัว</a></li>
+                        <li><a href="#">เงื่อนไขการใช้งาน</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>ติดต่อ</h4>
+                    <div class="contact-details">
+                        <p><ion-icon name="location-outline"></ion-icon> 123/45 ถนนสุขุมวิท แขวงคลองตัน</p>
+                        <p><ion-icon name="call-outline"></ion-icon> 02-xxx-xxxx</p>
+                        <p><ion-icon name="mail-outline"></ion-icon> info@wahnjaeb.com</p>
+                        <p><ion-icon name="time-outline"></ion-icon> 18:00 - 24:00 น. (ปิดวันจันทร์)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 WAHN JAEB Restaurant. สงวนลิขสิทธิ์</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <ion-icon name="chatbubble-outline"></ion-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <ion-icon name="chevron-up-outline"></ion-icon>
+    </button>
+
+    <script>
+        
+    </script>
+</body>
+</html>

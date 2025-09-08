@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สถิติการเข้าเรียน | Scan Check-in</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/CSS/User.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="header-icon">
+                    <ion-icon name="analytics-outline"></ion-icon>
+                </div>
+                <div class="header-text">
+                    <h1>สถิติการเข้าเรียน</h1>
+                    <p>ข้อมูลการเข้าเรียนและการวิเคราะห์</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span class="current-user" id="currentUser"></span>
+                    <span class="user-role" id="userRole"></span>
+                </div>
+                <button class="back-btn" onclick="window.history.back()">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                    กลับ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Selection (Only for Admin/Teacher) -->
+    <div class="user-selection" id="userSelection" style="display: none;">
+        <div class="selection-header">
+            <h3>เลือกผู้ใช้เพื่อดูสถิติ</h3>
+            <p>คุณสามารถเลือกดูสถิติการเข้าเรียนของผู้ใช้อื่นได้</p>
+        </div>
+        <div class="selection-content">
+            <div class="search-box">
+                <ion-icon name="search-outline"></ion-icon>
+                <input type="text" id="userSearch" placeholder="ค้นหาชื่อผู้ใช้, รหัสนักเรียน, หรือชั้นเรียน">
+            </div>
+            <div class="user-list" id="userList">
+                <!-- Users will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="stats-grid">
+        <!-- Overview Card -->
+        <div class="stats-card overview-card">
+            <div class="card-header">
+                <h3>ภาพรวม</h3>
+                <ion-icon name="pie-chart-outline"></ion-icon>
+            </div>
+            <div class="card-content">
+                <div class="stat-item">
+                    <div class="stat-value" id="attendanceRate">0%</div>
+                    <div class="stat-label">อัตราการเข้าเรียน</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="totalDays">0</div>
+                    <div class="stat-label">วันทั้งหมด</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="presentDays">0</div>
+                    <div class="stat-label">วันที่เข้าเรียน</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="absentDays">0</div>
+                    <div class="stat-label">วันที่ขาดเรียน</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monthly Chart -->
+        <div class="stats-card chart-card">
+            <div class="card-header">
+                <h3>สถิติรายเดือน</h3>
+                <ion-icon name="bar-chart-outline"></ion-icon>
+            </div>
+            <div class="card-content">
+                <div class="chart-container">
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Pattern -->
+        <div class="stats-card pattern-card">
+            <div class="card-header">
+                <h3>รูปแบบการเข้าเรียนรายสัปดาห์</h3>
+                <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <div class="card-content">
+                <div class="weekly-pattern" id="weeklyPattern">
+                    <!-- Weekly pattern will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="stats-card activity-card">
+            <div class="card-header">
+                <h3>กิจกรรมล่าสุด</h3>
+                <ion-icon name="time-outline"></ion-icon>
+            </div>
+            <div class="card-content">
+                <div class="activity-list" id="activityList">
+                    <!-- Activities will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Profile Info -->
+    <div class="profile-info" id="profileInfo">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <ion-icon name="person-outline"></ion-icon>
+            </div>
+            <div class="profile-details">
+                <h3 id="profileName"></h3>
+                <p id="profileClass"></p>
+                <p id="profileId"></p>
+            </div>
+        </div>
+        <div class="profile-stats">
+            <div class="profile-stat">
+                <span class="stat-number" id="profileAttendance">0%</span>
+                <span class="stat-text">อัตราการเข้าเรียน</span>
+            </div>
+            <div class="profile-stat">
+                <span class="stat-number" id="profilePresent">0</span>
+                <span class="stat-text">วันที่เข้าเรียน</span>
+            </div>
+            <div class="profile-stat">
+                <span class="stat-number" id="profileAbsent">0</span>
+                <span class="stat-text">วันที่ขาดเรียน</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Time Range Selector -->
+    <div class="time-range-selector">
+        <div class="range-buttons">
+            <button class="range-btn active" data-range="week">7 วัน</button>
+            <button class="range-btn" data-range="month">30 วัน</button>
+            <button class="range-btn" data-range="term">เทอม</button>
+            <button class="range-btn" data-range="year">ปีการศึกษา</button>
+        </div>
+        <div class="custom-range">
+            <input type="date" id="startDate" placeholder="วันที่เริ่ม">
+            <span>ถึง</span>
+            <input type="date" id="endDate" placeholder="วันที่สิ้นสุด">
+            <button class="apply-btn">ใช้งาน</button>
+        </div>
+    </div>
+
+    <script>
+        // User database - same as login page
+        const userDatabase = {
+            'student001': {
+                username: 'student001',
+                firstName: 'สมชาย',
+                lastName: 'ใจดี',
+                email: 'somchai@school.ac.th',
+                phone: '0812345678',
+                studentId: '63010001',
+                class: '3/1',
+                role: 'student',
+                roleDisplay: 'นักเรียน',
+                attendanceRate: 95,
+                attendedDays: 42,
+                absentDays: 3,
+                totalDays: 45
+            },
+            'student002': {
+                username: 'student002',
+                firstName: 'สมหญิง',
+                lastName: 'รักเรียน',
+                email: 'somying@school.ac.th',
+                phone: '0823456789',
+                studentId: '63010002',
+                class: '3/1',
+                role: 'student',
+                roleDisplay: 'นักเรียน',
+                attendanceRate: 88,
+                attendedDays: 38,
+                absentDays: 7,
+                totalDays: 45
+            },
+            'student003': {
+                username: 'student003',
+                firstName: 'สมศักดิ์',
+                lastName: 'ขยัน',
+                email: 'somsak@school.ac.th',
+                phone: '0834567890',
+                studentId: '63010003',
+                class: '3/2',
+                role: 'student',
+                roleDisplay: 'นักเรียน',
+                attendanceRate: 92,
+                attendedDays: 40,
+                absentDays: 5,
+                totalDays: 45
+            },
+            'teacher001': {
+                username: 'teacher001',
+                firstName: 'อาจารย์สมหญิง',
+                lastName: 'ประเสริฐ',
+                email: 'teacher@school.ac.th',
+                phone: '0887654321',
+                studentId: 'T001',
+                class: 'ครูประจำชั้น 3/1',
+                role: 'teacher',
+                roleDisplay: 'ครู',
+                attendanceRate: 98,
+                attendedDays: 45,
+                absentDays: 1,
+                totalDays: 46
+            },
+            'admin': {
+                username: 'admin',
+                firstName: 'ผู้ดูแลระบบ',
+                lastName: 'หลัก',
+                email: 'admin@school.ac.th',
+                phone: '0898765432',
+                studentId: 'ADMIN001',
+                class: 'ผู้ดูแลระบบ',
+                role: 'admin',
+                roleDisplay: 'ผู้ดูแลระบบ',
+                attendanceRate: 100,
+                attendedDays: 46,
+                absentDays: 0,
+                totalDays: 46
+            }
+        };
+
+        // Sample attendance data for chart
+        const attendanceData = {
+            monthly: [
+                { month: 'ม.ค.', present: 20, absent: 2 },
+                { month: 'ก.พ.', present: 18, absent: 1 },
+                { month: 'มี.ค.', present: 22, absent: 0 },
+                { month: 'เม.ย.', present: 19, absent: 3 },
+                { month: 'พ.ค.', present: 21, absent: 1 },
+                { month: 'มิ.ย.', present: 20, absent: 2 }
+            ],
+            weekly: ['จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์'],
+            weeklyRates: [95, 88, 92, 85, 90],
+            recentActivity: [
+                { date: '2024-07-17', time: '08:30', status: 'present', type: 'เข้าเรียน' },
+                { date: '2024-07-16', time: '08:45', status: 'late', type: 'เข้าเรียนสาย' },
+                { date: '2024-07-15', time: '08:25', status: 'present', type: 'เข้าเรียน' },
+                { date: '2024-07-14', time: '-', status: 'absent', type: 'ขาดเรียน' },
+                { date: '2024-07-13', time: '08:35', status: 'present', type: 'เข้าเรียน' }
+            ]
+        };
+
+        let currentUser = null;
+        let currentUserRole = null;
+        let selectedUser = null;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCurrentUser();
+            setupUserSelection();
+            setupTimeRangeSelector();
+            setupUserSearch();
+            loadAttendanceStats();
+        });
+
+        // Load current user from localStorage
+        function loadCurrentUser() {
+            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+            const userRole = localStorage.getItem('userRole');
+            
+            if (!userData.username) {
+                window.location.href = '/HTML/Profle.html';
+                return;
+            }
+
+            currentUser = userData;
+            currentUserRole = userRole;
+            selectedUser = userData; // Default to current user
+
+            // Update header
+            document.getElementById('currentUser').textContent = `${userData.firstName} ${userData.lastName}`;
+            document.getElementById('userRole').textContent = userData.roleDisplay;
+
+            // Show user selection for admin/teacher
+            if (userRole === 'admin' || userRole === 'teacher') {
+                document.getElementById('userSelection').style.display = 'block';
+                populateUserList();
+            }
+        }
+
+        // Setup user selection for admin/teacher
+        function setupUserSelection() {
+            const userItems = document.querySelectorAll('.user-item');
+            userItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const username = this.dataset.username;
+                    selectUser(username);
+                });
+            });
+        }
+
+        // Populate user list for selection
+        function populateUserList() {
+            const userList = document.getElementById('userList');
+            userList.innerHTML = '';
+
+            Object.values(userDatabase).forEach(user => {
+                if (user.role === 'student' || currentUserRole === 'admin') {
+                    const userItem = document.createElement('div');
+                    userItem.className = 'user-item';
+                    userItem.dataset.username = user.username;
+                    
+                    userItem.innerHTML = `
+                        <div class="user-avatar">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </div>
+                        <div class="user-details">
+                            <h4>${user.firstName} ${user.lastName}</h4>
+                            <p>${user.class}</p>
+                            <p>${user.studentId}</p>
+                        </div>
+                        <div class="user-stats">
+                            <span class="attendance-rate">${user.attendanceRate}%</span>
+                            <span class="attendance-label">อัตราการเข้าเรียน</span>
+                        </div>
+                    `;
+                    
+                    userItem.addEventListener('click', function() {
+                        selectUser(user.username);
+                    });
+                    
+                    userList.appendChild(userItem);
+                }
+            });
+        }
+
+        // Select user to view stats
+        function selectUser(username) {
+            selectedUser = userDatabase[username];
+            
+            // Update active selection
+            document.querySelectorAll('.user-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-username="${username}"]`).classList.add('active');
+            
+            // Update stats
+            loadAttendanceStats();
+        }
+
+        // Setup user search
+        function setupUserSearch() {
+            const searchInput = document.getElementById('userSearch');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                filterUserList(searchTerm);
+            });
+        }
+
+        // Filter user list based on search
+        function filterUserList(searchTerm) {
+            const userItems = document.querySelectorAll('.user-item');
+            userItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Load attendance statistics
+        function loadAttendanceStats() {
+            if (!selectedUser) return;
+
+            // Update overview stats
+            document.getElementById('attendanceRate').textContent = selectedUser.attendanceRate + '%';
+            document.getElementById('totalDays').textContent = selectedUser.totalDays;
+            document.getElementById('presentDays').textContent = selectedUser.attendedDays;
+            document.getElementById('absentDays').textContent = selectedUser.absentDays;
+
+            // Update profile info
+            document.getElementById('profileName').textContent = `${selectedUser.firstName} ${selectedUser.lastName}`;
+            document.getElementById('profileClass').textContent = selectedUser.class;
+            document.getElementById('profileId').textContent = selectedUser.studentId;
+            document.getElementById('profileAttendance').textContent = selectedUser.attendanceRate + '%';
+            document.getElementById('profilePresent').textContent = selectedUser.attendedDays;
+            document.getElementById('profileAbsent').textContent = selectedUser.absentDays;
+
+            // Load weekly pattern
+            loadWeeklyPattern();
+            
+            // Load recent activity
+            loadRecentActivity();
+        }
+
+        // Load weekly pattern
+        function loadWeeklyPattern() {
+            const weeklyPattern = document.getElementById('weeklyPattern');
+            weeklyPattern.innerHTML = '';
+
+            attendanceData.weekly.forEach((day, index) => {
+                const rate = attendanceData.weeklyRates[index];
+                const patternItem = document.createElement('div');
+                patternItem.className = 'pattern-item';
+                patternItem.innerHTML = `
+                    <div class="pattern-day">${day}</div>
+                    <div class="pattern-bar">
+                        <div class="pattern-fill" style="width: ${rate}%"></div>
+                    </div>
+                    <div class="pattern-rate">${rate}%</div>
+                `;
+                weeklyPattern.appendChild(patternItem);
+            });
+        }
+
+        // Load recent activity
+        function loadRecentActivity() {
+            const activityList = document.getElementById('activityList');
+            activityList.innerHTML = '';
+
+            attendanceData.recentActivity.forEach(activity => {
+                const activityItem = document.createElement('div');
+                activityItem.className = `activity-item ${activity.status}`;
+                
+                const statusIcon = activity.status === 'present' ? 'checkmark-circle' : 
+                                 activity.status === 'late' ? 'time' : 'close-circle';
+                
+                activityItem.innerHTML = `
+                    <div class="activity-icon">
+                        <ion-icon name="${statusIcon}"></ion-icon>
+                    </div>
+                    <div class="activity-details">
+                        <h4>${activity.type}</h4>
+                        <p>${activity.date} ${activity.time !== '-' ? '- ' + activity.time : ''}</p>
+                    </div>
+                `;
+                
+                activityList.appendChild(activityItem);
+            });
+        }
+
+        // Setup time range selector
+        function setupTimeRangeSelector() {
+            const rangeButtons = document.querySelectorAll('.range-btn');
+            rangeButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    rangeButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const range = this.dataset.range;
+                    updateStatsForRange(range);
+                });
+            });
+
+            // Apply custom date range
+            document.querySelector('.apply-btn').addEventListener('click', function() {
+                const startDate = document.getElementById('startDate').value;
+                const endDate = document.getElementById('endDate').value;
+                
+                if (startDate && endDate) {
+                    updateStatsForCustomRange(startDate, endDate);
+                }
+            });
+        }
+
+        // Update stats for selected range
+        function updateStatsForRange(range) {
+            console.log('Updating stats for range:', range);
+            // This would normally fetch new data from server
+            // For now, we'll just simulate the update
+            loadAttendanceStats();
+        }
+
+        // Update stats for custom date range
+        function updateStatsForCustomRange(startDate, endDate) {
+            console.log('Updating stats for custom range:', startDate, 'to', endDate);
+            // This would normally fetch new data from server
+            loadAttendanceStats();
+        }
+
+        // Check authentication
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (isLoggedIn !== 'true') {
+                window.location.href = '/HTML/Profle.html';
+            }
+        }
+
+        // Initialize authentication check
+        checkAuth();
+    </script>
+</body>
+</html>

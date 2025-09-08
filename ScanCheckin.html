@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบลงชื่อเข้าเรียนด้วย QR Code</title>
+    <link rel="stylesheet" href="/CSS/ScanCheckin.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ระบบลงชื่อเข้าเรียนด้วย QR Code</h1>
+            <p>สแกน QR Code เพื่อลงชื่อเข้าเรียน</p>
+        </header>
+
+        <div class="scanner-section">
+            <div class="scanner-container">
+                <video id="qr-video" class="qr-video" autoplay playsinline></video>
+                <div class="scanner-overlay">
+                    <div class="scanner-frame"></div>
+                </div>
+                <div class="scanner-controls">
+                    <button id="start-scan-btn" class="btn btn-primary">เริ่มสแกน</button>
+                    <button id="stop-scan-btn" class="btn btn-secondary" disabled>หยุดสแกน</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="attendance-form" id="attendance-form" style="display: none;">
+            <h2>ข้อมูลการเข้าเรียน</h2>
+            <div class="form-group">
+                <label for="student-id">รหัสนักเรียน:</label>
+                <input type="text" id="student-id" name="student-id" readonly>
+            </div>
+            <div class="form-group">
+                <label for="student-name">ชื่อ-นามสกุล:</label>
+                <input type="text" id="student-name" name="student-name" readonly>
+            </div>
+            <div class="form-group">
+                <label for="class-code">รหัสวิชา:</label>
+                <input type="text" id="class-code" name="class-code" readonly>
+            </div>
+            <div class="form-group">
+                <label for="attendance-time">เวลาเข้าเรียน:</label>
+                <input type="text" id="attendance-time" name="attendance-time" readonly>
+            </div>
+            <div class="form-actions">
+                <button id="confirm-attendance" class="btn btn-success">ยืนยันการเข้าเรียน</button>
+                <button id="cancel-attendance" class="btn btn-danger">ยกเลิก</button>
+            </div>
+        </div>
+
+        <div class="attendance-list">
+            <h2>รายการเข้าเรียนวันนี้</h2>
+            <div class="attendance-stats">
+                <span id="total-students">นักเรียนทั้งหมด: 0 คน</span>
+            </div>
+            <div class="attendance-table">
+                <table id="attendance-table">
+                    <thead>
+                        <tr>
+                            <th>ลำดับ</th>
+                            <th>รหัสนักเรียน</th>
+                            <th>ชื่อ-นามสกุล</th>
+                            <th>รหัสวิชา</th>
+                            <th>เวลาเข้าเรียน</th>
+                            <th>สถานะ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendance-tbody">
+                        <!-- จะแสดงรายการเข้าเรียนที่นี่ -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="message-box" id="message-box" style="display: none;">
+            <p id="message-text"></p>
+        </div>
+    </div>
+
+    <!-- QR Code Scanner Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qr-scanner/1.4.2/qr-scanner.umd.min.js"></script>
+    <script src="/JS/ScanCheckin.js"></script>
+</body>
+</html>

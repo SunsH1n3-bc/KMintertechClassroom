@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตารางเรียนแบบไทย</title>
+    <link rel="stylesheet" href="/CSS/ClassRoom.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ตารางเรียน</h1>
+            <p>ภาคเรียนที่ 1 ปีการศึกษา 2568</p>
+        </div>
+
+        <div class="table-container">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>เวลา</th>
+                        <th>จันทร์</th>
+                        <th>อังคาร</th>
+                        <th>พุธ</th>
+                        <th>พฤหัสบดี</th>
+                        <th>ศุกร์</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="time-cell">08:00-08:50<br>คาบ 1</td>
+                        <td class="subject-cell color-blue" data-day="จันทร์" data-period="1">
+                            <div class="cell-content">
+                                <div class="subject-name">คณิตศาสตร์</div>
+                                <div class="teacher-name">อ.สมชาย</div>
+                                <div class="room-name">ห้อง 101</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-green" data-day="อังคาร" data-period="1">
+                            <div class="cell-content">
+                                <div class="subject-name">วิทยาศาสตร์</div>
+                                <div class="teacher-name">อ.สมศักดิ์</div>
+                                <div class="room-name">ห้อง 201</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-yellow" data-day="พุธ" data-period="1">
+                            <div class="cell-content">
+                                <div class="subject-name">ภาษาอังกฤษ</div>
+                                <div class="teacher-name">อ.สมใส</div>
+                                <div class="room-name">ห้อง 103</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-pink" data-day="พฤหัสบดี" data-period="1">
+                            <div class="cell-content">
+                                <div class="subject-name">สังคมศึกษา</div>
+                                <div class="teacher-name">อ.สมหมาย</div>
+                                <div class="room-name">ห้อง 104</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-purple" data-day="ศุกร์" data-period="1">
+                            <div class="cell-content">
+                                <div class="subject-name">ศิลปะ</div>
+                                <div class="teacher-name">อ.สมศรี</div>
+                                <div class="room-name">ห้อง 301</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-cell">08:50-09:40<br>คาบ 2</td>
+                        <td class="subject-cell color-green" data-day="จันทร์" data-period="2">
+                            <div class="cell-content">
+                                <div class="subject-name">ภาษาไทย</div>
+                                <div class="teacher-name">อ.สมหญิง</div>
+                                <div class="room-name">ห้อง 102</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-blue" data-day="อังคาร" data-period="2">
+                            <div class="cell-content">
+                                <div class="subject-name">คณิตศาสตร์</div>
+                                <div class="teacher-name">อ.สมชาย</div>
+                                <div class="room-name">ห้อง 101</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-orange" data-day="พุธ" data-period="2">
+                            <div class="cell-content">
+                                <div class="subject-name">ประวัติศาสตร์</div>
+                                <div class="teacher-name">อ.สมคิด</div>
+                                <div class="room-name">ห้อง 105</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-yellow" data-day="พฤหัสบดี" data-period="2">
+                            <div class="cell-content">
+                                <div class="subject-name">ภาษาอังกฤษ</div>
+                                <div class="teacher-name">อ.สมใส</div>
+                                <div class="room-name">ห้อง 103</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-green" data-day="ศุกร์" data-period="2">
+                            <div class="cell-content">
+                                <div class="subject-name">วิทยาศาสตร์</div>
+                                <div class="teacher-name">อ.สมศักดิ์</div>
+                                <div class="room-name">ห้อง 201</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-cell">09:40-10:30<br>คาบ 3</td>
+                        <td class="subject-cell color-yellow" data-day="จันทร์" data-period="3">
+                            <div class="cell-content">
+                                <div class="subject-name">ภาษาอังกฤษ</div>
+                                <div class="teacher-name">อ.สมใส</div>
+                                <div class="room-name">ห้อง 103</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-pink" data-day="อังคาร" data-period="3">
+                            <div class="cell-content">
+                                <div class="subject-name">สังคมศึกษา</div>
+                                <div class="teacher-name">อ.สมหมาย</div>
+                                <div class="room-name">ห้อง 104</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-blue" data-day="พุธ" data-period="3">
+                            <div class="cell-content">
+                                <div class="subject-name">คณิตศาสตร์</div>
+                                <div class="teacher-name">อ.สมชาย</div>
+                                <div class="room-name">ห้อง 101</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-green" data-day="พฤหัสบดี" data-period="3">
+                            <div class="cell-content">
+                                <div class="subject-name">วิทยาศาสตร์</div>
+                                <div class="teacher-name">อ.สมศักดิ์</div>
+                                <div class="room-name">ห้อง 201</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-orange" data-day="ศุกร์" data-period="3">
+                            <div class="cell-content">
+                                <div class="subject-name">ประวัติศาสตร์</div>
+                                <div class="teacher-name">อ.สมคิด</div>
+                                <div class="room-name">ห้อง 105</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-cell break-cell">10:30-10:45<br>พักใหญ่</td>
+                        <td class="break-cell" colspan="5">พักใหญ่</td>
+                    </tr>
+                    <tr>
+                        <td class="time-cell">10:45-11:35<br>คาบ 4</td>
+                        <td class="subject-cell color-purple" data-day="จันทร์" data-period="4">
+                            <div class="cell-content">
+                                <div class="subject-name">ศิลปะ</div>
+                                <div class="teacher-name">อ.สมศรี</div>
+                                <div class="room-name">ห้อง 301</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-orange" data-day="อังคาร" data-period="4">
+                            <div class="cell-content">
+                                <div class="subject-name">ประวัติศาสตร์</div>
+                                <div class="teacher-name">อ.สมคิด</div>
+                                <div class="room-name">ห้อง 105</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-green" data-day="พุธ" data-period="4">
+                            <div class="cell-content">
+                                <div class="subject-name">ภาษาไทย</div>
+                                <div class="teacher-name">อ.สมหญิง</div>
+                                <div class="room-name">ห้อง 102</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-blue" data-day="พฤหัสบดี" data-period="4">
+                            <div class="cell-content">
+                                <div class="subject-name">คณิตศาสตร์</div>
+                                <div class="teacher-name">อ.สมชาย</div>
+                                <div class="room-name">ห้อง 101</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-red" data-day="ศุกร์" data-period="4">
+                            <div class="cell-content">
+                                <div class="subject-name">พลศึกษา</div>
+                                <div class="teacher-name">อ.สมสุข</div>
+                                <div class="room-name">สนามกีฬา</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-cell">11:35-12:25<br>คาบ 5</td>
+                        <td class="subject-cell color-orange" data-day="จันทร์" data-period="5">
+                            <div class="cell-content">
+                                <div class="subject-name">ประวัติศาสตร์</div>
+                                <div class="teacher-name">อ.สมคิด</div>
+                                <div class="room-name">ห้อง 105</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-green" data-day="อังคาร" data-period="5">
+                            <div class="cell-content">
+                                <div class="subject-name">ภาษาไทย</div>
+                                <div class="teacher-name">อ.สมหญิง</div>
+                                <div class="room-name">ห้อง 102</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-purple" data-day="พุธ" data-period="5">
+                            <div class="cell-content">
+                                <div class="subject-name">ศิลปะ</div>
+                                <div class="teacher-name">อ.สมศรี</div>
+                                <div class="room-name">ห้อง 301</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-orange" data-day="พฤหัสบดี" data-period="5">
+                            <div class="cell-content">
+                                <div class="subject-name">ประวัติศาสตร์</div>
+                                <div class="teacher-name">อ.สมคิด</div>
+                                <div class="room-name">ห้อง 105</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-none" data-day="ศุกร์" data-period="5">
+                            <div class="cell-content">
+                                <div class="subject-name"></div>
+                                <div class="teacher-name"></div>
+                                <div class="room-name"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-cell break-cell">12:25-13:15<br>พักเที่ยง</td>
+                        <td class="break-cell" colspan="5">พักเที่ยง</td>
+                    </tr>
+                    <tr>
+                        <td class="time-cell">13:15-14:05<br>คาบ 6</td>
+                        <td class="subject-cell color-red" data-day="จันทร์" data-period="6">
+                            <div class="cell-content">
+                                <div class="subject-name">พลศึกษา</div>
+                                <div class="teacher-name">อ.สมสุข</div>
+                                <div class="room-name">สนามกีฬา</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-yellow" data-day="อังคาร" data-period="6">
+                            <div class="cell-content">
+                                <div class="subject-name">ภาษาอังกฤษ</div>
+                                <div class="teacher-name">อ.สมใส</div>
+                                <div class="room-name">ห้อง 103</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-red" data-day="พุธ" data-period="6">
+                            <div class="cell-content">
+                                <div class="subject-name">พลศึกษา</div>
+                                <div class="teacher-name">อ.สมสุข</div>
+                                <div class="room-name">สนามกีฬา</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-purple" data-day="พฤหัสบดี" data-period="6">
+                            <div class="cell-content">
+                                <div class="subject-name">ศิลปะ</div>
+                                <div class="teacher-name">อ.สมศรี</div>
+                                <div class="room-name">ห้อง 301</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-none" data-day="ศุกร์" data-period="6">
+                            <div class="cell-content">
+                                <div class="subject-name"></div>
+                                <div class="teacher-name"></div>
+                                <div class="room-name"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-cell">14:05-14:55<br>คาบ 7</td>
+                        <td class="subject-cell color-none" data-day="จันทร์" data-period="7">
+                            <div class="cell-content">
+                                <div class="subject-name"></div>
+                                <div class="teacher-name"></div>
+                                <div class="room-name"></div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-purple" data-day="อังคาร" data-period="7">
+                            <div class="cell-content">
+                                <div class="subject-name">ศิลปะ</div>
+                                <div class="teacher-name">อ.สมศรี</div>
+                                <div class="room-name">ห้อง 301</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-none" data-day="พุธ" data-period="7">
+                            <div class="cell-content">
+                                <div class="subject-name"></div>
+                                <div class="teacher-name"></div>
+                                <div class="room-name"></div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-green" data-day="พฤหัสบดี" data-period="7">
+                            <div class="cell-content">
+                                <div class="subject-name">ภาษาไทย</div>
+                                <div class="teacher-name">อ.สมหญิง</div>
+                                <div class="room-name">ห้อง 102</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-none" data-day="ศุกร์" data-period="7">
+                            <div class="cell-content">
+                                <div class="subject-name"></div>
+                                <div class="teacher-name"></div>
+                                <div class="room-name"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="time-cell">14:55-15:45<br>คาบ 8</td>
+                        <td class="subject-cell color-none" data-day="จันทร์" data-period="8">
+                            <div class="cell-content">
+                                <div class="subject-name"></div>
+                                <div class="teacher-name"></div>
+                                <div class="room-name"></div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-red" data-day="อังคาร" data-period="8">
+                            <div class="cell-content">
+                                <div class="subject-name">พลศึกษา</div>
+                                <div class="teacher-name">อ.สมสุข</div>
+                                <div class="room-name">สนามกีฬา</div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-none" data-day="พุธ" data-period="8">
+                            <div class="cell-content">
+                                <div class="subject-name"></div>
+                                <div class="teacher-name"></div>
+                                <div class="room-name"></div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-none" data-day="พฤหัสบดี" data-period="8">
+                            <div class="cell-content">
+                                <div class="subject-name"></div>
+                                <div class="teacher-name"></div>
+                                <div class="room-name"></div>
+                            </div>
+                        </td>
+                        <td class="subject-cell color-none" data-day="ศุกร์" data-period="8">
+                            <div class="cell-content">
+                                <div class="subject-name"></div>
+                                <div class="teacher-name"></div>
+                                <div class="room-name"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script src="/JS/ClassRoom.js"></script>
+</body>
+</html>

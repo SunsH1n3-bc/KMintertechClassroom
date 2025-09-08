@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เงื่อนไขการใช้งาน - ระบบเช็คอินเรียนออนไลน์</title>
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/CSS/N.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg">
+        <div class="floating-element element-1"></div>
+        <div class="floating-element element-2"></div>
+        <div class="floating-element element-3"></div>
+        <div class="floating-element element-4"></div>
+        <div class="floating-element element-5"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <div class="logo-icon-wrapper">
+                        <ion-icon name="school" class="logo-icon"></ion-icon>
+                    </div>
+                    <h1>Scan Check In</h1>
+                </div>
+            </div>
+            <div class="user-section">
+                <div class="user-info">
+                    <div class="profile-img">
+                        <ion-icon name="person"></ion-icon>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">สมชาย ใจดี</span>
+                        <span class="user-status">นักเรียน</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <ion-icon name="notifications" class="notification-icon"></ion-icon>
+                    <span class="notification-badge">3</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Vertical Navigation Sidebar -->
+    <nav class="vertical-nav">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li class="nav-item" data-tooltip="หน้าแรก">
+                    <a href="/HTML/index.html" class="nav-link" aria-label="หน้าแรก">
+                        <ion-icon name="home" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="สแกน QR Code">
+                    <a href="/HTML/ScanQRCode.html" class="nav-link" aria-label="สแกน">
+                        <ion-icon name="qr-code" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="เช็คอิน">
+                    <a href="/HTML/studens.html" class="nav-link" aria-label="เช็คอิน">
+                        <ion-icon name="checkmark-circle" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="ตารางเรียน">
+                    <a href="/HTML/ClassRoom.html" class="nav-link" aria-label="ตารางเรียน">
+                        <ion-icon name="calendar" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="รายงาน">
+                    <a href="/HTML/Report.html" class="nav-link" aria-label="รายงาน">
+                        <ion-icon name="bar-chart" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="โปรไฟล์">
+                    <a href="/HTML/Profile.html" class="nav-link" aria-label="โปรไฟล์">
+                        <ion-icon name="person" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="ติดต่อ">
+                    <a href="#" class="nav-link" aria-label="ติดต่อ">
+                        <ion-icon name="help-circle" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <div class="breadcrumb-item">
+                <a href="/HTML/index.html">
+                    <ion-icon name="home-outline"></ion-icon>
+                    <span>หน้าแรก</span>
+                </a>
+            </div>
+            <div class="breadcrumb-divider">
+                <ion-icon name="chevron-forward"></ion-icon>
+            </div>
+            <div class="breadcrumb-item active">
+                <span>เงื่อนไขการใช้งาน</span>
+            </div>
+        </div>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="page-header-content">
+                <div class="page-icon">
+                    <ion-icon name="document-text"></ion-icon>
+                </div>
+                <div class="page-title">
+                    <h1>เงื่อนไขการใช้งาน</h1>
+                    <p>ข้อตกลงและเงื่อนไขการใช้งานระบบเช็คอินเรียนออนไลน์</p>
+                </div>
+            </div>
+            <div class="page-actions">
+                <button class="print-btn">
+                    <ion-icon name="print"></ion-icon>
+                    <span>พิมพ์</span>
+                </button>
+                <button class="save-btn">
+                    <ion-icon name="download"></ion-icon>
+                    <span>ดาวน์โหลด</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Terms Content -->
+        <section class="terms-content">
+            <div class="terms-container">
+                <!-- Last Updated -->
+                <div class="terms-updated">
+                    <ion-icon name="time"></ion-icon>
+                    <span>อัปเดตล่าสุด: 1 มกราคม 2024</span>
+                </div>
+
+                <!-- Table of Contents -->
+                <div class="terms-toc">
+                    <h3>
+                        <ion-icon name="list"></ion-icon>
+                        สารบัญ
+                    </h3>
+                    <ul class="toc-list">
+                        <li><a href="#section-1">1. ข้อตกลงทั่วไป</a></li>
+                        <li><a href="#section-2">2. การใช้งานระบบ</a></li>
+                        <li><a href="#section-3">3. สิทธิ์และหน้าที่ของผู้ใช้</a></li>
+                        <li><a href="#section-4">4. ข้อมูลส่วนบุคคล</a></li>
+                        <li><a href="#section-5">5. ข้อจำกัดความรับผิดชอบ</a></li>
+                        <li><a href="#section-6">6. การเปลี่ยนแปลงเงื่อนไข</a></li>
+                        <li><a href="#section-7">7. การติดต่อ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Terms Sections -->
+                <div class="terms-sections">
+                    
+                    <!-- Section 1 -->
+                    <div class="terms-section" id="section-1">
+                        <div class="section-header">
+                            <div class="section-number">1</div>
+                            <h2>ข้อตกลงทั่วไป</h2>
+                        </div>
+                        <div class="section-content">
+                            <p>ยินดีต้อนรับสู่ระบบเช็คอินเรียนออนไลน์ ("ระบบ") การเข้าถึงหรือการใช้งานระบบนี้ หมายความว่าคุณยอมรับและตกลงปฏิบัติตามเงื่อนไขการใช้งานที่กำหนดไว้ในเอกสารนี้</p>
+                            
+                            <div class="highlight-box">
+                                <ion-icon name="information-circle"></ion-icon>
+                                <div>
+                                    <h4>สำคัญ</h4>
+                                    <p>การใช้งานระบบนี้ถือว่าคุณได้อ่านและยอมรับเงื่อนไขทั้งหมดแล้ว</p>
+                                </div>
+                            </div>
+
+                            <h3>1.1 ขอบเขตการใช้งาน</h3>
+                            <p>ระบบนี้ออกแบบมาเพื่อใช้งานภายในสถานศึกษาเท่านั้น สำหรับการเช็คอินเข้าเรียน การจัดการตารางเรียน และการติดตามผลการเรียน</p>
+
+                            <h3>1.2 ผู้ใช้งาน</h3>
+                            <p>ระบบนี้มีไว้สำหรับนักเรียน นักศึกษา ครูอาจารย์ และเจ้าหน้าที่ของสถานศึกษาเท่านั้น</p>
+                        </div>
+                    </div>
+
+                    <!-- Section 2 -->
+                    <div class="terms-section" id="section-2">
+                        <div class="section-header">
+                            <div class="section-number">2</div>
+                            <h2>การใช้งานระบบ</h2>
+                        </div>
+                        <div class="section-content">
+                            <h3>2.1 การสมัครสมาชิก</h3>
+                            <ul>
+                                <li>ผู้ใช้จะต้องได้รับสิทธิ์การเข้าใช้งานจากสถานศึกษา</li>
+                                <li>ข้อมูลที่ให้ไว้ในการสมัครต้องถูกต้องและเป็นจริง</li>
+                                <li>ผู้ใช้มีหน้าที่ปรับปรุงข้อมูลส่วนตัวให้เป็นปัจจุบัน</li>
+                            </ul>
+
+                            <h3>2.2 การใช้งาน QR Code</h3>
+                            <ul>
+                                <li>QR Code ใช้สำหรับการเช็คอินเข้าเรียนเท่านั้น</li>
+                                <li>ห้ามแชร์หรือให้ผู้อื่นใช้ QR Code ของคุณ</li>
+                                <li>QR Code จะมีอายุการใช้งานจำกัด</li>
+                            </ul>
+
+                            <div class="warning-box">
+                                <ion-icon name="warning"></ion-icon>
+                                <div>
+                                    <h4>ข้อห้าม</h4>
+                                    <p>ห้ามใช้ระบบในการปลอมแปลงข้อมูลการเข้าเรียน หรือช่วยผู้อื่นเช็คอินแทน</p>
+                                </div>
+                            </div>
+
+                            <h3>2.3 ความปลอดภัย</h3>
+                            <ul>
+                                <li>ผู้ใช้ต้องรักษาความปลอดภัยของบัญชีผู้ใช้งาน</li>
+                                <li>ไม่แชร์รหัสผ่านหรือข้อมูลการเข้าใช้งาน</li>
+                                <li>แจ้งทันทีหากพบการใช้งานที่ผิดปกติ</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Section 3 -->
+                    <div class="terms-section" id="section-3">
+                        <div class="section-header">
+                            <div class="section-number">3</div>
+                            <h2>สิทธิ์และหน้าที่ของผู้ใช้</h2>
+                        </div>
+                        <div class="section-content">
+                            <h3>3.1 สิทธิ์ของผู้ใช้</h3>
+                            <ul>
+                                <li>เข้าถึงและใช้งานระบบตามที่ได้รับสิทธิ์</li>
+                                <li>ดูข้อมูลการเรียนและการเข้าเรียนของตนเอง</li>
+                                <li>ขอความช่วยเหลือจากเจ้าหน้าที่</li>
+                                <li>แจ้งปัญหาหรือข้อเสนอแนะ</li>
+                            </ul>
+
+                            <h3>3.2 หน้าที่ของผู้ใช้</h3>
+                            <ul>
+                                <li>ใช้งานระบบอย่างถูกต้องและเหมาะสม</li>
+                                <li>ไม่กระทำการที่เป็นอันตรายต่อระบบ</li>
+                                <li>ปฏิบัติตามกฎระเบียบของสถานศึกษา</li>
+                                <li>รายงานข้อผิดพลาดหรือปัญหาที่พบ</li>
+                            </ul>
+
+                            <div class="success-box">
+                                <ion-icon name="checkmark-circle"></ion-icon>
+                                <div>
+                                    <h4>การใช้งานที่ถูกต้อง</h4>
+                                    <p>ใช้งานระบบตามวัตถุประสงค์เพื่อการศึกษาและการเรียนการสอนเท่านั้น</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4 -->
+                    <div class="terms-section" id="section-4">
+                        <div class="section-header">
+                            <div class="section-number">4</div>
+                            <h2>ข้อมูลส่วนบุคคล</h2>
+                        </div>
+                        <div class="section-content">
+                            <h3>4.1 การเก็บรวบรวมข้อมูล</h3>
+                            <p>ระบบจะเก็บข้อมูลที่จำเป็นสำหรับการใช้งาน ได้แก่:</p>
+                            <ul>
+                                <li>ข้อมูลส่วนตัวพื้นฐาน (ชื่อ, นามสกุล, รหัสนักเรียน)</li>
+                                <li>ข้อมูลการเข้าเรียน และเวลาเช็คอิน</li>
+                                <li>ภาพถ่ายจากกล้องสำหรับการเช็คอิน</li>
+                                <li>ข้อมูลการใช้งานระบบ</li>
+                            </ul>
+
+                            <h3>4.2 การใช้ข้อมูล</h3>
+                            <ul>
+                                <li>ข้อมูลจะใช้เพื่อการจัดการเรียนการสอนเท่านั้น</li>
+                                <li>ไม่นำข้อมูลไปใช้เพื่อการอื่นโดยไม่ได้รับอนุญาต</li>
+                                <li>ข้อมูลจะถูกเก็บตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล</li>
+                            </ul>
+
+                            <h3>4.3 การแชร์ข้อมูล</h3>
+                            <p>ข้อมูลจะถูกแชร์ให้กับ:</p>
+                            <ul>
+                                <li>ครูอาจารย์ที่เกี่ยวข้อง</li>
+                                <li>เจ้าหน้าที่ของสถานศึกษา</li>
+                                <li>ผู้ปกครอง (กรณีนักเรียนเยาวชน)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Section 5 -->
+                    <div class="terms-section" id="section-5">
+                        <div class="section-header">
+                            <div class="section-number">5</div>
+                            <h2>ข้อจำกัดความรับผิดชอบ</h2>
+                        </div>
+                        <div class="section-content">
+                            <h3>5.1 ความพร้อมใช้งาน</h3>
+                            <p>ระบบอาจมีช่วงเวลาที่ไม่สามารถใช้งานได้ เนื่องจากการบำรุงรักษาหรือปัญหาทางเทคนิค</p>
+
+                            <h3>5.2 ความถูกต้องของข้อมูล</h3>
+                            <ul>
+                                <li>ระบบจะพยายามรักษาความถูกต้องของข้อมูล</li>
+                                <li>ผู้ใช้มีหน้าที่ตรวจสอบข้อมูลของตนเอง</li>
+                                <li>แจ้งแก้ไขหากพบข้อมูลที่ผิดพลาด</li>
+                            </ul>
+
+                            <h3>5.3 การใช้งานที่ผิดวัตถุประสงค์</h3>
+                            <p>สถานศึกษาไม่รับผิดชอบต่อความเสียหายที่เกิดจากการใช้งานที่ผิดวัตถุประสงค์หรือผิดเงื่อนไข</p>
+                        </div>
+                    </div>
+
+                    <!-- Section 6 -->
+                    <div class="terms-section" id="section-6">
+                        <div class="section-header">
+                            <div class="section-number">6</div>
+                            <h2>การเปลี่ยนแปลงเงื่อนไข</h2>
+                        </div>
+                        <div class="section-content">
+                            <h3>6.1 สิทธิ์ในการแก้ไข</h3>
+                            <p>สถานศึกษาขอสงวนสิทธิ์ในการแก้ไขเงื่อนไขการใช้งานนี้ได้ตลอดเวลา</p>
+
+                            <h3>6.2 การแจ้งเตือน</h3>
+                            <ul>
+                                <li>จะมีการแจ้งเตือนผู้ใช้งานล่วงหน้าอย่างน้อย 30 วัน</li>
+                                <li>การแจ้งเตือนจะผ่านระบบหรือช่องทางอื่นที่เหมาะสม</li>
+                                <li>การใช้งานต่อไปถือว่ายอมรับเงื่อนไขใหม่</li>
+                            </ul>
+
+                            <div class="info-box">
+                                <ion-icon name="information-circle"></ion-icon>
+                                <div>
+                                    <h4>การติดตามการเปลี่ยนแปลง</h4>
+                                    <p>ผู้ใช้ควรตรวจสอบเงื่อนไขการใช้งานเป็นระยะ ๆ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 7 -->
+                    <div class="terms-section" id="section-7">
+                        <div class="section-header">
+                            <div class="section-number">7</div>
+                            <h2>การติดต่อ</h2>
+                        </div>
+                        <div class="section-content">
+                            <h3>7.1 ช่องทางการติดต่อ</h3>
+                            <p>หากมีข้อสงสัยเกี่ยวกับเงื่อนไขการใช้งาน สามารถติดต่อได้ที่:</p>
+                            
+                            <div class="contact-grid">
+                                <div class="contact-item">
+                                    <ion-icon name="call"></ion-icon>
+                                    <div>
+                                        <h4>โทรศัพท์</h4>
+                                        <p>02-123-4567</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <ion-icon name="mail"></ion-icon>
+                                    <div>
+                                        <h4>อีเมล</h4>
+                                        <p>support@checkin.school</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <ion-icon name="time"></ion-icon>
+                                    <div>
+                                        <h4>เวลาทำการ</h4>
+                                        <p>จันทร์-ศุกร์ 8:00-17:00 น.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>7.2 การร้องเรียน</h3>
+                            <p>หากมีข้อร้องเรียนเกี่ยวกับการใช้งานระบบ สามารถยื่นผ่านช่องทางต่าง ๆ ที่กำหนด</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms Footer -->
+                <div class="terms-footer">
+                    <div class="terms-signature">
+                        <h3>การยืนยัน</h3>
+                        <p>ข้าพเจ้าได้อ่านและเข้าใจเงื่อนไขการใช้งานทั้งหมดแล้ว และยินยอมปฏิบัติตามเงื่อนไขที่กำหนด</p>
+                        
+                        <div class="signature-actions">
+                            <button class="accept-btn">
+                                <ion-icon name="checkmark-circle"></ion-icon>
+                                <span>ยอมรับเงื่อนไข</span>
+                            </button>
+                            <button class="decline-btn">
+                                <ion-icon name="close-circle"></ion-icon>
+                                <span>ไม่ยอมรับ</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>เกี่ยวกับเรา</h4>
+                    <p>ระบบเช็คอินเรียนออนไลน์ที่ทันสมัยและใช้งานง่าย</p>
+                </div>
+                <div class="footer-section">
+                    <h4>ติดต่อเรา</h4>
+                    <p>โทร: 02-123-4567</p>
+                    <p>อีเมล: info@checkin.school</p>
+                </div>
+                <div class="footer-section">
+                    <h4>ลิงก์ด่วน</h4>
+                    <div class="footer-links">
+                        <a href="/HTML/about.html">เกี่ยวกับเรา</a>
+                        <a href="/HTML/terms.html">เงื่อนไขการใช้งาน</a>
+                        <a href="/HTML/help.html">ช่วยเหลือ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ระบบเช็คอินเรียนออนไลน์. สงวนลิขสิทธิ์.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <ion-icon name="chevron-up"></ion-icon>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for table of contents
+        document.querySelectorAll('.toc-list a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Back to top functionality
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Print functionality
+        document.querySelector('.print-btn').addEventListener('click', () => {
+            window.print();
+        });
+    </script>
+</body>
+</html>

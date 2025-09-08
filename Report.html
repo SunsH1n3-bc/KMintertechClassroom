@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายงานข้อผิดพลาด - Website Error Report</title>
+
+    <link rel="stylesheet" href="/CSS/Report.css">
+    
+</head>
+<body>
+    <header>
+        <h1>รายงานข้อผิดพลาดเว็บไซต์</h1>
+        <p>Website Error Report Dashboard</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>สรุปข้อมูลข้อผิดพลาด</h2>
+            <div>
+                <div>
+                    <h3>ข้อผิดพลาดทั้งหมด</h3>
+                    <p>152 รายการ</p>
+                </div>
+                <div>
+                    <h3>ข้อผิดพลาดวันนี้</h3>
+                    <p>23 รายการ</p>
+                </div>
+                <div>
+                    <h3>ข้อผิดพลาดสำคัญ</h3>
+                    <p>7 รายการ</p>
+                </div>
+                <div>
+                    <h3>สถานะเซิร์ฟเวอร์</h3>
+                    <p>ปกติ</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>รายการข้อผิดพลาดล่าสุด</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>เวลา</th>
+                        <th>ประเภทข้อผิดพลาด</th>
+                        <th>รหัสสถานะ</th>
+                        <th>หน้าเว็บ</th>
+                        <th>ข้อความ</th>
+                        <th>ระดับความสำคัญ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025-07-06 14:30:25</td>
+                        <td>HTTP Error</td>
+                        <td>404</td>
+                        <td>/products/item-123</td>
+                        <td>Page not found</td>
+                        <td>กลาง</td>
+                    </tr>
+                    <tr>
+                        <td>2025-07-06 14:25:10</td>
+                        <td>Database Error</td>
+                        <td>500</td>
+                        <td>/user/login</td>
+                        <td>Connection timeout</td>
+                        <td>สูง</td>
+                    </tr>
+                    <tr>
+                        <td>2025-07-06 14:20:45</td>
+                        <td>JavaScript Error</td>
+                        <td>-</td>
+                        <td>/checkout</td>
+                        <td>Undefined variable 'price'</td>
+                        <td>สูง</td>
+                    </tr>
+                    <tr>
+                        <td>2025-07-06 14:15:30</td>
+                        <td>HTTP Error</td>
+                        <td>403</td>
+                        <td>/admin/dashboard</td>
+                        <td>Access denied</td>
+                        <td>กลาง</td>
+                    </tr>
+                    <tr>
+                        <td>2025-07-06 14:10:15</td>
+                        <td>Server Error</td>
+                        <td>502</td>
+                        <td>/api/users</td>
+                        <td>Bad gateway</td>
+                        <td>สูง</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>ข้อผิดพลาดที่พบบ่อย</h2>
+            <ul>
+                <li>404 - Page Not Found (45 ครั้ง)</li>
+                <li>500 - Internal Server Error (32 ครั้ง)</li>
+                <li>JavaScript Runtime Error (28 ครั้ง)</li>
+                <li>Database Connection Error (18 ครั้ง)</li>
+                <li>403 - Access Denied (15 ครั้ง)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>ข้อมูลการแก้ไข</h2>
+            <form>
+                <div>
+                    <label for="error-id">รหัสข้อผิดพลาด:</label>
+                    <input type="text" id="error-id" name="error-id" placeholder="กรุณาระบุรหัสข้อผิดพลาด">
+                </div>
+                <div>
+                    <label for="status">สถานะการแก้ไข:</label>
+                    <select id="status" name="status">
+                        <option value="pending">รอดำเนินการ</option>
+                        <option value="in-progress">กำลังดำเนินการ</option>
+                        <option value="resolved">แก้ไขแล้ว</option>
+                        <option value="closed">ปิดงาน</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="notes">หมายเหตุ:</label>
+                    <textarea id="notes" name="notes" rows="4" placeholder="ระบุรายละเอียดการแก้ไข"></textarea>
+                </div>
+                <button type="submit">บันทึกข้อมูล</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>ตัวกรองข้อมูล</h2>
+            <form>
+                <div>
+                    <label for="date-from">วันที่เริ่มต้น:</label>
+                    <input type="date" id="date-from" name="date-from">
+                </div>
+                <div>
+                    <label for="date-to">วันที่สิ้นสุด:</label>
+                    <input type="date" id="date-to" name="date-to">
+                </div>
+                <div>
+                    <label for="error-type">ประเภทข้อผิดพลาด:</label>
+                    <select id="error-type" name="error-type">
+                        <option value="all">ทั้งหมด</option>
+                        <option value="http">HTTP Error</option>
+                        <option value="database">Database Error</option>
+                        <option value="javascript">JavaScript Error</option>
+                        <option value="server">Server Error</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="priority">ระดับความสำคัญ:</label>
+                    <select id="priority" name="priority">
+                        <option value="all">ทั้งหมด</option>
+                        <option value="low">ต่ำ</option>
+                        <option value="medium">กลาง</option>
+                        <option value="high">สูง</option>
+                        <option value="critical">วิกฤต</option>
+                    </select>
+                </div>
+                <button type="submit">ค้นหา</button>
+                <button type="reset">รีเซ็ต</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Website Error Report System | อัพเดตล่าสุด: 6 กรกฎาคม 2025</p>
+    </footer>
+
+    <script src="/JS/Report.js"></script>
+</body>
+</html>

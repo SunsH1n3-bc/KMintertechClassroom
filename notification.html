@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Check-in | สมัครสมาชิก</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="/CSS/notification.css">
+</head>
+<body>
+    <!-- Background Pattern -->
+    <div class="background-pattern">
+        <div class="pattern-grid"></div>
+        <div class="floating-elements">
+            <div class="floating-element element-1"></div>
+            <div class="floating-element element-2"></div>
+            <div class="floating-element element-3"></div>
+            <div class="floating-element element-4"></div>
+            <div class="floating-element element-5"></div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="nav-logo">
+                    <ion-icon name="scan-outline"></ion-icon>
+                </div>
+                <span class="nav-title">Scan Check-in</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link" onclick="toggleForm('login')">
+                    <ion-icon name="log-in-outline"></ion-icon>
+                    <span>เข้าสู่ระบบ</span>
+                </a>
+                <a href="/HTML/help.html" class="nav-link">
+                    <ion-icon name="help-circle-outline"></ion-icon>
+                    <span>ช่วยเหลือ</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Left Side - Information -->
+        <div class="info-section">
+            <div class="info-content">
+                <div class="info-header">
+                    <div class="info-icon">
+                        <ion-icon name="scan-circle-outline"></ion-icon>
+                    </div>
+                    <h1 class="info-title">ระบบเช็คอินอัตโนมัติ</h1>
+                    <p class="info-subtitle">เทคโนโลยีที่ทันสมัยสำหรับการจัดการการเข้าเรียน</p>
+                </div>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <ion-icon name="flash-outline"></ion-icon>
+                        </div>
+                        <div class="feature-content">
+                            <h3>เช็คอินรวดเร็ว</h3>
+                            <p>สแกน QR Code หรือใช้ระบบสแกนใบหน้าเพื่อเข้าสู่ระบบได้ทันที</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <ion-icon name="shield-checkmark-outline"></ion-icon>
+                        </div>
+                        <div class="feature-content">
+                            <h3>ความปลอดภัยสูง</h3>
+                            <p>ระบบรักษาความปลอดภัยขั้นสูงด้วยการเข้ารหัสข้อมูล</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <ion-icon name="analytics-outline"></ion-icon>
+                        </div>
+                        <div class="feature-content">
+                            <h3>รายงานแบบเรียลไทม์</h3>
+                            <p>ติดตามสถิติการเข้าเรียนและวิเคราะห์ข้อมูลได้ทันที</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Forms -->
+        <div class="login-section">
+            <!-- Login Form -->
+            <div class="login-container" id="loginContainer">
+                <div class="login-header">
+                    <div class="login-icon">
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                    </div>
+                    <h2 class="login-title">เข้าสู่ระบบ</h2>
+                    <p class="login-subtitle">กรุณาป้อนข้อมูลเพื่อเข้าใช้งานระบบ</p>
+                </div>
+
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="username" class="form-label">ชื่อผู้ใช้งาน</label>
+                        <div class="input-container">
+                            <ion-icon name="person-outline" class="input-icon"></ion-icon>
+                            <input type="text" id="username" name="username" class="form-input" 
+                                   placeholder="กรอกชื่อผู้ใช้งาน" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">รหัสผ่าน</label>
+                        <div class="input-container">
+                            <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                            <input type="password" id="password" name="password" class="form-input" 
+                                   placeholder="กรอกรหัสผ่าน" required>
+                            <button type="button" class="password-toggle" id="passwordToggle">
+                                <ion-icon name="eye-outline" id="toggleIcon"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="remember" name="remember">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">จดจำการเข้าสู่ระบบ</span>
+                        </label>
+                        <a href="#" class="forgot-link" onclick="showForgotPasswordModal()">ลืมรหัสผ่าน?</a>
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        <span class="btn-text">เข้าสู่ระบบ</span>
+                        <ion-icon name="arrow-forward-outline" class="btn-icon"></ion-icon>
+                    </button>
+
+                    <div class="divider">
+                        <span class="divider-text">หรือเข้าสู่ระบบด้วย</span>
+                    </div>
+
+                    <div class="quick-login">
+                        <button type="button" class="quick-btn qr-btn">
+                            <ion-icon name="qr-code-outline"></ion-icon>
+                            <span>QR Code</span>
+                        </button>
+                        <button type="button" class="quick-btn face-btn">
+                            <ion-icon name="camera-outline"></ion-icon>
+                            <span>Face ID</span>
+                        </button>
+                        <button type="button" class="quick-btn fingerprint-btn">
+                            <ion-icon name="finger-print-outline"></ion-icon>
+                            <span>Fingerprint</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="login-footer">
+                    <p class="footer-text">
+                        ยังไม่มีบัญชี? 
+                        <a href="#" onclick="toggleForm('register')" style="color: #667eea; text-decoration: none; font-weight: 600;">
+                            สมัครสมาชิก
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div class="login-container" id="registerContainer" style="display: none;">
+                <div class="login-header">
+                    <div class="login-icon">
+                        <ion-icon name="person-add-outline"></ion-icon>
+                    </div>
+                    <h2 class="login-title">สมัครสมาชิก</h2>
+                    <p class="login-subtitle">กรุณากรอกข้อมูลเพื่อสร้างบัญชีใหม่</p>
+                </div>
+
+                <form class="login-form" id="registerForm">
+                    <!-- Role Selection -->
+                    <div class="form-group">
+                        <label for="role" class="form-label">ประเภทผู้ใช้งาน</label>
+                        <div class="input-container">
+                            <ion-icon name="accessibility-outline" class="input-icon"></ion-icon>
+                            <select id="role" name="role" class="form-input" required>
+                                <option value="">เลือกประเภทผู้ใช้งาน</option>
+                                <option value="student">นักเรียน</option>
+                                <option value="teacher">ครู</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Username -->
+                    <div class="form-group">
+                        <label for="regUsername" class="form-label">ชื่อผู้ใช้งาน</label>
+                        <div class="input-container">
+                            <ion-icon name="person-outline" class="input-icon"></ion-icon>
+                            <input type="text" id="regUsername" name="username" class="form-input" 
+                                   placeholder="กรอกชื่อผู้ใช้งาน" required>
+                        </div>
+                        <div class="form-hint" id="usernameHint"></div>
+                    </div>
+
+                    <!-- Name Fields -->
+                    <div class="name-grid">
+                        <div class="form-group">
+                            <label for="firstName" class="form-label">ชื่อ</label>
+                            <div class="input-container">
+                                <ion-icon name="person-outline" class="input-icon"></ion-icon>
+                                <input type="text" id="firstName" name="firstName" class="form-input" 
+                                       placeholder="ชื่อจริง" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="form-label">นามสกุล</label>
+                            <div class="input-container">
+                                <ion-icon name="person-outline" class="input-icon"></ion-icon>
+                                <input type="text" id="lastName" name="lastName" class="form-input" 
+                                       placeholder="นามสกุล" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Birth Date -->
+                    <div class="form-group">
+                        <label for="birthDate" class="form-label">วันเกิด</label>
+                        <div class="input-container">
+                            <ion-icon name="calendar-outline" class="input-icon"></ion-icon>
+                            <input type="date" id="birthDate" name="birthDate" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">อีเมล</label>
+                        <div class="input-container">
+                            <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+                            <input type="email" id="email" name="email" class="form-input" 
+                                   placeholder="example@school.ac.th" required>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <label for="phone" class="form-label">เบอร์โทรศัพท์</label>
+                        <div class="input-container">
+                            <ion-icon name="call-outline" class="input-icon"></ion-icon>
+                            <input type="tel" id="phone" name="phone" class="form-input" 
+                                   placeholder="0812345678" required>
+                        </div>
+                    </div>
+
+                    <!-- Student ID / Teacher ID -->
+                    <div class="form-group">
+                        <label for="studentId" class="form-label">รหัสประจำตัว</label>
+                        <div class="input-container">
+                            <ion-icon name="card-outline" class="input-icon"></ion-icon>
+                            <input type="text" id="studentId" name="studentId" class="form-input" 
+                                   placeholder="กรอกรหัสนักเรียน/ครู" required>
+                        </div>
+                    </div>
+
+                    <!-- Class -->
+                    <div class="form-group">
+                        <label for="class" class="form-label">ชั้นเรียน/แผนก</label>
+                        <div class="input-container">
+                            <ion-icon name="school-outline" class="input-icon"></ion-icon>
+                            <input type="text" id="class" name="class" class="form-input" 
+                                   placeholder="เช่น 3/1 หรือ แผนกคอมพิวเตอร์" required>
+                        </div>
+                    </div>
+
+                    <!-- Security Questions Section -->
+                    <div class="security-section">
+                        <h3 class="section-title">
+                            <ion-icon name="shield-checkmark-outline"></ion-icon>
+                            คำถามความปลอดภัย
+                        </h3>
+                        <p class="section-subtitle">เพื่อใช้ในการกู้คืนรหัสผ่านในอนาคต</p>
+
+                        <!-- Security Question 1 -->
+                        <div class="form-group">
+                            <label for="secQuestion1" class="form-label">คำถามที่ 1</label>
+                            <div class="input-container">
+                                <ion-icon name="help-circle-outline" class="input-icon"></ion-icon>
+                                <select id="secQuestion1" name="secQuestion1" class="form-input" required>
+                                    <option value="">เลือกคำถาม</option>
+                                    <option value="ชื่อสัตว์เลี้ยงตัวแรกของคุณคือ?">ชื่อสัตว์เลี้ยงตัวแรกของคุณคือ?</option>
+                                    <option value="ชื่อโรงเรียนประถมของคุณคือ?">ชื่อโรงเรียนประถมของคุณคือ?</option>
+                                    <option value="อาหารที่คุณชอบมากที่สุดคือ?">อาหารที่คุณชอบมากที่สุดคือ?</option>
+                                    <option value="เมืองที่คุณเกิดคือ?">เมืองที่คุณเกิดคือ?</option>
+                                    <option value="ชื่อเล่นในวัยเด็กของคุณคือ?">ชื่อเล่นในวัยเด็กของคุณคือ?</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="secAnswer1" class="form-label">คำตอบ</label>
+                            <div class="input-container">
+                                <ion-icon name="key-outline" class="input-icon"></ion-icon>
+                                <input type="text" id="secAnswer1" name="secAnswer1" class="form-input" 
+                                       placeholder="กรอกคำตอบ" required>
+                            </div>
+                        </div>
+
+                        <!-- Security Question 2 -->
+                        <div class="form-group">
+                            <label for="secQuestion2" class="form-label">คำถามที่ 2</label>
+                            <div class="input-container">
+                                <ion-icon name="help-circle-outline" class="input-icon"></ion-icon>
+                                <select id="secQuestion2" name="secQuestion2" class="form-input" required>
+                                    <option value="">เลือกคำถาม</option>
+                                    <option value="ชื่อครูที่คุณชอบมากที่สุดคือ?">ชื่อครูที่คุณชอบมากที่สุดคือ?</option>
+                                    <option value="ชื่อเพลงที่คุณชอบมากที่สุดคือ?">ชื่อเพลงที่คุณชอบมากที่สุดคือ?</option>
+                                    <option value="สีที่คุณชอบมากที่สุดคือ?">สีที่คุณชอบมากที่สุดคือ?</option>
+                                    <option value="ชื่อหนังที่คุณชอบมากที่สุดคือ?">ชื่อหนังที่คุณชอบมากที่สุดคือ?</option>
+                                    <option value="กีฬาที่คุณชอบมากที่สุดคือ?">กีฬาที่คุณชอบมากที่สุดคือ?</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="secAnswer2" class="form-label">คำตอบ</label>
+                            <div class="input-container">
+                                <ion-icon name="key-outline" class="input-icon"></ion-icon>
+                                <input type="text" id="secAnswer2" name="secAnswer2" class="form-input" 
+                                       placeholder="กรอกคำตอบ" required>
+                            </div>
+                        </div>
+
+                        <!-- Security Question 3 -->
+                        <div class="form-group">
+                            <label for="secQuestion3" class="form-label">คำถามที่ 3</label>
+                            <div class="input-container">
+                                <ion-icon name="help-circle-outline" class="input-icon"></ion-icon>
+                                <select id="secQuestion3" name="secQuestion3" class="form-input" required>
+                                    <option value="">เลือกคำถาม</option>
+                                    <option value="วันเกิดของแม่คุณคือ? (วัน/เดือน)">วันเกิดของแม่คุณคือ? (วัน/เดือน)</option>
+                                    <option value="ชื่อสถานที่ท่องเที่ยวที่คุณชอบคือ?">ชื่อสถานที่ท่องเที่ยวที่คุณชอบคือ?</option>
+                                    <option value="ชื่อนักร้องที่คุณชอบมากที่สุดคือ?">ชื่อนักร้องที่คุณชอบมากที่สุดคือ?</option>
+                                    <option value="ชื่อเกมที่คุณชอบมากที่สุดคือ?">ชื่อเกมที่คุณชอบมากที่สุดคือ?</option>
+                                    <option value="ยี่ห้อรถที่คุณชอบมากที่สุดคือ?">ยี่ห้อรถที่คุณชอบมากที่สุดคือ?</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="secAnswer3" class="form-label">คำตอบ</label>
+                            <div class="input-container">
+                                <ion-icon name="key-outline" class="input-icon"></ion-icon>
+                                <input type="text" id="secAnswer3" name="secAnswer3" class="form-input" 
+                                       placeholder="กรอกคำตอบ" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="regPassword" class="form-label">รหัสผ่าน</label>
+                        <div class="input-container">
+                            <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                            <input type="password" id="regPassword" name="password" class="form-input" 
+                                   placeholder="กรอกรหัสผ่าน (อย่างน้อย 6 ตัวอักษร)" required>
+                            <button type="button" class="password-toggle" id="regPasswordToggle">
+                                <ion-icon name="eye-outline" id="regToggleIcon"></ion-icon>
+                            </button>
+                        </div>
+                        <div class="form-hint" id="passwordHint"></div>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">ยืนยันรหัสผ่าน</label>
+                        <div class="input-container">
+                            <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" 
+                                   placeholder="ยืนยันรหัสผ่านอีกครั้ง" required>
+                            <button type="button" class="password-toggle" id="confirmPasswordToggle">
+                                <ion-icon name="eye-outline" id="confirmToggleIcon"></ion-icon>
+                            </button>
+                        </div>
+                        <div class="form-hint" id="confirmPasswordHint"></div>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">
+                                ฉันยอมรับ <a href="/HTML/N.html" style="color: #667eea;">เงื่อนไขการใช้งาน</a> 
+                                และ <a href="/HTML/about.html" style="color: #667eea;">นโยบายความเป็นส่วนตัว</a>
+                            </span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        <span class="btn-text">สมัครสมาชิก</span>
+                        <ion-icon name="checkmark-outline" class="btn-icon"></ion-icon>
+                    </button>
+                </form>
+
+                <div class="login-footer">
+                    <p class="footer-text">
+                        มีบัญชีอยู่แล้ว? 
+                        <a href="#" onclick="toggleForm('login')" style="color: #667eea; text-decoration: none; font-weight: 600;">
+                            เข้าสู่ระบบ
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Forgot Password Modal -->
+    <div class="forgot-password-modal" id="forgotPasswordModal">
+        <div class="modal-content forgot-modal-content">
+            <div class="modal-header">
+                <h3>เลือกวิธีกู้คืนรหัสผ่าน</h3>
+                <button class="close-btn" onclick="closeForgotPasswordModal()">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </div>
+            <div class="recovery-options">
+                <div class="recovery-option" onclick="selectRecoveryMethod('security')">
+                    <div class="option-icon">
+                        <ion-icon name="help-circle-outline"></ion-icon>
+                    </div>
+                    <div class="option-content">
+                        <h4>คำถามความปลอดภัย</h4>
+                        <p>ตอบคำถามความปลอดภัยที่คุณตั้งไว้</p>
+                    </div>
+                    <ion-icon name="chevron-forward-outline" class="option-arrow"></ion-icon>
+                </div>
+                <div class="recovery-option" onclick="selectRecoveryMethod('personal')">
+                    <div class="option-icon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </div>
+                    <div class="option-content">
+                        <h4>ข้อมูลส่วนตัว</h4>
+                        <p>ใช้รหัสประจำตัวและวันเกิดเพื่อยืนยัน</p>
+                    </div>
+                    <ion-icon name="chevron-forward-outline" class="option-arrow"></ion-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Questions Recovery Modal -->
+    <div class="recovery-modal" id="securityRecoveryModal">
+        <div class="modal-content recovery-modal-content">
+            <div class="modal-header">
+                <button class="back-btn" onclick="backToRecoveryOptions()">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                </button>
+                <h3>คำถามความปลอดภัย</h3>
+                <button class="close-btn" onclick="closeForgotPasswordModal()">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </div>
+            
+            <div class="recovery-step" id="securityStep1">
+                <div class="step-header">
+                    <p>กรุณากรอกชื่อผู้ใช้งานของคุณ</p>
+                </div>
+                <form id="securityUsernameForm">
+                    <div class="form-group">
+                        <div class="input-container">
+                            <ion-icon name="person-outline" class="input-icon"></ion-icon>
+                            <input type="text" id="securityUsername" class="form-input" 
+                                   placeholder="ชื่อผู้ใช้งาน" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="recovery-btn">
+                        <span>ตรวจสอบ</span>
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </button>
+                </form>
+            </div>
+
+            <div class="recovery-step" id="securityStep2" style="display: none;">
+                <div class="step-header">
+                    <p>กรุณาตอบคำถามความปลอดภัย</p>
+                </div>
+                <form id="securityQuestionsForm">
+                    <div id="securityQuestionsContainer">
+                        <!-- คำถามจะถูกเพิ่มด้วย JavaScript -->
+                    </div>
+                    <button type="submit" class="recovery-btn">
+                        <span>ตรวจสอบคำตอบ</span>
+                        <ion-icon name="checkmark-outline"></ion-icon>
+                    </button>
+                </form>
+            </div>
+
+            <div class="recovery-step" id="securityStep3" style="display: none;">
+                <div class="step-header">
+                    <div class="success-icon-small">
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                    </div>
+                    <p>ยืนยันตัวตนสำเร็จ! กรุณาตั้งรหัสผ่านใหม่</p>
+                </div>
+                <form id="newPasswordForm">
+                    <div class="form-group">
+                        <label class="form-label">รหัสผ่านใหม่</label>
+                        <div class="input-container">
+                            <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                            <input type="password" id="newPassword" class="form-input" 
+                                   placeholder="รหัสผ่านใหม่ (อย่างน้อย 6 ตัวอักษร)" required>
+                            <button type="button" class="password-toggle" id="newPasswordToggle">
+                                <ion-icon name="eye-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">ยืนยันรหัสผ่านใหม่</label>
+                        <div class="input-container">
+                            <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                            <input type="password" id="confirmNewPassword" class="form-input" 
+                                   placeholder="ยืนยันรหัสผ่านใหม่" required>
+                            <button type="button" class="password-toggle" id="confirmNewPasswordToggle">
+                                <ion-icon name="eye-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="recovery-btn success-btn">
+                        <span>เปลี่ยนรหัสผ่าน</span>
+                        <ion-icon name="save-outline"></ion-icon>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personal Info Recovery Modal -->
+    <div class="recovery-modal" id="personalRecoveryModal">
+        <div class="modal-content recovery-modal-content">
+            <div class="modal-header">
+                <button class="back-btn" onclick="backToRecoveryOptions()">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                </button>
+                <h3>ยืนยันข้อมูลส่วนตัว</h3>
+                <button class="close-btn" onclick="closeForgotPasswordModal()">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </div>
+            
+            <div class="recovery-step">
+                <div class="step-header">
+                    <p>กรุณากรอกข้อมูลเพื่อยืนยันตัวตน</p>
+                </div>
+                <form id="personalInfoForm">
+                    <div class="form-group">
+                        <label class="form-label">ชื่อผู้ใช้งาน</label>
+                        <div class="input-container">
+                            <ion-icon name="person-outline" class="input-icon"></ion-icon>
+                            <input type="text" id="personalUsername" class="form-input" 
+                                   placeholder="ชื่อผู้ใช้งาน" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">รหัสประจำตัว</label>
+                        <div class="input-container">
+                            <ion-icon name="card-outline" class="input-icon"></ion-icon>
+                            <input type="text" id="personalStudentId" class="form-input" 
+                                   placeholder="รหัสนักเรียน/ครู" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">วันเกิด</label>
+                        <div class="input-container">
+                            <ion-icon name="calendar-outline" class="input-icon"></ion-icon>
+                            <input type="date" id="personalBirthDate" class="form-input" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="recovery-btn">
+                        <span>ตรวจสอบข้อมูล</span>
+                        <ion-icon name="checkmark-outline"></ion-icon>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <ion-icon name="reload-outline"></ion-icon>
+            </div>
+            <h3 id="loadingText">กำลังเข้าสู่ระบบ</h3>
+            <p>กรุณารอสักครู่...</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <ion-icon name="checkmark-circle"></ion-icon>
+            </div>
+            <h3 id="successTitle">เข้าสู่ระบบสำเร็จ!</h3>
+            <p id="successMessage">ยินดีต้อนรับสู่ระบบ Scan Check-in</p>
+            <div class="modal-actions">
+                <button class="modal-btn primary" id="successPrimaryBtn">
+                    <ion-icon name="person-outline"></ion-icon>
+                    ไปที่โปรไฟล์
+                </button>
+                <button class="modal-btn secondary" id="successSecondaryBtn">
+                    <ion-icon name="home-outline"></ion-icon>
+                    หน้าหลัก
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="error-modal" id="errorModal">
+        <div class="modal-content">
+            <div class="error-icon">
+                <ion-icon name="alert-circle"></ion-icon>
+            </div>
+            <h3>เกิดข้อผิดพลาด</h3>
+            <p id="errorMessage">ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</p>
+            <div class="modal-actions">
+                <button class="modal-btn primary" id="tryAgain">
+                    <ion-icon name="refresh-outline"></ion-icon>
+                    ลองอีกครั้ง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p>&copy; 2024 Scan Check-in System. สงวนลิขสิทธิ์.</p>
+            </div>
+            <div class="footer-right">
+                <a href="#" class="footer-link">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                    นโยบายความเป็นส่วนตัว
+                </a>
+                <a href="#" class="footer-link">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    เงื่อนไขการใช้งาน
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Forgot Password System JavaScript
+
+// Security Questions Database
+const securityQuestions = {
+    'ชื่อสัตว์เลี้ยงตัวแรกของคุณคือ?': 'pet',
+    'ชื่อโรงเรียนประถมของคุณคือ?': 'school',
+    'อาหารที่คุณชอบมากที่สุดคือ?': 'food',
+    'เมืองที่คุณเกิดคือ?': 'city',
+    'ชื่อเล่นในวัยเด็กของคุณคือ?': 'nickname',
+    'ชื่อครูที่คุณชอบมากที่สุดคือ?': 'teacher',
+    'ชื่อเพลงที่คุณชอบมากที่สุดคือ?': 'song',
+    'สีที่คุณชอบมากที่สุดคือ?': 'color',
+    'ชื่อหนังที่คุณชอบมากที่สุดคือ?': 'movie',
+    'กีฬาที่คุณชอบมากที่สุดคือ?': 'sport',
+    'วันเกิดของแม่คุณคือ? (วัน/เดือน)': 'mother_birthday',
+    'ชื่อสถานที่ท่องเที่ยวที่คุณชอบคือ?': 'travel',
+    'ชื่อนักร้องที่คุณชอบมากที่สุดคือ?': 'singer',
+    'ชื่อเกมที่คุณชอบมากที่สุดคือ?': 'game',
+    'ยี่ห้อรถที่คุณชอบมากที่สุดคือ?': 'car'
+};
+
+// Mock Security Answers Database (ในการใช้งานจริงควรเข้ารหัสไว้)
+const mockSecurityAnswers = {
+    'student001': {
+        'pet': 'มิวมิว',
+        'school': 'วัดโพธิ์',
+        'food': 'ผัดไทย'
+    },
+    'teacher001': {
+        'teacher': 'อาจารย์สมบัติ',
+        'color': 'ฟ้า',
+        'travel': 'เขาใหญ่'
+    },
+    'admin': {
+        'game': 'ฟุตบอล',
+        'movie': 'ทิตานิก',
+        'singer': 'เบิร์ด'
+    }
+};
+
+// Current recovery state
+let currentRecoveryState = {
+    method: null,
+    username: null,
+    step: 1,
+    questions: [],
+    answers: {},
+    attempts: 0,
+    maxAttempts: 3
+};
+
+// Show forgot password modal
+function showForgotPasswordModal() {
+    const modal = document.getElementById('forgotPasswordModal');
+    modal.classList.add('active');
+    resetRecoveryState();
+    
+    // Add entrance animation
+    setTimeout(() => {
+        const options = document.querySelectorAll('.recovery-option');
+        options.forEach((option, index) => {
+            option.style.animationDelay = `${index * 0.1}s`;
+        });
+    }, 100);
+}
+
+// Close forgot password modal
+function closeForgotPasswordModal() {
+    const modals = ['forgotPasswordModal', 'securityRecoveryModal', 'personalRecoveryModal'];
+    modals.forEach(modalId => {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('active');
+        }
+    });
+    resetRecoveryState();
+}
+
+// Reset recovery state
+function resetRecoveryState() {
+    currentRecoveryState = {
+        method: null,
+        username: null,
+        step: 1,
+        questions: [],
+        answers: {},
+        attempts: 0,
+        maxAttempts: 3
+    };
+    
+    // Reset all forms
+    const forms = ['securityUsernameForm', 'securityQuestionsForm', 'newPasswordForm', 'personalInfoForm'];
+    forms.forEach(formId => {
+        const form = document.getElementById(formId);
+        if (form) form.reset();
+    });
+    
+    // Reset all steps
+    resetSecuritySteps();
+    clearErrorStates();
+}
+
+// Select recovery method
+function selectRecoveryMethod(method) {
+    currentRecoveryState.method = method;
+    
+    // Hide main modal
+    document.getElementById('forgotPasswordModal').classList.remove('active');
+    
+    // Show appropriate recovery modal
+    setTimeout(() => {
+        if (method === 'security') {
+            document.getElementById('securityRecoveryModal').classList.add('active');
+            showSecurityStep(1);
+        } else if (method === 'personal') {
+            document.getElementById('personalRecoveryModal').classList.add('active');
+        }
+    }, 200);
+}
+
+// Back to recovery options
+function backToRecoveryOptions() {
+    // Hide current modal
+    if (currentRecoveryState.method === 'security') {
+        document.getElementById('securityRecoveryModal').classList.remove('active');
+    } else {
+        document.getElementById('personalRecoveryModal').classList.remove('active');
+    }
+    
+    // Show main modal
+    setTimeout(() => {
+        document.getElementById('forgotPasswordModal').classList.add('active');
+    }, 200);
+    
+    resetRecoveryState();
+}
+
+// Security Questions Recovery Functions
+function showSecurityStep(step) {
+    // Hide all steps
+    for (let i = 1; i <= 3; i++) {
+        const stepElement = document.getElementById(`securityStep${i}`);
+        if (stepElement) {
+            stepElement.style.display = 'none';
+        }
+    }
+    
+    // Show current step
+    const currentStep = document.getElementById(`securityStep${step}`);
+    if (currentStep) {
+        currentStep.style.display = 'block';
+        currentRecoveryState.step = step;
+        
+        // Add entrance animation
+        setTimeout(() => {
+            currentStep.style.opacity = '1';
+            currentStep.style.transform = 'translateX(0)';
+        }, 50);
+    }
+}
+
+function resetSecuritySteps() {
+    for (let i = 1; i <= 3; i++) {
+        const stepElement = document.getElementById(`securityStep${i}`);
+        if (stepElement) {
+            stepElement.style.display = i === 1 ? 'block' : 'none';
+            stepElement.style.opacity = '1';
+            stepElement.style.transform = 'translateX(0)';
+        }
+    }
+}
+
+// Handle security username form
+document.getElementById('securityUsernameForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('securityUsername').value.trim();
+    
+    if (!username) {
+        showFieldError('securityUsername', 'กรุณากรอกชื่อผู้ใช้งาน');
+        return;
+    }
+    
+    // Show loading
+    const submitBtn = this.querySelector('button[type="submit"]');
+    setButtonLoading(submitBtn, true);
+    
+    setTimeout(() => {
+        setButtonLoading(submitBtn, false);
+        
+        // Check if user exists
+        if (userDatabase[username]) {
+            currentRecoveryState.username = username;
+            generateSecurityQuestions(username);
+            showSecurityStep(2);
+            clearFieldError('securityUsername');
+        } else {
+            showFieldError('securityUsername', 'ไม่พบชื่อผู้ใช้งานนี้ในระบบ');
+            shakeElement(document.getElementById('securityUsername'));
+        }
+    }, 1500);
+});
+
+// Generate security questions for user
+function generateSecurityQuestions(username) {
+    const userAnswers = mockSecurityAnswers[username] || {};
+    const availableQuestions = Object.keys(userAnswers);
+    
+    // If no security questions available, use random ones
+    if (availableQuestions.length === 0) {
+        const allQuestions = Object.keys(securityQuestions);
+        currentRecoveryState.questions = allQuestions.slice(0, 3);
+    } else {
+        currentRecoveryState.questions = availableQuestions.slice(0, 3);
+    }
+    
+    renderSecurityQuestions();
+}
+
+// Render security questions
+function renderSecurityQuestions() {
+    const container = document.getElementById('securityQuestionsContainer');
+    container.innerHTML = '';
+    
+    currentRecoveryState.questions.forEach((questionKey, index) => {
+        const questionText = Object.keys(securityQuestions).find(q => 
+            securityQuestions[q] === questionKey
+        ) || questionKey;
+        
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'security-question-item';
+        questionDiv.innerHTML = `
+            <h4>คำถามที่ ${index + 1}</h4>
+            <p style="margin-bottom: 1rem; color: var(--gray);">${questionText}</p>
+            <div class="input-container">
+                <ion-icon name="key-outline" class="input-icon"></ion-icon>
+                <input type="text" 
+                       id="secAnswer${index}" 
+                       name="secAnswer${index}" 
+                       class="form-input" 
+                       placeholder="กรอกคำตอบ" 
+                       required>
+            </div>
+            <div class="form-error" id="secAnswer${index}Error" style="display: none;"></div>
+        `;
+        
+        container.appendChild(questionDiv);
+        
+        // Add entrance animation
+        setTimeout(() => {
+            questionDiv.style.animation = `slideInUp 0.3s ease-out ${index * 0.1}s forwards`;
+        }, 100);
+    });
+}
+
+// Handle security questions form
+document.getElementById('securityQuestionsForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const answers = {};
+    let allValid = true;
+    
+    // Collect answers
+    currentRecoveryState.questions.forEach((questionKey, index) => {
+        const input = document.getElementById(`secAnswer${index}`);
+        const answer = input.value.trim();
+        
+        if (!answer) {
+            showFieldError(`secAnswer${index}`, 'กรุณากรอกคำตอบ');
+            allValid = false;
+        } else {
+            answers[questionKey] = answer;
+            clearFieldError(`secAnswer${index}`);
+        }
+    });
+    
+    if (!allValid) return;
+    
+    // Show loading
+    const submitBtn = this.querySelector('button[type="submit"]');
+    setButtonLoading(submitBtn, true);
+    
+    setTimeout(() => {
+        setButtonLoading(submitBtn, false);
+        
+        // Verify answers
+        if (verifySecurityAnswers(answers)) {
+            showSecurityStep(3);
+            showSuccessMessage('ยืนยันตัวตนสำเร็จ!');
+        } else {
+            currentRecoveryState.attempts++;
+            
+            if (currentRecoveryState.attempts >= currentRecoveryState.maxAttempts) {
+                showErrorModal('คำตอบไม่ถูกต้อง ได้ครบจำนวนครั้งที่กำหนดแล้ว กรุณาลองใหม่ภายหลัง');
+                closeForgotPasswordModal();
+            } else {
+                const remaining = currentRecoveryState.maxAttempts - currentRecoveryState.attempts;
+                showAnswerError(`คำตอบไม่ถูกต้อง (เหลือ ${remaining} ครั้ง)`);
+            }
+        }
+    }, 2000);
+});
+
+// Verify security answers
+function verifySecurityAnswers(userAnswers) {
+    const username = currentRecoveryState.username;
+    const correctAnswers = mockSecurityAnswers[username] || {};
+    
+    // In real application, this should be more secure
+    for (let questionKey of currentRecoveryState.questions) {
+        const userAnswer = userAnswers[questionKey]?.toLowerCase().trim();
+        const correctAnswer = correctAnswers[questionKey]?.toLowerCase().trim();
+        
+        if (userAnswer !== correctAnswer) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+// Handle new password form
+document.getElementById('newPasswordForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+    
+    // Validate passwords
+    if (!validateNewPassword(newPassword, confirmNewPassword)) {
+        return;
+    }
+    
+    // Show loading
+    const submitBtn = this.querySelector('button[type="submit"]');
+    setButtonLoading(submitBtn, true);
+    
+    setTimeout(() => {
+        setButtonLoading(submitBtn, false);
+        
+        // Update password in database
+        const username = currentRecoveryState.username;
+        if (userDatabase[username]) {
+            userDatabase[username].password = newPassword;
+            
+            // Save to localStorage
+            const usersToSave = { ...userDatabase };
+            delete usersToSave.student001;
+            delete usersToSave.teacher001;
+            delete usersToSave.admin;
+            localStorage.setItem('userDatabase', JSON.stringify(usersToSave));
+            
+            // Close modal and show success
+            closeForgotPasswordModal();
+            showSuccessModal(
+                'เปลี่ยนรหัสผ่านสำเร็จ!',
+                'คุณสามารถเข้าสู่ระบบด้วยรหัสผ่านใหม่ได้แล้ว',
+                'password_reset'
+            );
+        } else {
+            showErrorModal('เกิดข้อผิดพลาดในการอัพเดทรหัสผ่าน');
+        }
+    }, 2000);
+});
+
+// Personal Info Recovery
+document.getElementById('personalInfoForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('personalUsername').value.trim();
+    const studentId = document.getElementById('personalStudentId').value.trim();
+    const birthDate = document.getElementById('personalBirthDate').value;
+    
+    if (!username || !studentId || !birthDate) {
+        showErrorModal('กรุณากรอกข้อมูลให้ครบถ้วน');
+        return;
+    }
+    
+    // Show loading
+    const submitBtn = this.querySelector('button[type="submit"]');
+    setButtonLoading(submitBtn, true);
+    
+    setTimeout(() => {
+        setButtonLoading(submitBtn, false);
+        
+        // Verify personal information
+        const user = userDatabase[username];
+        if (user && user.studentId === studentId) {
+            // In real application, should also check birth date
+            // For demo, we'll assume birth date matches
+            currentRecoveryState.username = username;
+            
+            // Close current modal and show password reset
+            document.getElementById('personalRecoveryModal').classList.remove('active');
+            
+            setTimeout(() => {
+                showPasswordResetModal();
+            }, 300);
+        } else {
+            showErrorModal('ข้อมูลไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่');
+        }
+    }, 2000);
+});
+
+// Show password reset modal after personal verification
+function showPasswordResetModal() {
+    // Create a simple password reset modal
+    const existingModal = document.querySelector('.password-reset-modal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    const modal = document.createElement('div');
+    modal.className = 'password-reset-modal recovery-modal active';
+    modal.innerHTML = `
+        <div class="modal-content recovery-modal-content">
+            <div class="modal-header">
+                <h3>ตั้งรหัสผ่านใหม่</h3>
+                <button class="close-btn" onclick="closePasswordResetModal()">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </div>
+            <div class="recovery-step">
+                <div class="step-header">
+                    <div class="success-icon-small">
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                    </div>
+                    <p>ยืนยันตัวตนสำเร็จ! กรุณาตั้งรหัสผ่านใหม่</p>
+                </div>
+                <form id="personalNewPasswordForm">
+                    <div class="form-group">
+                        <label class="form-label">รหัสผ่านใหม่</label>
+                        <div class="input-container">
+                            <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                            <input type="password" id="personalNewPassword" class="form-input" 
+                                   placeholder="รหัสผ่านใหม่ (อย่างน้อย 6 ตัวอักษร)" required>
+                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility('personalNewPassword')">
+                                <ion-icon name="eye-outline"></ion-icon>
+                            </button>
+                        </div>
+                        <div class="form-error" id="personalNewPasswordError" style="display: none;"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">ยืนยันรหัสผ่านใหม่</label>
+                        <div class="input-container">
+                            <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                            <input type="password" id="personalConfirmNewPassword" class="form-input" 
+                                   placeholder="ยืนยันรหัสผ่านใหม่" required>
+                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility('personalConfirmNewPassword')">
+                                <ion-icon name="eye-outline"></ion-icon>
+                            </button>
+                        </div>
+                        <div class="form-error" id="personalConfirmNewPasswordError" style="display: none;"></div>
+                    </div>
+                    <button type="submit" class="recovery-btn success-btn">
+                        <span>เปลี่ยนรหัสผ่าน</span>
+                        <ion-icon name="save-outline"></ion-icon>
+                    </button>
+                </form>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Handle form submission
+    document.getElementById('personalNewPasswordForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const newPassword = document.getElementById('personalNewPassword').value;
+        const confirmPassword = document.getElementById('personalConfirmNewPassword').value;
+        
+        if (!validateNewPassword(newPassword, confirmPassword, 'personal')) {
+            return;
+        }
+        
+        const submitBtn = this.querySelector('button[type="submit"]');
+        setButtonLoading(submitBtn, true);
+        
+        setTimeout(() => {
+            setButtonLoading(submitBtn, false);
+            
+            // Update password
+            const username = currentRecoveryState.username;
+            if (userDatabase[username]) {
+                userDatabase[username].password = newPassword;
+                
+                // Save to localStorage
+                const usersToSave = { ...userDatabase };
+                delete usersToSave.student001;
+                delete usersToSave.teacher001;
+                delete usersToSave.admin;
+                localStorage.setItem('userDatabase', JSON.stringify(usersToSave));
+                
+                closePasswordResetModal();
+                showSuccessModal(
+                    'เปลี่ยนรหัสผ่านสำเร็จ!',
+                    'คุณสามารถเข้าสู่ระบบด้วยรหัสผ่านใหม่ได้แล้ว',
+                    'password_reset'
+                );
+            }
+        }, 1500);
+    });
+}
+
+// Close password reset modal
+function closePasswordResetModal() {
+    const modal = document.querySelector('.password-reset-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => modal.remove(), 300);
+    }
+    resetRecoveryState();
+}
+
+// Utility Functions
+
+// Validate new password
+function validateNewPassword(password, confirmPassword, prefix = '') {
+    const passwordField = prefix ? `${prefix}NewPassword` : 'newPassword';
+    const confirmField = prefix ? `${prefix}ConfirmNewPassword` : 'confirmNewPassword';
+    
+    let isValid = true;
+    
+    // Clear previous errors
+    clearFieldError(passwordField);
+    clearFieldError(confirmField);
+    
+    // Validate password length
+    if (password.length < 6) {
+        showFieldError(passwordField, 'รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร');
+        isValid = false;
+    }
+    
+    // Validate password confirmation
+    if (password !== confirmPassword) {
+        showFieldError(confirmField, 'รหัสผ่านและการยืนยันรหัสผ่านไม่ตรงกัน');
+        isValid = false;
+    }
+    
+    // Check password strength (optional)
+    if (password.length >= 6 && password === confirmPassword) {
+        showFieldSuccess(passwordField, 'รหัสผ่านแข็งแรง');
+        showFieldSuccess(confirmField, 'รหัสผ่านตรงกัน');
+    }
+    
+    return isValid;
+}
+
+// Show field error
+function showFieldError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    const errorElement = document.getElementById(`${fieldId}Error`);
+    
+    if (field) {
+        field.classList.add('error');
+        field.classList.remove('success');
+    }
+    
+    if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.style.display = 'flex';
+    }
+}
+
+// Show field success
+function showFieldSuccess(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    const errorElement = document.getElementById(`${fieldId}Error`);
+    
+    if (field) {
+        field.classList.remove('error');
+        field.classList.add('success');
+    }
+    
+    if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.style.display = 'flex';
+        errorElement.className = 'form-success';
+    }
+}
+
+// Clear field error
+function clearFieldError(fieldId) {
+    const field = document.getElementById(fieldId);
+    const errorElement = document.getElementById(`${fieldId}Error`);
+    
+    if (field) {
+        field.classList.remove('error', 'success');
+    }
+    
+    if (errorElement) {
+        errorElement.style.display = 'none';
+        errorElement.className = 'form-error';
+    }
+}
+
+// Clear all error states
+function clearErrorStates() {
+    document.querySelectorAll('.form-input').forEach(input => {
+        input.classList.remove('error', 'success');
+    });
+    
+    document.querySelectorAll('.form-error, .form-success').forEach(error => {
+        error.style.display = 'none';
+    });
+}
+
+// Show answer error
+function showAnswerError(message) {
+    currentRecoveryState.questions.forEach((_, index) => {
+        showFieldError(`secAnswer${index}`, message);
+        shakeElement(document.getElementById(`secAnswer${index}`));
+    });
+}
+
+// Set button loading state
+function setButtonLoading(button, isLoading) {
+    if (!button) return;
+    
+    if (isLoading) {
+        button.classList.add('loading');
+        button.disabled = true;
+    } else {
+        button.classList.remove('loading');
+        button.disabled = false;
+    }
+}
+
+// Shake element animation
+function shakeElement(element) {
+    if (!element) return;
+    
+    element.style.animation = 'shake 0.5s ease-in-out';
+    setTimeout(() => {
+        element.style.animation = '';
+    }, 500);
+}
+
+// Show success message
+function showSuccessMessage(message) {
+    // Create a temporary success message
+    const existingMessage = document.querySelector('.temp-success-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'temp-success-message';
+    messageDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #10b981, #34d399);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        z-index: 10002;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+        animation: slideInRight 0.3s ease-out;
+    `;
+    
+    messageDiv.innerHTML = `
+        <ion-icon name="checkmark-circle" style="font-size: 1.25rem;"></ion-icon>
+        <span>${message}</span>
+    `;
+    
+    document.body.appendChild(messageDiv);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        messageDiv.style.animation = 'slideOutRight 0.3s ease-out';
+        setTimeout(() => messageDiv.remove(), 300);
+    }, 3000);
+}
+
+// Toggle password visibility
+function togglePasswordVisibility(fieldId) {
+    const field = document.getElementById(fieldId);
+    const toggleBtn = field.parentElement.querySelector('.password-toggle ion-icon');
+    
+    if (field.type === 'password') {
+        field.type = 'text';
+        toggleBtn.name = 'eye-off-outline';
+    } else {
+        field.type = 'password';
+        toggleBtn.name = 'eye-outline';
+    }
+}
+
+// Setup password toggles for new password fields
+function setupNewPasswordToggles() {
+    const toggles = [
+        { field: 'newPassword', toggle: 'newPasswordToggle' },
+        { field: 'confirmNewPassword', toggle: 'confirmNewPasswordToggle' }
+    ];
+    
+    toggles.forEach(({ field, toggle }) => {
+        const toggleBtn = document.getElementById(toggle);
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => togglePasswordVisibility(field));
+        }
+    });
+}
+
+// Enhanced showSuccessModal for password reset
+const originalShowSuccessModal = showSuccessModal;
+showSuccessModal = function(title, message, type) {
+    if (type === 'password_reset') {
+        document.getElementById('successTitle').textContent = title;
+        document.getElementById('successMessage').textContent = message;
+        
+        const primaryBtn = document.getElementById('successPrimaryBtn');
+        const secondaryBtn = document.getElementById('successSecondaryBtn');
+        
+        primaryBtn.innerHTML = '<ion-icon name="log-in-outline"></ion-icon> เข้าสู่ระบบ';
+        primaryBtn.onclick = () => {
+            document.getElementById('successModal').classList.remove('active');
+            toggleForm('login');
+            
+            // Pre-fill username if available
+            if (currentRecoveryState.username) {
+                document.getElementById('username').value = currentRecoveryState.username;
+            }
+        };
+        
+        secondaryBtn.style.display = 'none';
+        document.getElementById('successModal').classList.add('active');
+    } else {
+        originalShowSuccessModal(title, message, type);
+    }
+};
+
+// Add keyframe animations for success message
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Initialize password toggles when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    setupNewPasswordToggles();
+});
+
+// Close modals when clicking outside
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('forgot-password-modal') || 
+        e.target.classList.contains('recovery-modal')) {
+        closeForgotPasswordModal();
+    }
+});
+
+// Escape key to close modals
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeForgotPasswordModal();
+        closePasswordResetModal();
+    }
+});
+
+// Auto-focus first input in modals
+function autoFocusModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        const firstInput = modal.querySelector('.form-input');
+        if (firstInput) {
+            setTimeout(() => firstInput.focus(), 100);
+        }
+    }
+}
+
+// Enhance selectRecoveryMethod to include auto-focus
+const originalSelectRecoveryMethod = selectRecoveryMethod;
+selectRecoveryMethod = function(method) {
+    originalSelectRecoveryMethod(method);
+    
+    setTimeout(() => {
+        if (method === 'security') {
+            autoFocusModal('securityRecoveryModal');
+        } else if (method === 'personal') {
+            autoFocusModal('personalRecoveryModal');
+        }
+    }, 300);
+};
+
+// Rate limiting for security
+let recoveryAttempts = {
+    lastAttempt: 0,
+    count: 0,
+    maxAttempts: 5,
+    lockoutTime: 15 * 60 * 1000 // 15 minutes
+};
+
+function checkRateLimit() {
+    const now = Date.now();
+    
+    if (now - recoveryAttempts.lastAttempt > recoveryAttempts.lockoutTime) {
+        recoveryAttempts.count = 0;
+    }
+    
+    if (recoveryAttempts.count >= recoveryAttempts.maxAttempts) {
+        const timeLeft = Math.ceil((recoveryAttempts.lockoutTime - (now - recoveryAttempts.lastAttempt)) / 60000);
+        showErrorModal(`มีการพยายามกู้คืนรหัสผ่านมากเกินไป กรุณารอ ${timeLeft} นาที`);
+        return false;
+    }
+    
+    recoveryAttempts.count++;
+    recoveryAttempts.lastAttempt = now;
+    return true;
+}
+
+// Add rate limiting to recovery methods
+const originalShowForgotPasswordModal = showForgotPasswordModal;
+showForgotPasswordModal = function() {
+    if (checkRateLimit()) {
+        originalShowForgotPasswordModal();
+    }
+};
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Css -->
+    <link rel="stylesheet" href="/CSS/style2.css">
+    <link rel="stylesheet" href="/CSS/generator.css">
+    <link rel="stylesheet" href="/CSS/scanner.css">
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Scan</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Nav -->
+        <nav>
+            <button class="nav-gene active">Generator</button>
+            <button class="nav-scan">Scanner</button>
+        </nav>
+        <!-- Generator -->
+         <div class="generator" style="display: none;">
+            <h1>QR Code Generator</h1>
+            <p>Paste a url or enter text to create QR code</p>
+
+            <div class="generator-form">
+                <input type="text" placeholder="Enter text or url">
+                <button>Genarate QR Code</button>
+            </div>
+
+            <div class="generator-img">
+                <img src="/img/tang._bcc_qr.png" alt="qr-code">
+            </div>
+            <div class="generator-btn">
+                <button class="btn-link">Download <i class="fa-solid fa-download"></i></button>
+            </div>
+         </div>
+
+        <!-- Scanner -->
+         <div class="scanner">
+            <h1>
+                QR Code Scanner or Reader
+                <i class="fa-solid fa-camera"></i>
+                <i class="fa-solid fa-circle-stop"></i>
+            </h1>
+
+            <form class="scanner-form" id="scannerDiv">
+                <input type="file" accept="image/*" hidden>
+
+                <img src="/img/tang._bcc_qr.png" alt="qr-code">
+                <video id="preview" style="width: 100%; height: auto;"></video>
+
+                <div class="content">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p id="p" >Upload QR Code to Scan</p>
+                </div>
+            </form>
+
+            <div class="scanner-details">
+                <textarea disabled เพิ่ม id="textarea">https://www.youtube.com/@X1s_-2-x0</textarea>
+
+                <div class="btn">
+                    <button class="close" id="camera" >Close</button>
+                    <button class="copy">Copy</button>
+                </div>
+            </div>
+         </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/JS/main.js"></script>
+    <script src="/JS/generator.js"></script>
+    <script src="/JS/scanner.js"></script>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+     <script>
+    let scanner;
+    const video = document.getElementById("preview");
+
+    scanner = new Instascan.Scanner({ video: video });
+
+    scanner.addListener("scan", content => {
+      console.log("QR Code:", content);
+      document.getElementById("result").innerText = content;
+    });
+
+    Instascan.Camera.getCameras()
+      .then(cameras => {
+        if (cameras.length > 0) {
+          scanner.start(cameras[0]);
+        } else {
+          console.error("No cameras found.");
+        }
+      })
+      .catch(e => console.error(e));
+  </script>
+    
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข่าวสารและประกาศ - วิทยาลัยเทคโนโลยี</title>
+    
+    <!-- Ionic Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <link rel="stylesheet" href="/CSS/new.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="/img/2.jpg" alt="โลโก้วิทยาลัย" class="logo-img">
+                <h1>วิทยาลัยเทคโนโลยีบริหารธุรกิจกิตติมา อินเตอร์</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="/HTML/index.html"><ion-icon name="home-outline"></ion-icon> หน้าแรก</a></li>
+                    <li><a href="#news"><ion-icon name="newspaper-outline"></ion-icon> ข่าวสาร</a></li>
+                    <li><a href="#announcement"><ion-icon name="megaphone-outline"></ion-icon> ประกาศ</a></li>
+                    <li><a href="/HTML/about.html"><ion-icon name="information-circle-outline"></ion-icon> เกี่ยวกับเรา</a></li>
+                    <li><a href="#contact"><ion-icon name="call-outline"></ion-icon> ติดต่อ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- แถบแจ้งเตือนด่วน -->
+    <div class="urgent-notification">
+        <div class="container">
+            <div class="notification-content">
+                <ion-icon name="warning-outline" class="notification-icon"></ion-icon>
+                <span class="notification-text">ประกาศด่วน: การปิดภาคเรียนเนื่องจากสถานการณ์พิเศษ</span>
+                <button class="close-btn"><ion-icon name="close-outline"></ion-icon></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- หัวข้อหลัก -->
+            <section class="hero-section">
+                <h2>ข่าวสารและประกาศ</h2>
+                <p>ติดตามข่าวสารและประกาศสำคัญจากวิทยาลัย</p>
+            </section>
+
+            <!-- ฟิลเตอร์และการค้นหา -->
+            <section class="filter-section">
+                <div class="filter-controls">
+                    <div class="search-box">
+                        <input type="text" placeholder="ค้นหาข่าวสาร..." class="search-input">
+                        <button class="search-btn"><ion-icon name="search-outline"></ion-icon></button>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">
+                            <ion-icon name="apps-outline"></ion-icon> ทั้งหมด
+                        </button>
+                        <button class="filter-btn" data-filter="news">
+                            <ion-icon name="newspaper-outline"></ion-icon> ข่าวสาร
+                        </button>
+                        <button class="filter-btn" data-filter="announcement">
+                            <ion-icon name="megaphone-outline"></ion-icon> ประกาศ
+                        </button>
+                        <button class="filter-btn" data-filter="urgent">
+                            <ion-icon name="alert-circle-outline"></ion-icon> ด่วน
+                        </button>
+                        <button class="filter-btn" data-filter="event">
+                            <ion-icon name="calendar-outline"></ion-icon> กิจกรรม
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ข่าวสารหลัก -->
+            <section class="news-section">
+                <div class="news-grid">
+                    <!-- ข่าวด่วน -->
+                    <article class="news-card urgent">
+                        <div class="news-header">
+                            <span class="news-badge urgent-badge">
+                                <ion-icon name="flash-outline"></ion-icon> ด่วน
+                            </span>
+                            <span class="news-date">
+                                <ion-icon name="calendar-outline"></ion-icon> 13 กรกฎาคม 2568
+                            </span>
+                        </div>
+                        <div class="news-content">
+                            <h3>ประกาศเลื่อนการสอบกลางภาค</h3>
+                            <p>เนื่องจากสถานการณ์พิเศษ ทางวิทยาลัยขอประกาศเลื่อนการสอบกลางภาคออกไป...</p>
+                        </div>
+                        <div class="news-footer">
+                            <span class="news-author">
+                                <ion-icon name="person-outline"></ion-icon> โดย: งานวิชาการ
+                            </span>
+                            <a href="#" class="read-more">
+                                อ่านต่อ <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- ข่าวสารทั่วไป -->
+                    <article class="news-card news">
+                        <div class="news-header">
+                            <span class="news-badge news-badge">
+                                <ion-icon name="newspaper-outline"></ion-icon> ข่าวสาร
+                            </span>
+                            <span class="news-date">
+                                <ion-icon name="calendar-outline"></ion-icon> 12 กรกฎาคม 2568
+                            </span>
+                        </div>
+                        <div class="news-content">
+                            <h3>กิจกรรมวันภาษาไทยแห่งชาติ</h3>
+                            <p>ขอเชิญนักศึกษาทุกคนร่วมกิจกรรมวันภาษาไทยแห่งชาติ วันที่ 29 กรกฎาคม 2568...</p>
+                        </div>
+                        <div class="news-footer">
+                            <span class="news-author">
+                                <ion-icon name="person-outline"></ion-icon> โดย: งานกิจการนักศึกษา
+                            </span>
+                            <a href="#" class="read-more">
+                                อ่านต่อ <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- ประกาศ -->
+                    <article class="news-card announcement">
+                        <div class="news-header">
+                            <span class="news-badge announcement-badge">
+                                <ion-icon name="megaphone-outline"></ion-icon> ประกาศ
+                            </span>
+                            <span class="news-date">
+                                <ion-icon name="calendar-outline"></ion-icon> 11 กรกฎาคม 2568
+                            </span>
+                        </div>
+                        <div class="news-content">
+                            <h3>ประกาศรับสมัครทุนการศึกษา</h3>
+                            <p>เปิดรับสมัครทุนการศึกษาสำหรับนักศึกษาที่มีผลการเรียนดีเยี่ยม...</p>
+                        </div>
+                        <div class="news-footer">
+                            <span class="news-author">
+                                <ion-icon name="person-outline"></ion-icon> โดย: งานทุนการศึกษา
+                            </span>
+                            <a href="#" class="read-more">
+                                อ่านต่อ <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- กิจกรรม -->
+                    <article class="news-card event">
+                        <div class="news-header">
+                            <span class="news-badge event-badge">
+                                <ion-icon name="calendar-outline"></ion-icon> กิจกรรม
+                            </span>
+                            <span class="news-date">
+                                <ion-icon name="calendar-outline"></ion-icon> 10 กรกฎาคม 2568
+                            </span>
+                        </div>
+                        <div class="news-content">
+                            <h3>งานแสดงผลงานนักศึกษา</h3>
+                            <p>ขอเชิญร่วมชมงานแสดงผลงานนักศึกษา ภาควิชาคอมพิวเตอร์ และเทคโนโลยีสารสนเทศ...</p>
+                        </div>
+                        <div class="news-footer">
+                            <span class="news-author">
+                                <ion-icon name="person-outline"></ion-icon> โดย: ภาควิชาคอมพิวเตอร์
+                            </span>
+                            <a href="#" class="read-more">
+                                อ่านต่อ <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- ข่าวสารเพิ่มเติม -->
+                    <article class="news-card news">
+                        <div class="news-header">
+                            <span class="news-badge news-badge">
+                                <ion-icon name="newspaper-outline"></ion-icon> ข่าวสาร
+                            </span>
+                            <span class="news-date">
+                                <ion-icon name="calendar-outline"></ion-icon> 9 กรกฎาคม 2568
+                            </span>
+                        </div>
+                        <div class="news-content">
+                            <h3>การปรับปรุงระบบห้องสมุด</h3>
+                            <p>ห้องสมุดกำลังปรับปรุงระบบใหม่ เพื่อให้บริการที่ดียิ่งขึ้น...</p>
+                        </div>
+                        <div class="news-footer">
+                            <span class="news-author">
+                                <ion-icon name="person-outline"></ion-icon> โดย: งานห้องสมุด
+                            </span>
+                            <a href="#" class="read-more">
+                                อ่านต่อ <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- ประกาศเพิ่มเติม -->
+                    <article class="news-card announcement">
+                        <div class="news-header">
+                            <span class="news-badge announcement-badge">
+                                <ion-icon name="megaphone-outline"></ion-icon> ประกาศ
+                            </span>
+                            <span class="news-date">
+                                <ion-icon name="calendar-outline"></ion-icon> 8 กรกฎาคม 2568
+                            </span>
+                        </div>
+                        <div class="news-content">
+                            <h3>ตารางสอบปลายภาค</h3>
+                            <p>ประกาศตารางสอบปลายภาคเรียนที่ 1 ปีการศึกษา 2568...</p>
+                        </div>
+                        <div class="news-footer">
+                            <span class="news-author">
+                                <ion-icon name="person-outline"></ion-icon> โดย: งานทะเบียน
+                            </span>
+                            <a href="#" class="read-more">
+                                อ่านต่อ <ion-icon name="arrow-forward-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Pagination -->
+            <section class="pagination-section">
+                <div class="pagination">
+                    <button class="page-btn" disabled>
+                        <ion-icon name="chevron-back-outline"></ion-icon> ก่อนหน้า
+                    </button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">
+                        ถัดไป <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-content">
+            <!-- ข่าวด่วน -->
+            <div class="sidebar-section">
+                <h3><ion-icon name="alert-circle-outline"></ion-icon> ข่าวด่วน</h3>
+                <div class="urgent-list">
+                    <div class="urgent-item">
+                        <ion-icon name="radio-button-on-outline" class="urgent-dot"></ion-icon>
+                        <span>ประกาศเลื่อนการสอบ</span>
+                    </div>
+                    <div class="urgent-item">
+                        <ion-icon name="radio-button-on-outline" class="urgent-dot"></ion-icon>
+                        <span>เปลี่ยนแปลงตารางเรียน</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ปฏิทินกิจกรรม -->
+            <div class="sidebar-section">
+                <h3><ion-icon name="calendar-outline"></ion-icon> ปฏิทินกิจกรรม</h3>
+                <div class="calendar">
+                    <div class="calendar-item">
+                        <span class="calendar-date">
+                            <ion-icon name="calendar-number-outline"></ion-icon> 15 ก.ค.
+                        </span>
+                        <span class="calendar-event">วันสำคัญ</span>
+                    </div>
+                    <div class="calendar-item">
+                        <span class="calendar-date">
+                            <ion-icon name="calendar-number-outline"></ion-icon> 20 ก.ค.
+                        </span>
+                        <span class="calendar-event">สอบกลางภาค</span>
+                    </div>
+                    <div class="calendar-item">
+                        <span class="calendar-date">
+                            <ion-icon name="calendar-number-outline"></ion-icon> 25 ก.ค.
+                        </span>
+                        <span class="calendar-event">วันปิดภาคเรียน</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ลิงก์ที่เกี่ยวข้อง -->
+            <div class="sidebar-section">
+                <h3><ion-icon name="link-outline"></ion-icon> ลิงก์ที่เกี่ยวข้อง</h3>
+                <ul class="link-list">
+                    <li><a href="#"><ion-icon name="server-outline"></ion-icon> ระบบสารสนเทศ</a></li>
+                    <li><a href="#"><ion-icon name="school-outline"></ion-icon> E-Learning</a></li>
+                    <li><a href="#"><ion-icon name="library-outline"></ion-icon> ห้องสมุดออนไลน์</a></li>
+                    <li><a href="#"><ion-icon name="help-circle-outline"></ion-icon> ติดต่อสอบถาม</a></li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><ion-icon name="business-outline"></ion-icon> วิทยาลัยเทคโนโลยีบริหารธุรกิจกิตติมา อินเตอร์</h4>
+                    <p><ion-icon name="location-outline"></ion-icon> 123 ถนนเทคโนโลยี ตำบลนวัตกรรม<br>
+                    อำเภอการศึกษา จังหวัดความรู้ 12345</p>
+                </div>
+                <div class="footer-section">
+                    <h4><ion-icon name="call-outline"></ion-icon> ติดต่อเรา</h4>
+                    <p><ion-icon name="call-outline"></ion-icon> โทร: 061-060-7931<br>
+                    <ion-icon name="mail-outline"></ion-icon> อีเมล: Siributwicha015@Gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4><ion-icon name="share-social-outline"></ion-icon> ติดตามเรา</h4>
+                    <div class="social-links">
+                        <a href="#"><ion-icon name="logo-facebook"></ion-icon> Facebook</a>
+                        <a href="#"><ion-icon name="chatbubble-outline"></ion-icon> Line</a>
+                        <a href="#"><ion-icon name="logo-instagram"></ion-icon> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><ion-icon name="shield-checkmark-outline"></ion-icon> &copy; 2568 วิทยาลัยเทคโนโลยี สงวนลิขสิทธิ์</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/JS/new.js"></script>
+</body>
+</html>

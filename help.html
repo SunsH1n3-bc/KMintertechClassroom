@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ช่วยเหลือ - ระบบเช็คอินทันสมัย</title>
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons/ionicons.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/CSS/help.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg">
+        <div class="floating-element element-1"></div>
+        <div class="floating-element element-2"></div>
+        <div class="floating-element element-3"></div>
+        <div class="floating-element element-4"></div>
+        <div class="floating-element element-5"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <div class="logo-icon-wrapper">
+                        <ion-icon name="school" class="logo-icon"></ion-icon>
+                    </div>
+                    <h1>Scan Check In</h1>
+                </div>
+            </div>
+            <div class="user-section">
+                <div class="user-info">
+                    <div class="profile-img">
+                        <ion-icon name="person"></ion-icon>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">สมชาย ใจดี</span>
+                        <span class="user-status">นักเรียน</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <ion-icon name="notifications" class="notification-icon"></ion-icon>
+                    <span class="notification-badge">3</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Vertical Navigation Sidebar -->
+    <nav class="vertical-nav">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li class="nav-item" data-tooltip="หน้าแรก">
+                    <a href="/HTML/index.html" class="nav-link" aria-label="หน้าแรก">
+                        <ion-icon name="home" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="สแกน QR Code">
+                    <a href="/HTML/ScanQRCode.html" class="nav-link" aria-label="สแกน">
+                        <ion-icon name="qr-code" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="เช็คอิน">
+                    <a href="/HTML/studens.html" class="nav-link" aria-label="เช็คอิน">
+                        <ion-icon name="checkmark-circle" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="ตารางเรียน">
+                    <a href="/HTML/ClassRoom.html" class="nav-link" aria-label="ตารางเรียน">
+                        <ion-icon name="calendar" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="รายงาน">
+                    <a href="/HTML/Report.html" class="nav-link" aria-label="รายงาน">
+                        <ion-icon name="bar-chart" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="โปรไฟล์">
+                    <a href="/HTML/Profile.html" class="nav-link" aria-label="โปรไฟล์">
+                        <ion-icon name="person" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-tooltip="ติดต่อ">
+                    <a href="#" class="nav-link active" aria-label="ติดต่อ">
+                        <ion-icon name="help-circle" class="nav-icon"></ion-icon>
+                        <span class="nav-ripple"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Help Header -->
+        <section class="help-header">
+            <div class="help-hero">
+                <div class="help-content">
+                    <div class="help-badge">
+                        <ion-icon name="help-buoy"></ion-icon>
+                        <span>ศูนย์ช่วยเหลือ</span>
+                    </div>
+                    <h2>ยินดีให้ความช่วยเหลือ</h2>
+                    <p>ค้นหาคำตอบและเรียนรู้วิธีใช้งานระบบเช็คอินของเรา</p>
+                    
+                    <!-- Search Box -->
+                    <div class="help-search">
+                        <div class="search-container">
+                            <ion-icon name="search" class="search-icon"></ion-icon>
+                            <input type="text" placeholder="ค้นหาคำถาม คำตอบ หรือหัวข้อ..." class="search-input">
+                            <button class="search-btn">
+                                <ion-icon name="arrow-forward"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="help-illustration">
+                    <div class="floating-help-icons">
+                        <ion-icon name="help-circle-outline" class="help-icon main-help-icon"></ion-icon>
+                        <ion-icon name="chatbubble-outline" class="floating-help-icon help-icon-1"></ion-icon>
+                        <ion-icon name="book-outline" class="floating-help-icon help-icon-2"></ion-icon>
+                        <ion-icon name="bulb-outline" class="floating-help-icon help-icon-3"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Help Categories -->
+        <section class="quick-help">
+            <div class="section-header">
+                <h3>หมวดหมู่ช่วยเหลือ</h3>
+                <div class="section-divider"></div>
+            </div>
+            <div class="help-categories">
+                <div class="help-category">
+                    <div class="category-icon">
+                        <ion-icon name="qr-code"></ion-icon>
+                    </div>
+                    <h4>การสแกน QR Code</h4>
+                    <p>เรียนรู้วิธีสแกนและแก้ไขปัญหาเกี่ยวกับ QR Code</p>
+                    <button class="category-btn">
+                        <span>ดูวิธีใช้</span>
+                        <ion-icon name="arrow-forward"></ion-icon>
+                    </button>
+                </div>
+                
+                <div class="help-category">
+                    <div class="category-icon">
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                    </div>
+                    <h4>การเช็คอิน</h4>
+                    <p>วิธีเช็คอินเข้าเรียนและตรวจสอบสถานะ</p>
+                    <button class="category-btn">
+                        <span>ดูวิธีใช้</span>
+                        <ion-icon name="arrow-forward"></ion-icon>
+                    </button>
+                </div>
+                
+                <div class="help-category">
+                    <div class="category-icon">
+                        <ion-icon name="calendar"></ion-icon>
+                    </div>
+                    <h4>ตารางเรียน</h4>
+                    <p>จัดการและดูตารางเรียนของคุณ</p>
+                    <button class="category-btn">
+                        <span>ดูวิธีใช้</span>
+                        <ion-icon name="arrow-forward"></ion-icon>
+                    </button>
+                </div>
+                
+                <div class="help-category">
+                    <div class="category-icon">
+                        <ion-icon name="bar-chart"></ion-icon>
+                    </div>
+                    <h4>รายงานและสถิติ</h4>
+                    <p>ดูรายงานการเข้าเรียนและสถิติต่างๆ</p>
+                    <button class="category-btn">
+                        <span>ดูวิธีใช้</span>
+                        <ion-icon name="arrow-forward"></ion-icon>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="section-header">
+                <h3>คำถามที่พบบ่อย</h3>
+                <div class="section-divider"></div>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>ทำไมไม่สามารถสแกน QR Code ได้?</h4>
+                        <ion-icon name="chevron-down" class="faq-icon"></ion-icon>
+                    </div>
+                    <div class="faq-answer">
+                        <p>มีหลายสาเหตุที่อาจทำให้ไม่สามารถสแกน QR Code ได้:</p>
+                        <ul>
+                            <li>ตรวจสอบว่ากล้องได้รับอนุญาตให้เข้าถึงแล้ว</li>
+                            <li>ทำความสะอาดเลนส์กล้อง</li>
+                            <li>ให้แสงสว่างเพียงพอ</li>
+                            <li>ถือมือถือให้นิ่งและระยะที่เหมาะสม</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>เช็คอินสำเร็จแล้ว แต่ระบบไม่แสดงสถานะ?</h4>
+                        <ion-icon name="chevron-down" class="faq-icon"></ion-icon>
+                    </div>
+                    <div class="faq-answer">
+                        <p>หากเช็คอินสำเร็จแล้วแต่ระบบไม่แสดงสถานะ:</p>
+                        <ul>
+                            <li>รอสักครู่แล้วรีเฟรชหน้าเว็บ</li>
+                            <li>ตรวจสอบการเชื่อมต่ออินเทอร์เน็ต</li>
+                            <li>ลองเข้าออกระบบใหม่</li>
+                            <li>ติดต่อเจ้าหน้าที่หากยังไม่แสดงผล</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>ลืมรหัสผ่านต้องทำอย่างไร?</h4>
+                        <ion-icon name="chevron-down" class="faq-icon"></ion-icon>
+                    </div>
+                    <div class="faq-answer">
+                        <p>หากลืมรหัสผ่าน:</p>
+                        <ul>
+                            <li>คลิกที่ "ลืมรหัสผ่าน" ในหน้าเข้าสู่ระบบ</li>
+                            <li>กรอกอีเมลที่ลงทะเบียนไว้</li>
+                            <li>ตรวจสอบอีเมลและทำตามขั้นตอน</li>
+                            <li>หรือติดต่อเจ้าหน้าที่โรงเรียน</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>ตารางเรียนไม่ตรงกับความเป็นจริง?</h4>
+                        <ion-icon name="chevron-down" class="faq-icon"></ion-icon>
+                    </div>
+                    <div class="faq-answer">
+                        <p>หากตารางเรียนไม่ตรงกับความเป็นจริง:</p>
+                        <ul>
+                            <li>ตรวจสอบว่าเลือกภาคเรียนที่ถูกต้อง</li>
+                            <li>รีเฟรชหน้าเว็บ</li>
+                            <li>ติดต่อเจ้าหน้าที่งานวิชาการ</li>
+                            <li>อาจมีการเปลี่ยนแปลงตารางเรียนล่าสุด</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>วิธีดูสถิติการเข้าเรียนย้อนหลัง?</h4>
+                        <ion-icon name="chevron-down" class="faq-icon"></ion-icon>
+                    </div>
+                    <div class="faq-answer">
+                        <p>การดูสถิติการเข้าเรียนย้อนหลัง:</p>
+                        <ul>
+                            <li>ไปที่เมนู "รายงาน"</li>
+                            <li>เลือกช่วงเวลาที่ต้องการดู</li>
+                            <li>คลิก "ดูรายงาน" หรือ "ส่งออก"</li>
+                            <li>สามารถดาวน์โหลดเป็นไฟล์ PDF ได้</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Support -->
+        <section class="contact-support">
+            <div class="section-header">
+                <h3>ติดต่อเจ้าหน้าที่</h3>
+                <div class="section-divider"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <ion-icon name="call"></ion-icon>
+                    </div>
+                    <h4>โทรศัพท์</h4>
+                    <p>061-060-7931</p>
+                    <p>จันทร์-ศุกร์ 8:00-17:00</p>
+                    <button class="contact-btn">
+                        <ion-icon name="call"></ion-icon>
+                        <span>โทรเลย</span>
+                    </button>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <ion-icon name="mail"></ion-icon>
+                    </div>
+                    <h4>อีเมล</h4>
+                    <p>Siributwicha015@Gmail.com</p>
+                    <p>ตอบกลับภายใน 24 ชั่วโมง</p>
+                    <button class="contact-btn">
+                        <ion-icon name="mail"></ion-icon>
+                        <span>ส่งอีเมล</span>
+                    </button>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <ion-icon name="chatbubble"></ion-icon>
+                    </div>
+                    <h4>Live Chat</h4>
+                    <p>แชทสดกับเจ้าหน้าที่</p>
+                    <p>จันทร์-ศุกร์ 8:00-17:00</p>
+                    <button class="contact-btn">
+                        <ion-icon name="chatbubble"></ion-icon>
+                        <span>เริ่มแชท</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Status -->
+        <section class="system-status">
+            <div class="section-header">
+                <h3>สถานะระบบ</h3>
+                <div class="section-divider"></div>
+            </div>
+            <div class="status-grid">
+                <div class="status-item">
+                    <div class="status-indicator online"></div>
+                    <div class="status-info">
+                        <h4>ระบบเช็คอิน</h4>
+                        <p>ทำงานปกติ</p>
+                    </div>
+                    <div class="status-badge online">Online</div>
+                </div>
+                
+                <div class="status-item">
+                    <div class="status-indicator online"></div>
+                    <div class="status-info">
+                        <h4>ระบบตารางเรียน</h4>
+                        <p>ทำงานปกติ</p>
+                    </div>
+                    <div class="status-badge online">Online</div>
+                </div>
+                
+                <div class="status-item">
+                    <div class="status-indicator maintenance"></div>
+                    <div class="status-info">
+                        <h4>ระบบรายงาน</h4>
+                        <p>ปรับปรุงระบบ</p>
+                    </div>
+                    <div class="status-badge maintenance">Maintenance</div>
+                </div>
+                
+                <div class="status-item">
+                    <div class="status-indicator online"></div>
+                    <div class="status-info">
+                        <h4>ระบบการแจ้งเตือน</h4>
+                        <p>ทำงานปกติ</p>
+                    </div>
+                    <div class="status-badge online">Online</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Tutorials -->
+        <section class="video-tutorials">
+            <div class="section-header">
+                <h3>วิดีโอสอนใช้งาน</h3>
+                <div class="section-divider"></div>
+            </div>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <ion-icon name="play-circle" class="play-icon"></ion-icon>
+                        <div class="video-duration">3:45</div>
+                    </div>
+                    <div class="video-info">
+                        <h4>วิธีการสแกน QR Code</h4>
+                        <p>เรียนรู้การใช้งานเบื้องต้นของระบบสแกน QR Code</p>
+                        <div class="video-stats">
+                            <span>1,234 ครั้ง</span>
+                            <span>•</span>
+                            <span>2 วันที่แล้ว</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <ion-icon name="play-circle" class="play-icon"></ion-icon>
+                        <div class="video-duration">5:12</div>
+                    </div>
+                    <div class="video-info">
+                        <h4>การเช็คอินและตรวจสอบสถานะ</h4>
+                        <p>แนะนำการใช้งานระบบเช็คอินและการตรวจสอบสถานะ</p>
+                        <div class="video-stats">
+                            <span>892 ครั้ง</span>
+                            <span>•</span>
+                            <span>5 วันที่แล้ว</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <ion-icon name="play-circle" class="play-icon"></ion-icon>
+                        <div class="video-duration">4:28</div>
+                    </div>
+                    <div class="video-info">
+                        <h4>การใช้งานตารางเรียน</h4>
+                        <p>วิธีดูตารางเรียนและการแจ้งเตือนต่างๆ</p>
+                        <div class="video-stats">
+                            <span>567 ครั้ง</span>
+                            <span>•</span>
+                            <span>1 สัปดาห์ที่แล้ว</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>เกี่ยวกับเรา</h4>
+                    <p>ระบบเช็คอินเรียนออนไลน์ที่ทันสมัยและใช้งานง่าย</p>
+                </div>
+                <div class="footer-section">
+                    <h4>ติดต่อเรา</h4>
+                    <p>โทร: 061-060-7931</p>
+                    <p>อีเมล: Siributwicha015@Gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>ลิงก์ด่วน</h4>
+                    <div class="footer-links">
+                        <a href="/HTML/about.html">เกี่ยวกับเรา</a>
+                        <a href="/HTML/N.html">เงื่อนไขการใช้งาน</a>
+                        <a href="#">ช่วยเหลือ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ระบบเช็คอินเรียนออนไลน์. สงวนลิขสิทธิ์.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src=""></script>
+</body>
+</html>

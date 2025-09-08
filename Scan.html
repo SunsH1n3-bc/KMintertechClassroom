@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สถิติการเข้าเรียน | Scan Check-in</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="/CSS/Scan.css">
+</head>
+<body>
+    <!-- Background Pattern -->
+    <div class="background-pattern">
+        <div class="pattern-grid"></div>
+        <div class="floating-elements">
+            <div class="floating-element element-1"></div>
+            <div class="floating-element element-2"></div>
+            <div class="floating-element element-3"></div>
+            <div class="floating-element element-4"></div>
+            <div class="floating-element element-5"></div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="nav-logo">
+                    <ion-icon name="analytics-outline"></ion-icon>
+                </div>
+                <span class="nav-title">สถิติการเข้าเรียน</span>
+            </div>
+            <div class="nav-links">
+                <a href="/HTML/index.html" class="nav-link">
+                    <ion-icon name="home"></ion-icon>
+                    <span>หน้าหลัก</span>
+                </a>
+                <a href="/HTML/Nav.html" class="nav-link">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <span>โปรไฟล์</span>
+                </a>
+                <!-- เช็คชื่อจะถูกซ่อนสำหรับนักเรียน -->
+                <a href="/HTML/studens.html" class="nav-link" id="checkAttendanceLink" style="display: none;">
+                    <ion-icon name="clipboard-outline"></ion-icon>
+                    <span>เช็คชื่อ</span>
+                </a>
+                <a href="#" class="nav-link" onclick="logout()">
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    <span>ออกจากระบบ</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- User Info Section -->
+        <div class="user-info-section">
+            <div class="user-card">
+                <div class="user-avatar">
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                </div>
+                <div class="user-details">
+                    <h2 id="userName">กำลังโหลด...</h2>
+                    <p id="userRole">-</p>
+                    <p id="userClass">-</p>
+                </div>
+                <div class="user-stats-preview">
+                    <div class="stat-preview">
+                        <ion-icon name="trending-up-outline"></ion-icon>
+                        <div>
+                            <div class="stat-number" id="overallAttendanceRate">-</div>
+                            <div class="stat-label">เปอร์เซ็นต์เข้าเรียน</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-card">
+                <h3><ion-icon name="filter-outline"></ion-icon> กรองข้อมูล</h3>
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="subjectFilter">รายวิชา:</label>
+                        <select id="subjectFilter" onchange="filterData()">
+                            <option value="">ทั้งหมด</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="gradeFilter">ระดับชั้น:</label>
+                        <select id="gradeFilter" onchange="filterData()">
+                            <option value="">ทั้งหมด</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="dateRangeFilter">ช่วงเวลา:</label>
+                        <select id="dateRangeFilter" onchange="filterData()">
+                            <option value="all">ทั้งหมด</option>
+                            <option value="today">วันนี้</option>
+                            <option value="week">7 วันที่ผ่านมา</option>
+                            <option value="month">30 วันที่ผ่านมา</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="refreshData()">
+                        <ion-icon name="refresh-outline"></ion-icon> รีเฟรช
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-overview">
+            <div class="stat-card present">
+                <div class="stat-icon">
+                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" id="totalPresent">0</div>
+                    <div class="stat-label">เข้าเรียน</div>
+                    <div class="stat-percentage" id="presentPercentage">0%</div>
+                </div>
+            </div>
+
+            <div class="stat-card absent">
+                <div class="stat-icon">
+                    <ion-icon name="close-circle-outline"></ion-icon>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" id="totalAbsent">0</div>
+                    <div class="stat-label">ขาดเรียน</div>
+                    <div class="stat-percentage" id="absentPercentage">0%</div>
+                </div>
+            </div>
+
+            <div class="stat-card late">
+                <div class="stat-icon">
+                    <ion-icon name="time-outline"></ion-icon>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" id="totalLate">0</div>
+                    <div class="stat-label">มาสาย</div>
+                    <div class="stat-percentage" id="latePercentage">0%</div>
+                </div>
+            </div>
+
+            <div class="stat-card leave">
+                <div class="stat-icon">
+                    <ion-icon name="document-outline"></ion-icon>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" id="totalLeave">0</div>
+                    <div class="stat-label">ลา</div>
+                    <div class="stat-percentage" id="leavePercentage">0%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3><ion-icon name="pie-chart-outline"></ion-icon> สัดส่วนการเข้าเรียน</h3>
+                    <button class="btn btn-secondary" onclick="exportChart('pie')">
+                        <ion-icon name="download-outline"></ion-icon>
+                    </button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3><ion-icon name="bar-chart-outline"></ion-icon> แนวโน้มการเข้าเรียน</h3>
+                    <button class="btn btn-secondary" onclick="exportChart('line')">
+                        <ion-icon name="download-outline"></ion-icon>
+                    </button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Statistics -->
+        <div class="detailed-stats">
+            <div class="detail-card">
+                <div class="detail-header">
+                    <h3><ion-icon name="list-outline"></ion-icon> รายละเอียดการเข้าเรียนตามรายวิชา</h3>
+                    <div class="detail-controls">
+                        <button class="btn btn-secondary" onclick="exportDetailedReport()">
+                            <ion-icon name="document-text-outline"></ion-icon> ส่งออกรายงาน
+                        </button>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <div id="subjectDetailsList">
+                        <div class="empty-state">
+                            <ion-icon name="document-outline"></ion-icon>
+                            <p>ไม่มีข้อมูลการเข้าเรียน</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="activity-section">
+            <div class="activity-card">
+                <div class="activity-header">
+                    <h3><ion-icon name="time-outline"></ion-icon> กิจกรรมล่าสุด</h3>
+                    <span class="activity-count" id="activityCount">0 รายการ</span>
+                </div>
+                <div class="activity-content">
+                    <div id="recentActivitiesList">
+                        <div class="empty-state">
+                            <ion-icon name="clipboard-outline"></ion-icon>
+                            <p>ไม่มีกิจกรรมล่าสุด</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <ion-icon name="reload-outline"></ion-icon>
+            </div>
+            <h3>กำลังโหลดข้อมูล</h3>
+            <p>กรุณารอสักครู่...</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <ion-icon name="checkmark-circle"></ion-icon>
+            </div>
+            <h3 id="successTitle">สำเร็จ!</h3>
+            <p id="successMessage">ดำเนินการสำเร็จแล้ว</p>
+            <div class="modal-actions">
+                <button class="modal-btn primary" onclick="closeSuccessModal()">
+                    <ion-icon name="checkmark-outline"></ion-icon>
+                    ตกลง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ตัวแปรสำหรับเก็บข้อมูล
+        let currentUser = null;
+        let attendanceData = null;
+        let subjects = [];
+        let filteredData = [];
+        let pieChart = null;
+        let lineChart = null;
+
+        // โหลดข้อมูลผู้ใช้และข้อมูลการเข้าเรียน
+        function loadData() {
+            showLoading();
+            
+            // โหลดข้อมูลผู้ใช้
+            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            
+            if (isLoggedIn !== 'true' || !userData.username) {
+                window.location.href = '/HTML/Profile.html';
+                return;
+            }
+            
+            currentUser = userData;
+            
+            // ตรวจสอบบทบาทของผู้ใช้และซ่อนแถบเช็คชื่อสำหรับนักเรียน
+            checkUserRoleAndHideElements();
+            
+            // โหลดข้อมูลการเข้าเรียน
+            const savedAttendanceData = localStorage.getItem('studentAttendanceData');
+            if (savedAttendanceData) {
+                attendanceData = JSON.parse(savedAttendanceData);
+                subjects = attendanceData.subjects || [];
+            } else {
+                attendanceData = {
+                    subjects: [],
+                    gradeData: {}
+                };
+                subjects = [];
+            }
+            
+            // แสดงข้อมูลผู้ใช้
+            displayUserInfo();
+            
+            // โหลดตัวกรองข้อมูล
+            loadFilters();
+            
+            // โหลดสถิติ
+            setTimeout(() => {
+                filterData();
+                hideLoading();
+            }, 1000);
+        }
+
+        // ตรวจสอบบทบาทของผู้ใช้และซ่อนแถบเช็คชื่อสำหรับนักเรียน
+        function checkUserRoleAndHideElements() {
+            const checkAttendanceLink = document.getElementById('checkAttendanceLink');
+            
+            // ตรวจสอบบทบาทของผู้ใช้
+            const userRole = currentUser.role;
+            
+            // ซ่อนแถบเช็คชื่อสำหรับนักเรียน
+            if (userRole === 'student' || userRole === 'นักเรียน' || 
+                currentUser.roleDisplay === 'นักเรียน' || currentUser.roleDisplay === 'student') {
+                checkAttendanceLink.style.display = 'none';
+            } else {
+                // แสดงสำหรับครู หรือ admin
+                checkAttendanceLink.style.display = 'flex';
+            }
+        }
+
+        // แสดงข้อมูลผู้ใช้
+        function displayUserInfo() {
+            document.getElementById('userName').textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+            document.getElementById('userRole').textContent = currentUser.roleDisplay || currentUser.role;
+            document.getElementById('userClass').textContent = currentUser.class || '-';
+            
+            // คำนวณเปอร์เซ็นต์เข้าเรียนรวม (จากข้อมูลผู้ใช้ที่มีอยู่)
+            const attendanceRate = currentUser.attendanceRate || 0;
+            document.getElementById('overallAttendanceRate').textContent = `${attendanceRate}%`;
+        }
+
+        // โหลดตัวกรองข้อมูล
+        function loadFilters() {
+            const subjectFilter = document.getElementById('subjectFilter');
+            const gradeFilter = document.getElementById('gradeFilter');
+            
+            // โหลดรายวิชา
+            subjectFilter.innerHTML = '<option value="">ทั้งหมด</option>';
+            subjects.forEach(subject => {
+                const option = document.createElement('option');
+                option.value = subject.id;
+                option.textContent = `${subject.code} - ${subject.name}`;
+                subjectFilter.appendChild(option);
+            });
+            
+            // โหลดระดับชั้น
+            gradeFilter.innerHTML = '<option value="">ทั้งหมด</option>';
+            if (attendanceData.gradeData) {
+                Object.keys(attendanceData.gradeData).forEach(grade => {
+                    if (attendanceData.gradeData[grade].length > 0) {
+                        const option = document.createElement('option');
+                        option.value = grade;
+                        option.textContent = grade;
+                        gradeFilter.appendChild(option);
+                    }
+                });
+            }
+        }
+
+        // กรองข้อมูล
+        function filterData() {
+            const subjectFilter = document.getElementById('subjectFilter').value;
+            const gradeFilter = document.getElementById('gradeFilter').value;
+            const dateRangeFilter = document.getElementById('dateRangeFilter').value;
+            
+            filteredData = [];
+            
+            if (!attendanceData.gradeData) {
+                updateStats();
+                updateCharts();
+                updateDetailedStats();
+                updateRecentActivities();
+                return;
+            }
+            
+            // รวบรวมข้อมูลจากทุกระดับชั้น
+            Object.keys(attendanceData.gradeData).forEach(grade => {
+                if (gradeFilter && gradeFilter !== grade) return;
+                
+                attendanceData.gradeData[grade].forEach(student => {
+                    if (subjectFilter && student.subjectId && student.subjectId !== parseInt(subjectFilter)) return;
+                    
+                    // ตรวจสอบช่วงเวลา (ในกรณีนี้เราจะใช้ข้อมูลทั้งหมดก่อน)
+                    if (student.status) {
+                        filteredData.push({
+                            ...student,
+                            grade: grade,
+                            subject: subjects.find(s => s.id === student.subjectId)
+                        });
+                    }
+                });
+            });
+            
+            updateStats();
+            updateCharts();
+            updateDetailedStats();
+            updateRecentActivities();
+        }
+
+        // อัพเดทสถิติ
+        function updateStats() {
+            const total = filteredData.length;
+            const present = filteredData.filter(d => d.status === 'present').length;
+            const absent = filteredData.filter(d => d.status === 'absent').length;
+            const late = filteredData.filter(d => d.status === 'late').length;
+            const leave = filteredData.filter(d => d.status === 'leave').length;
+            
+            document.getElementById('totalPresent').textContent = present;
+            document.getElementById('totalAbsent').textContent = absent;
+            document.getElementById('totalLate').textContent = late;
+            document.getElementById('totalLeave').textContent = leave;
+            
+            if (total > 0) {
+                document.getElementById('presentPercentage').textContent = `${Math.round((present / total) * 100)}%`;
+                document.getElementById('absentPercentage').textContent = `${Math.round((absent / total) * 100)}%`;
+                document.getElementById('latePercentage').textContent = `${Math.round((late / total) * 100)}%`;
+                document.getElementById('leavePercentage').textContent = `${Math.round((leave / total) * 100)}%`;
+            } else {
+                document.getElementById('presentPercentage').textContent = '0%';
+                document.getElementById('absentPercentage').textContent = '0%';
+                document.getElementById('latePercentage').textContent = '0%';
+                document.getElementById('leavePercentage').textContent = '0%';
+            }
+        }
+
+        // อัพเดทกราฟ
+        function updateCharts() {
+            updatePieChart();
+            updateLineChart();
+        }
+
+        // อัพเดทกราฟวงกลม
+        function updatePieChart() {
+            const ctx = document.getElementById('pieChart').getContext('2d');
+            
+            if (pieChart) {
+                pieChart.destroy();
+            }
+            
+            const present = filteredData.filter(d => d.status === 'present').length;
+            const absent = filteredData.filter(d => d.status === 'absent').length;
+            const late = filteredData.filter(d => d.status === 'late').length;
+            const leave = filteredData.filter(d => d.status === 'leave').length;
+            
+            pieChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['เข้าเรียน', 'ขาดเรียน', 'มาสาย', 'ลา'],
+                    datasets: [{
+                        data: [present, absent, late, leave],
+                        backgroundColor: [
+                            '#10b981',
+                            '#ef4444',
+                            '#f59e0b',
+                            '#3b82f6'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        // อัพเดทกราฟเส้น
+        function updateLineChart() {
+            const ctx = document.getElementById('lineChart').getContext('2d');
+            
+            if (lineChart) {
+                lineChart.destroy();
+            }
+            
+            // สร้างข้อมูลตัวอย่างสำหรับแนวโน้ม (7 วันล่าสุด)
+            const dates = [];
+            const attendanceRates = [];
+            
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                dates.push(date.toLocaleDateString('th-TH', { month: 'short', day: 'numeric' }));
+                
+                // สุ่มข้อมูลตัวอย่างสำหรับการแสดงผล
+                const rate = Math.floor(Math.random() * 20) + 80; // 80-100%
+                attendanceRates.push(rate);
+            }
+            
+            lineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: 'เปอร์เซ็นต์การเข้าเรียน',
+                        data: attendanceRates,
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // อัพเดทสถิติรายละเอียด
+        function updateDetailedStats() {
+            const container = document.getElementById('subjectDetailsList');
+            
+            if (subjects.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <ion-icon name="document-outline"></ion-icon>
+                        <p>ไม่มีข้อมูลรายวิชา</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            
+            subjects.forEach(subject => {
+                const subjectData = filteredData.filter(d => d.subjectId === subject.id);
+                const total = subjectData.length;
+                
+                if (total === 0) return;
+                
+                const present = subjectData.filter(d => d.status === 'present').length;
+                const absent = subjectData.filter(d => d.status === 'absent').length;
+                const late = subjectData.filter(d => d.status === 'late').length;
+                const leave = subjectData.filter(d => d.status === 'leave').length;
+                const rate = total > 0 ? Math.round((present / total) * 100) : 0;
+                
+                html += `
+                    <div class="subject-stat-item">
+                        <div class="subject-info">
+                            <h4>${subject.code} - ${subject.name}</h4>
+                            <div class="subject-rate ${rate >= 80 ? 'good' : rate >= 60 ? 'warning' : 'poor'}">
+                                ${rate}% เข้าเรียน
+                            </div>
+                        </div>
+                        <div class="subject-details">
+                            <div class="detail-stat">
+                                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                <span>เข้า ${present}</span>
+                            </div>
+                            <div class="detail-stat">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                                <span>ขาด ${absent}</span>
+                            </div>
+                            <div class="detail-stat">
+                                <ion-icon name="time-outline"></ion-icon>
+                                <span>สาย ${late}</span>
+                            </div>
+                            <div class="detail-stat">
+                                <ion-icon name="document-outline"></ion-icon>
+                                <span>ลา ${leave}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html || `
+                <div class="empty-state">
+                    <ion-icon name="document-outline"></ion-icon>
+                    <p>ไม่มีข้อมูลการเข้าเรียนในช่วงที่เลือก</p>
+                </div>
+            `;
+        }
+
+        // อัพเดทกิจกรรมล่าสุด
+        function updateRecentActivities() {
+            const container = document.getElementById('recentActivitiesList');
+            const countElement = document.getElementById('activityCount');
+            
+            // เรียงข้อมูลตามเวลาล่าสุด (สำหรับตัวอย่างจะใช้ข้อมูลที่มี)
+            const recentData = filteredData
+                .filter(d => d.statusTime)
+                .slice(0, 10); // แสดง 10 รายการล่าสุด
+            
+            countElement.textContent = `${recentData.length} รายการ`;
+            
+            if (recentData.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <ion-icon name="clipboard-outline"></ion-icon>
+                        <p>ไม่มีกิจกรรมล่าสุด</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            
+            recentData.forEach(activity => {
+                const statusInfo = getStatusInfo(activity.status);
+                const subjectName = activity.subject ? `${activity.subject.code}` : 'ไม่ระบุรายวิชา';
+                
+                html += `
+                    <div class="activity-item">
+                        <div class="activity-icon ${activity.status}">
+                            <ion-icon name="${statusInfo.icon}"></ion-icon>
+                        </div>
+                        <div class="activity-info">
+                            <div class="activity-title">${activity.name}</div>
+                            <div class="activity-details">
+                                ${subjectName} • ${activity.grade} • ${statusInfo.text} เวลา ${activity.statusTime}
+                            </div>
+                        </div>
+                        <div class="activity-time">
+                            ${activity.statusTime}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // ข้อมูลสถานะ
+        function getStatusInfo(status) {
+            const statusMap = {
+                'present': { text: 'เข้าเรียน', icon: 'checkmark-circle-outline' },
+                'absent': { text: 'ขาดเรียน', icon: 'close-circle-outline' },
+                'late': { text: 'มาสาย', icon: 'time-outline' },
+                'leave': { text: 'ลา', icon: 'document-outline' }
+            };
+            return statusMap[status] || { text: 'ไม่ระบุ', icon: 'help-circle-outline' };
+        }
+
+        // ฟังก์ชันส่งออกข้อมูล
+        function exportDetailedReport() {
+            if (filteredData.length === 0) {
+                alert('ไม่มีข้อมูลให้ส่งออก');
+                return;
+            }
+            
+            const currentDate = new Date().toLocaleDateString('th-TH');
+            let csvContent = `รายงานสถิติการเข้าเรียน\n`;
+            csvContent += `ผู้ใช้: ${currentUser.firstName} ${currentUser.lastName}\n`;
+            csvContent += `วันที่: ${currentDate}\n\n`;
+            csvContent += `ลำดับ,ชื่อ-นามสกุล,ระดับชั้น,รายวิชา,สถานะ,เวลา\n`;
+            
+            filteredData.forEach((item, index) => {
+                const subjectName = item.subject ? `${item.subject.code} - ${item.subject.name}` : 'ไม่ระบุ';
+                const statusText = getStatusInfo(item.status).text;
+                csvContent += `${index + 1},${item.name},${item.grade},${subjectName},${statusText},${item.statusTime || '-'}\n`;
+            });
+            
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `attendance_report_${currentUser.username}_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showSuccessModal('ส่งออกรายงานสำเร็จ!', 'ไฟล์รายงานได้ถูกดาวน์โหลดแล้ว');
+        }
+
+        // ส่งออกกราฟ
+        function exportChart(chartType) {
+            const canvas = document.getElementById(chartType === 'pie' ? 'pieChart' : 'lineChart');
+            const url = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.download = `${chartType}_chart_${new Date().toISOString().split('T')[0]}.png`;
+            link.href = url;
+            link.click();
+            
+            showSuccessModal('ส่งออกกราฟสำเร็จ!', 'ไฟล์กราฟได้ถูกดาวน์โหลดแล้ว');
+        }
+
+        // รีเฟรชข้อมูล
+        function refreshData() {
+            showLoading();
+            setTimeout(() => {
+                loadData();
+                hideLoading();
+                showSuccessModal('รีเฟรชข้อมูลสำเร็จ!', 'ข้อมูลได้รับการอัพเดทแล้ว');
+            }, 1000);
+        }
+
+        // ออกจากระบบ
+        function logout() {
+            if (confirm('คุณต้องการออกจากระบบหรือไม่?')) {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userData');
+                window.location.href = '/HTML/Profile.html';
+            }
+        }
+
+        // แสดง Loading
+        function showLoading() {
+            document.getElementById('loadingOverlay').classList.add('active');
+        }
+
+        // ซ่อน Loading
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.remove('active');
+        }
+
+        // แสดง Success Modal
+        function showSuccessModal(title, message) {
+            document.getElementById('successTitle').textContent = title;
+            document.getElementById('successMessage').textContent = message;
+            document.getElementById('successModal').classList.add('active');
+        }
+
+        // ปิด Success Modal
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
+        // ปิด Modal เมื่อคลิกนอก Modal
+        window.onclick = function(event) {
+            const successModal = document.getElementById('successModal');
+            if (event.target === successModal) {
+                closeSuccessModal();
+            }
+        }
+
+        // เริ่มต้นโปรแกรม
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+        });
+
+        // อัพเดทข้อมูลทุกๆ 30 วินาที
+        setInterval(function() {
+            const savedAttendanceData = localStorage.getItem('studentAttendanceData');
+            if (savedAttendanceData) {
+                const newData = JSON.parse(savedAttendanceData);
+                if (JSON.stringify(newData) !== JSON.stringify(attendanceData)) {
+                    attendanceData = newData;
+                    subjects = attendanceData.subjects || [];
+                    loadFilters();
+                    filterData();
+                }
+            }
+        }, 30000);
+
+        // Responsive Chart Resize
+        window.addEventListener('resize', function() {
+            if (pieChart) pieChart.resize();
+            if (lineChart) lineChart.resize();
+        });
+
+        // คีย์บอร์ดช็อตคัต
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + R = Refresh
+            if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
+                e.preventDefault();
+                refreshData();
+            }
+            
+            // Ctrl/Cmd + E = Export Report
+            if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
+                e.preventDefault();
+                exportDetailedReport();
+            }
+            
+            // Escape = Close Modals
+            if (e.key === 'Escape') {
+                closeSuccessModal();
+            }
+        });
+
+        // เพิ่ม Animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes pulse {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+            }
+            
+            .stat-card:hover {
+                animation: pulse 0.6s ease-in-out;
+            }
+            
+            .activity-item {
+                animation: fadeIn 0.5s ease-out;
+            }
+            
+            .subject-stat-item {
+                animation: fadeIn 0.5s ease-out;
+            }
+            
+            .chart-container {
+                animation: fadeIn 0.8s ease-out;
+            }
+            
+            .loading-spinner ion-icon {
+                animation: spin 1s linear infinite;
+            }
+            
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+            
+            /* เพิ่มสไตล์สำหรับ Responsive */
+            @media (max-width: 768px) {
+                .stats-overview {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 15px;
+                }
+                
+                .charts-section {
+                    grid-template-columns: 1fr;
+                }
+                
+                .filter-controls {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+                
+                .nav-links {
+                    display: none;
+                }
+                
+                .container {
+                    padding: 10px;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .stats-overview {
+                    grid-template-columns: 1fr;
+                }
+                
+                .stat-number {
+                    font-size: 1.5em;
+                }
+                
+                .chart-container {
+                    height: 250px;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // PWA Support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        // เพิ่มการตรวจสอบการเชื่อมต่ออินเทอร์เน็ต
+        function checkOnlineStatus() {
+            if (navigator.onLine) {
+                document.body.classList.remove('offline');
+            } else {
+                document.body.classList.add('offline');
+                showSuccessModal('ไม่มีการเชื่อมต่ออินเทอร์เน็ต', 'กำลังทำงานในโหมดออฟไลน์');
+            }
+        }
+
+        window.addEventListener('online', checkOnlineStatus);
+        window.addEventListener('offline', checkOnlineStatus);
+
+        // เพิ่มการสนับสนุนสำหรับ Touch Gestures
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            if (!touchStartX || !touchStartY) return;
+            
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            
+            const deltaX = touchStartX - touchEndX;
+            const deltaY = touchStartY - touchEndY;
+            
+            // Swipe left to refresh
+            if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX < -100) {
+                refreshData();
+            }
+            
+            touchStartX = 0;
+            touchStartY = 0;
+        });
+
+        // เพิ่มการแจ้งเตือนเมื่อมีข้อมูลใหม่
+        function checkForUpdates() {
+            const lastCheck = localStorage.getItem('lastDataCheck');
+            const currentTime = new Date().getTime();
+            
+            if (!lastCheck || (currentTime - parseInt(lastCheck)) > 60000) { // ตรวจสอบทุก 1 นาที
+                const savedData = localStorage.getItem('studentAttendanceData');
+                if (savedData) {
+                    const newData = JSON.parse(savedData);
+                    if (JSON.stringify(newData) !== JSON.stringify(attendanceData)) {
+                        showSuccessModal('มีข้อมูลใหม่!', 'พบการอัพเดทข้อมูลการเข้าเรียน');
+                        loadData();
+                    }
+                }
+                localStorage.setItem('lastDataCheck', currentTime.toString());
+            }
+        }
+
+        // เรียกใช้การตรวจสอบทุก 30 วินาที
+        setInterval(checkForUpdates, 30000);
+    </script>
+</body>
+</html>
